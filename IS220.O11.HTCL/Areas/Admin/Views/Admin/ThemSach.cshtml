@@ -1,0 +1,176 @@
+﻿
+            <!-- Start content -->
+            <div class="content">
+
+                <div class="">
+                    <div class="page-header-title">
+                        <h4 class="page-title">Thêm sách</h4>
+                    </div>
+                </div>
+
+                <div class="page-content-wrapper ">
+                    <form class="" action="/Admin/InsertBook" method="post">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card">
+
+                                        <div class="card-body">
+                                            <h4 class="m-t-0 m-b-30">Nhập thông tin sách</h4>
+
+                                            <div class="row">
+                                                <div class="col-sm-6 col-xs-12">
+
+                                                    <div class="m-t-20">
+                                                        <div class="form-group">
+                                                            <label>Nhập mã sách</label>
+                                                            <input type="text" class="form-control" required="" placeholder="Mã sách" name="masach">
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Hình ảnh</label>
+                                                            <div>
+                                                                <input parsley-type="url" type="url" class="form-control" required="" placeholder="URL" name="hinhanh">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Nhập tên sách</label>
+                                                            <div>
+                                                                <input data-parsley-type="digits" type="text" class="form-control" required="" placeholder="Tên sách" name="tensach">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group ">
+                                                            <label>Thể loại</label>
+                                                            <select class="form-control" name="theloai">
+                                                                <option>Giả tưởng</option>
+                                                                <option>Ngôn tình</option>
+                                                                <option>Huyền bí</option>
+                                                                <option>Kinh dị</option>
+                                                                <option>Trinh thám</option>
+                                                                <option>Tâm linh</option>
+                                                                <option>Khoa học viễn tưởng</option>
+                                                                <option>Du ký</option>
+                                                                <option>Nấu ăn</option>
+                                                                <option>Tuổi teen</option>
+                                                                <option>Nghệ thuật</option>
+                                                                <option>Phát triển bản thân</option>
+                                                                <option>Động lực</option>
+                                                                <option>Sức khỏe</option>
+                                                                <option>Lịch sử</option>
+                                                                <option>Du lịch</option>
+                                                                <option>Sách hướng dẫn</option>
+                                                                <option>Gia đình và xã hội</option>
+                                                                <option>Hài hước</option>
+                                                                <option>Sách thiếu nhi</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Nhập tác giả</label>
+                                                            <div>
+                                                                <input data-parsley-type="alphanum" type="text" class="form-control" required="" placeholder="Tác giả" name="tacgia">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Nhập nội dung</label>
+                                                            <div>
+                                                                <textarea required="" class="form-control" rows="5" name="mota"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-sm-6 col-xs-12">
+
+                                                    <div class="m-t-20">
+                                                        <div class="form-group">
+                                                            <label>Nhập nhà xuất bản</label>
+                                                            <div>
+                                                                <input data-parsley-type="alphanum" type="text" class="form-control" required="" placeholder="Nhà xuất bản" name="nxb">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Nhập năm xuất bản</label>
+                                                            <div>
+                                                                <input data-parsley-type="alphanum" type="text" class="form-control" required="" placeholder="Năm xuất bản" name="namxb">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Nhập số lượng</label>
+                                                            <div>
+                                                                <input data-parsley-type="number" type="text" class="form-control" required="" placeholder="Số lượng sách" name="soluong">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Nhập phần trăm giảm</label>
+                                                            <div>
+                                                                <input data-parsley-type="number" type="text" class="form-control" required="" placeholder="Phần trăm giảm" name="giamgia">
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <div class="form-group" style="margin-top: 17px;">
+                                                            <label>Nhập giá bán</label>
+                                                            <div>
+                                                                <input data-parsley-type="alphanum" type="text" class="form-control" required="" placeholder="Giá bán" name="giaban">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group" style="margin-top: 17px;">
+                                                            <label>Nhập giá vốn</label>
+                                                            <div>
+                                                                <input data-parsley-type="alphanum" type="text" class="form-control" required="" placeholder="Giá vốn" name="giagoc">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group" style="margin-top: 17px;">
+                                                            <label>Nhập hình thức</label>
+                                                            <div>
+                                                                <input data-parsley-type="alphanum" type="text" class="form-control" required="" placeholder=" Bìa mềm" name="hinhthuc">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group m-b-0">
+                                                            <div>
+                                                                <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                                                    Thêm
+                                                                </button>
+                                                                <button type="reset" class="btn btn-light waves-effect m-l-5">
+                                                                    Hủy
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <!-- end row -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- end row -->
+
+                        </div><!-- container-fluid -->
+                    </form>
+                </div> <!-- Page content Wrapper -->
+
+            </div> <!-- content -->
+
+  
+   
+    <script type="text/javascript" src=".\plugins\parsleyjs\parsley.min.js"></script>
+
+    <script type="text/javascript">
+			$(document).ready(function() {
+				$('form').parsley();
+			});
+    </script>

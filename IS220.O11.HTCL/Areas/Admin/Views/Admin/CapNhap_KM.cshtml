@@ -1,0 +1,50 @@
+﻿@model IS220.O11.HTCL.vouchder
+@{
+    <div class="content">
+
+        <div class="">
+            <div class="page-header-title">
+                <h4 class="page-title" style="margin-left: 300px;">Cập nhật khuyến mãi</h4>
+            </div>
+        </div>
+        <form action="/Admin/UpdateKhuyenMaiById" method="post">
+
+            <div class="page-content-wrapper ">
+
+                <div class="container-fluid">
+                    <div class="row">
+
+
+                        <div class="col-lg-6" style="margin-left: 300px;">
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="m-b-30 m-t-0">Cập nhật thông tin khuyến mãi</h4>
+                                    <div class="demo-box">
+                                        <!-- ... -->
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Ngày bắt đầu và ngày kết thúc khuyến mãi</label>
+                                        <div>
+                                            <div class="input-daterange input-group" id="date-range">
+                                                <input type="text" class="form-control" name="Ngaybd" value="@ViewBag.khuyenmai.Ngaybd">
+                                                <span class="input-group-addon bg-primary text-white b-0">to</span>
+                                                <input type="text" class="form-control" name="Ngaykt" value="@ViewBag.khuyenmai.Ngaykt">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary" style="display: flex; justify-content: center;">Cập nhật</button>
+                                </div> <!-- card-body -->
+                            </div> <!-- card -->
+                        </div> <!-- col -->
+
+                    </div> <!-- End row -->
+
+                </div><!-- container-fluid -->
+
+            </div> <!-- Page content Wrapper -->
+        </form>
+    </div> <!-- content -->
+}

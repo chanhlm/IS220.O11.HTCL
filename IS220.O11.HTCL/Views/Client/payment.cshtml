@@ -1,0 +1,596 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DaBook Shop</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/css/payment.css">
+    <link rel="stylesheet"
+          href="~/assets/fonts/themify-icons/themify-icons.css" />
+    <link rel="stylesheet"
+          href="~/assets/fonts/fontawesome-free-5.15.4/fontawesome-free-5.15.4-web/css/all.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="cart__container ">
+        <div class="col-8  shipping__info">
+            <div class="shipping__address--header ">
+                <h3>Địa chỉ giao hàng</h3>
+                <a href="/Client/taikhoan?tentk=@ViewBag.Tentk">Thay đổi</a>
+            </div>
+            <div class="shipping__info--user">
+                <span> <i class="far fa-id-badge" style="color: rgb(0, 132, 255); padding: 10px;"></i> @ViewBag.Hoten</span>
+                <span>@ViewBag.Sodt</span>
+            </div>
+            <span> <i class="ti-location-pin" style="color: rgb(0, 132, 255); padding: 8px"></i> @ViewBag.Diachi</span>
+        </div>
+
+        <div class="col-8 bill__info">
+            <div class="shipping__address--header " style="padding: 10px;">
+                <span style="font-size: 1.6rem;">Được giao bởi <i style="color: rgb(0, 132, 255);">DaBookStore</i> </span>
+            </div>
+            @foreach (var item in ViewBag.ListBuyed)
+            {
+            <div class="hoadon bill__info--product">
+                <div class="col-6 col-pro layout-inline">
+                    <p class="ma-sach" hidden>@item.masach</p>
+                    <img class="hinhanh cart__img" src="@item.hinhanh" alt="">
+                    <p class="tensach item__name">@item.tensach</p>
+                </div>
+                <div class="theloai" hidden>@item.theloai</div>
+                <div class="giaban" hidden>@item.giaban</div>
+                <div class="col col-price ">
+                    <span>Số lượng: <span class="soluong">@item.soluong</span></span>
+                </div>
+
+                <div class="col col-price  ">
+                    <span class="tongtien">@item.tongtien</span>
+                </div>
+            </div>
+            }
+
+            <div class="bill__info--time">
+                <span class="ngayship">Giao vào: @ViewBag.Ngaygiao</span>
+                <span style="color: #333; padding: 0 10px">Được giao bởi <img class="delivery__logo" src="~/assets/img/delivery.png" alt=""></span>
+            </div>
+        </div>
+
+        <div class="col-8  payment__info">
+            <div class="payment__address--header ">
+                <h2>Chọn hình thức thanh toán</h2>
+            </div>
+            <div class="payment__info--selection">
+                <input class="thanhtoantienmat" name="pay" type="radio" value="live" /> <img class="pay__img" src="~/assets/img/pay.png" alt=""> Thanh toán bằng tiền mặt khi nhận hàng
+            </div>
+            <div class="payment__info--selection">
+                <input class="thanhtoanmomo" name="pay" type="radio" value="momo" /> <img class="pay__img" src="~/assets/img/MoMo_Logo.png" alt=""> Thanh toán trực tuyến qua ví Momo
+            </div>
+        </div>
+
+        <div class="col-4 border" style="padding-top:80px;">
+            <div class="cart-store">
+                <img class="cart-logo-img" src="/client_styles/assets/img/logo.png" alt="">
+                <span class="cart-label">DaBook Store</span>
+            </div>
+
+            <div class="cart-detail">
+
+                <div class="cart-delivery" style="padding: 5px 0 4px;">
+                    <p style="font-weight: 400; font-size: 1.8rem; color: #444;">Thông tin đơn hàng</p>
+                </div>
+                <div class="cart-delivery" style="padding: 2px 0;">
+                    <span style="color: #666;">Tạm tính </span>
+                    <p class="soluong-sp" hidden>@ViewBag.Soluong</p>
+                    <span style="color: #666;">(@ViewBag.Soluong) sản phẩm </span>
+                </div>
+                <div class="cart-delivery" style="padding: 6px 0 14px;">
+                    <span style="color: #666;">Phí giao hàng</span>
+                    <span class="phiship" style="color: #666;">40000</span>
+                </div>
+                <ul class="list-cart">
+                    <li class="list-cart-item">
+                        <div class="input__sale">
+                            <input class="makm_nhap form__code-sale" id="input__code-sale" type="input" placeholder="Nhập mã khuyến mãi">
+                            <button class="apdung btn__apply" id="apply">Áp dụng</button>
+                        </div>
+                        <div class="cart__sale">
+                            <span>Giảm giá:</span>
+                            <span class="giamgia">0</span>
+                        </div>
+                        <div class="cart__total">
+                            <span>Tổng tiền:</span>
+                            <span class="thanhtien">@ViewBag.Thanhtien</span>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+            <a class="linktott" href="/Client/thanhyou">
+                <button type="submit" class="mua btn__buy-book" id="buy">Đặt sách</button>
+            </a>
+
+        </div>
+    </div>
+
+    <div hidden>
+        @foreach (var item in ViewBag.ListVoucher)
+        {
+        <div class="team-khuyen-mai">
+            <p class="ma-khuyen-mai">@item.GetType().GetProperty("Makm").GetValue(item, null)</p>
+            <p class="ma-tai-khoan">@item.GetType().GetProperty("Matk").GetValue(item, null)</p>
+            <p class="ma-nhap">@item.GetType().GetProperty("MaNhap").GetValue(item, null)</p>
+            <p class="phan-tram">@item.GetType().GetProperty("PhanTram").GetValue(item, null)</p>
+            <p class="dieu-kien">@item.GetType().GetProperty("DieuKien").GetValue(item, null)</p>
+            <p class="ngay-bd">@item.GetType().GetProperty("NgayBD").GetValue(item, null)</p>
+            <p class="ngay-kt">@item.GetType().GetProperty("NgayKT").GetValue(item, null)</p>
+            <p class="loai-km">@item.GetType().GetProperty("Loai").GetValue(item, null)</p>
+        </div>
+        }
+    </div>
+
+    <style>
+        * {
+            box-sizing: inherit;
+            transition: all .2s linear;
+        }
+
+        html {
+            font-size: 62.5%;
+            line-height: 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            box-sizing: border-box;
+        }
+
+        /* Responsive */
+        .grid {
+            width: 1200px;
+            max-width: 100%;
+            margin: 0 auto;
+            min-height: 700px !important;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .cart__container {
+            max-width: 1200px;
+            margin: 20px auto;
+            overflow: hidden;
+            position: relative;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+        }
+
+        .col-8 {
+            background-color: #fff;
+            margin: 10px 0;
+            border-radius: 3px;
+            padding: 0;
+            padding-bottom: 10px;
+        }
+
+        .shipping__address--header {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #f3f9fa;
+            align-items: center;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+
+            .shipping__address--header h3 {
+                font-size: 2.0rem;
+            }
+
+            .shipping__address--header a {
+                font-size: 1.6rem;
+                text-decoration: none;
+            }
+
+        .shipping__info--user {
+            font-size: 1.6rem;
+            padding: 10px 0;
+        }
+
+            .shipping__info--user span {
+                padding: 10px;
+            }
+
+        .shipping__info span {
+            font-size: 1.6rem;
+            padding: 10px;
+        }
+
+        .bill__info--product {
+            display: flex;
+            padding: 20px 20px 0;
+        }
+
+        .col-pro {
+            display: flex;
+        }
+
+        .item__name {
+            color: #333;
+            margin-left: 4px;
+            font-size: 1.6rem;
+            line-height: 3.0rem;
+            align-items: center;
+            overflow: hidden;
+            display: block;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
+
+        .col-price {
+            font-size: 1.6rem;
+            font-weight: 500;
+            padding-top: 20px;
+            margin-left: 20px;
+        }
+
+        .bill__info--time {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            align-items: center;
+            margin: 0 100px;
+        }
+
+            .bill__info--time span {
+                font-size: 1.7rem;
+                font-weight: 500;
+                color: #0ac914;
+            }
+
+        .delivery__logo {
+            width: 120px;
+            margin-top: -35px;
+            margin-left: 20px;
+        }
+
+        .payment__address--header {
+            padding: 10px;
+            background-color: #e2fadc;
+            align-items: center;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+
+        .payment__info--selection {
+            font-size: 1.6rem;
+            padding: 10px 10px;
+            align-items: center;
+        }
+
+        .pay__img {
+            width: 50px;
+            margin-left: 10px;
+        }
+
+        .col-4 {
+            width: 386px;
+            position: absolute;
+            right: 0px;
+            top: 10px;
+            border-radius: 3px;
+            background-color: #fff;
+        }
+
+        .cart-store {
+            position: absolute;
+            background-color: #1A94FF;
+            border: 1px solid #1A94FF;
+            width: 386px;
+            height: 90px;
+            left: 0px;
+            top: -1px;
+            align-items: center;
+            padding: 0 40px;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px !important;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cart-logo-img {
+            width: 110px;
+        }
+
+        .cart-label {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .cart-detail {
+            padding-top: 20px;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .cart-delivery {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            font-weight: 500;
+            font-size: 1.6rem;
+        }
+
+            .cart-delivery i {
+                margin-right: 8px;
+                color: rgb(255, 57, 69);
+            }
+
+        .list-cart {
+            list-style: none;
+            padding: 0 0;
+        }
+
+        .list-cart-item {
+            width: 100%;
+            padding: 20px 0;
+            font-weight: 500;
+            border-top: 1px solid #43c3c7;
+        }
+
+            .list-cart-item i {
+                margin-right: 8px;
+                color: #1A94FF;
+            }
+
+        .user__cart-delivery {
+            padding: 20px 0;
+            font-weight: 500;
+            font-size: 1.6rem;
+            border-bottom: 1px solid #43c3c7;
+        }
+
+        .cart-price {
+            font-size: 1.6rem;
+            text-align: center;
+            border: 1px solid rgb(255, 57, 69);
+            background-color: rgb(255, 240, 241);
+            border-radius: 3px;
+            color: rgb(255, 57, 69);
+            padding: 4px 0;
+        }
+
+        .cart-prices {
+            margin-top: 10px;
+        }
+
+        .cart__img {
+            display: block;
+            object-fit: contain;
+            max-height: 80px !important;
+            max-width: 75px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: top center;
+        }
+
+        .col .col__checkbox {
+            width: 70px !important;
+        }
+
+        .input__sale {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form__code-sale {
+            font-size: 1.6rem;
+            border-radius: 2px;
+            border: solid 1px rgb(255, 57, 69);
+            height: 36px;
+            align-items: center;
+        }
+
+        .btn__apply {
+            width: auto;
+            border-radius: 2px;
+            background: rgb(255, 57, 69);
+            color: #fff;
+            padding: 0px 10px;
+            display: inline-block;
+            font-size: 1.6rem;
+            line-height: 1.6rem;
+            margin-left: 10px;
+            border: solid 1px rgb(255, 57, 69);
+            transition: all 0.5s ease-in-out 0s;
+            align-items: center;
+        }
+
+        .cart__total {
+            margin-top: 20px;
+            color: #f34d35;
+            font-size: 2.2rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cart__sale {
+            margin-top: 20px;
+            color: #2b2929;
+            font-size: 1.8rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn__buy-book {
+            position: absolute;
+            right: 0px;
+            width: 385px;
+            margin-top: 20px;
+            border-radius: 4px;
+            background: rgb(255, 57, 69);
+            color: #fff;
+            padding: 0px 10px;
+            display: inline-block;
+            font-size: 1.8rem;
+            line-height: 1.6rem;
+            margin-left: 10px;
+            padding: 10px;
+            border: solid 1px rgb(255, 57, 69);
+            transition: all 0.5s ease-in-out 0s;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function ()
+        {
+            var tiengiam = 0;
+            var phiship = parseInt($('.phiship').text())
+            var tongtien = parseInt($('.thanhtien').text()) + phiship;
+            var listvoucher = $('.team-khuyen-mai')
+            var list_khuyenmai = []
+            var voucher_dadung = [];
+            var voucher_used_list = '';
+            if (Boolean(listvoucher) != null) {
+                listvoucher.each(function (e) {
+                    var _voucher = {
+                        makm: $(this).find('.ma-khuyen-mai').text(),
+                        manhap: $(this).find('.ma-nhap').text(),
+                        phantram: $(this).find('.phan-tram').text(),
+                        dieukien: $(this).find('.dieu-kien').text(),
+                        ngaybd: $(this).find('.ngay-bd').text(),
+                        ngaykt: $(this).find('.ngay-kt').text(),
+                        loai: $(this).find('.loai-km').text()
+                    }
+
+                    list_khuyenmai.push(_voucher)
+                })
+            }
+
+            console.log(list_khuyenmai)
+
+            function checkday(date)
+            {
+                var DateUse = new Date(date)
+                var ToDay = new Date()
+                if (DateUse.getTime() < ToDay.getTime()) {
+                    return false;
+                } else return true;
+            }
+
+            $('.apdung').on('click', function ()
+            {
+                var nguoidungnhap = $('.makm_nhap').val()
+                $('.makm_nhap').empty()
+                console.log(nguoidungnhap);
+                var dungthanhcong = false;
+                var hethan = false;
+                var dasudung = false;
+
+
+                for (var i = 0; i < list_khuyenmai.length; i++)
+                {
+                    if (nguoidungnhap === list_khuyenmai[i].manhap)
+                    {
+                        if (checkday(list_khuyenmai.ngaykt))
+                        {
+                            dungthanhcong = true;
+                            alert("Áp dụng thành công")
+                            list_khuyenmai[i].manhap += "###"
+                            //var temp = $('.thanhtien').text()
+                            if (list_khuyenmai[i].loai === "Free Ship")
+                            {
+                                tongtien = parseInt(tongtien) - parseInt(phiship) * (parseInt(list_khuyenmai[i].phantram) / 100)
+                                tiengiam += parseInt(phiship) * parseInt(list_khuyenmai[i].phantram) / 100
+                                phiship -= parseInt(phiship) * (parseInt(list_khuyenmai[i].phantram) / 100)
+                                $('.phiship').text(phiship.toString())
+                                $('.thanhtien').text(tongtien.toString())
+                                $('.giamgia').text(tiengiam.toString())
+                                var saved = {
+                                    matk: list_khuyenmai[i].matk,
+                                    makm: list_khuyenmai[i].makm
+                                }
+                                voucher_dadung.push(saved)
+                                voucher_used_list += (list_khuyenmai[i].makm + " ")
+                            } else
+                            {
+                                tongtien = parseInt(tongtien) - parseInt(tongtien) * (parseInt(list_khuyenmai[i].phantram) / 100)
+                                tiengiam += parseInt(tongtien) * parseInt(list_khuyenmai[i].phantram) / 100
+                                $('.thanhtien').text(tongtien.toString())
+                                $('.giamgia').text(tiengiam.toString())
+
+                                var saved = {
+                                    matk: list_khuyenmai[i].matk,
+                                    makm: list_khuyenmai[i].makm,
+                                }
+                                voucher_used_list += (list_khuyenmai[i].makm +" ")
+                                voucher_dadung.push(saved)
+                            }
+                            break
+                        }
+                        else
+                        {
+                            alert("Hết hạn")
+                            hethan = true
+                            break
+                        }
+                    }
+                }
+                if (dungthanhcong === false && hethan === false) { alert("Voucher không tồn tại hoặc đã sử dụng")}
+            })
+
+
+            $('.mua').on('click', function () {
+                var listhoadon = $('.hoadon')
+                var listProduct = []
+                var username = $('.ten-dang-nhap').text()
+                var checkMomo = $('.thanhtoanmomo')
+                var checkTienMat = $('.thanhtoantienmat')
+                var loaithanhtoan = ''
+                var thanhtien = parseInt($('.thanhtien').text())
+                var tinhtrangthanhtoan = ''
+                console.log(username)
+                listhoadon.each(function (e) {
+                    const Sach = {
+                        masach: $(this).find('.ma-sach').text(),
+                        tensach: $(this).find('.tensach').text(),
+                        hinhanh: $(this).find('.hinhanh').text(),
+                        theloai: $(this).find('.theloai').text(),
+                        soluong: $(this).find('.soluong').text(),
+                        tongtien: $(this).find('.tongtien').text(),
+                        giaban: $(this).find('.giaban').text(),
+                    }
+                    if (checkMomo.prop('checked') === true) {
+                        tinhtrangthanhtoan = "Đã thanh toán"
+                        loaithanhtoan = 'Trực tuyến'
+                    } else {
+                        tinhtrangthanhtoan = "Chưa thanh toán"
+                        loaithanhtoan = 'Trực tiếp'
+                    }
+                    listProduct.push(Sach)
+                })
+
+                console.log(voucher_used_list)
+                console.log(Boolean(voucher_dadung) != false)
+                if (voucher_dadung.length > 0)
+                {
+                    $.get('/Client/deletevoucher?data=' + JSON.stringify(voucher_dadung))
+                        .done(function () {
+
+                        })
+                }
+
+                console.log(listProduct)
+                $(this).parent().attr('href', '/Client/thanhyou?data=' + JSON.stringify(listProduct) + "&tongtien=" + $('.thanhtien').text() + "&soluong=" + $('.soluong-sp').text() + "&hinhthucthanhtoan=" + loaithanhtoan + "&tinhtrangthanhtoan=" + tinhtrangthanhtoan + '&tinhtrangdonhang=' + 'chờ xác nhận' + '&tienship=' + $('.phiship').text() + '&voucher_used=' + voucher_used_list)
+            })
+        })
+       
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="	sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
+

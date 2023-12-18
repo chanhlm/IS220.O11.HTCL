@@ -1,0 +1,88 @@
+﻿
+
+
+
+@model List<object>
+<div class="content">
+
+    <div class="">
+        <div class="page-header-title">
+            <h4 class="page-title">Quản lý sách</h4>
+        </div>
+    </div>
+
+    <div class="page-content-wrapper ">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <h4 class="m-b-30 m-t-0">Danh sách sách</h4>
+
+                            <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                <thead>
+
+                                    <tr>
+                                        <th>MS</th>
+                                        <th>Tên sách</th>
+                                        <th>Hình ảnh</th>
+                                        <th>Thể loại</th>
+                                        <th>Tác giả</th>
+                                        <th>Nhà XB</th>
+                                        <th>Giá tiền</th>
+                                        <th>Năm XB</th>
+                                        <th>SL tồn</th>
+                                        <th>SL bán</th>
+                                        <th>Khu vực</th>
+                                        <th>Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.listbook)
+                                    {
+                                    <tr>
+
+                                        <td>@item.GetType().GetProperty("Masach").GetValue(item, null)</td>
+                                        <td class="name__list-book">@item.GetType().GetProperty("Tensach").GetValue(item, null)</td>
+                                        <td><img class="img__list-book" src="@item.GetType().GetProperty("Hinhanh").GetValue(item,null)" alt=""></td>
+                                        <td>@item.GetType().GetProperty("Theloai").GetValue(item, null)</td>
+                                        <td>@item.GetType().GetProperty("Tacgia").GetValue(item, null)</td>
+                                        <td>@item.GetType().GetProperty("Nxb").GetValue(item, null)</td>
+                                        <td>@item.GetType().GetProperty("Giaban").GetValue(item, null)</td>
+                                        <td>@item.GetType().GetProperty("Namxb").GetValue(item, null)</td>
+                                        <td>@item.GetType().GetProperty("Soluong").GetValue(item, null)</td>
+                                        <td>@item.GetType().GetProperty("Soluongban").GetValue(item, null)</td>
+
+                                        <td>Việt Nam</td>
+
+                                        <td style="display: flex;">
+
+                                            <span class="btn btn-primary" style="justify-content: center;">
+                                                <a style=" color:white" href="/Admin/CapNhat_Sach?Id=@item.GetType().GetProperty("Masach").GetValue(item, null)">
+                                                    Sửa
+                                                </a>
+
+                                            </span>
+
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div><!-- container -->
+
+    </div> <!-- Page content Wrapper -->
+
+</div> <!-- content -->
+
+

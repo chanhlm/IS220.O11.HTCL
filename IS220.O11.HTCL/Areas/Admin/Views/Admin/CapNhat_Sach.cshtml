@@ -1,0 +1,151 @@
+﻿
+
+                <!-- Start content -->
+                <div class="content">
+
+                    <div class="">
+                        <div class="page-header-title">
+                            <h4 class="page-title">Cập nhật thông tin sách</h4>
+                        </div>
+                    </div>
+
+                    <form action="/Admin/UpdateById" method="post">
+                        <div class="page-content-wrapper ">
+
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="card">
+
+                                            <div class="card-body">
+                                                <h4 class="m-t-0 m-b-30">Điền thông tin sách</h4>
+                                                
+                                                    <div class="row">
+                                                        <div class="col-sm-6 col-xs-12">
+
+                                                            <div class="m-t-20">
+                                                                @*  <form class="" action="#">*@
+                                                                <div class="form-group">
+                                                                    <label>Mã sách</label>
+                                                                    <input type="text" class="form-control" required="" placeholder="" name="Masach" value="@ViewBag.Book.Masach" readonly/>
+                                                                </div>
+                                                                
+                                                                <div class="form-group">
+                                                                    <label>Hình ảnh</label>
+                                                                    <div>
+                                                                        <input parsley-type="url" type="url" class="form-control" required="" name="hinhanh" value="@ViewBag.Book.Hinhanh" placeholder="URL">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Tên sách</label>
+                                                                    <div>
+                                                                        <input data-parsley-type="digits" type="text" class="form-control" required="" name="tensach" placeholder="Tên sách" value="@ViewBag.Book.Tensach">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group ">
+                                                                    <label>Thể loại</label>
+                                                                    <select name="theloai" class="form-control">
+                                                                        <option>@ViewBag.Book.Theloai</option>
+                                                                        <option>2</option>
+                                                                        <option>3</option>
+                                                                        <option>4</option>
+                                                                        <option>5</option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Tác giả</label>
+                                                                    <div>
+                                                                        <input data-parsley-type="alphanum" type="text" class="form-control" required="" name="tacgia" placeholder="Tác giả" value="@ViewBag.Book.Tacgia">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Nội dung</label>
+                                                                    <div>
+                                                                        <textarea required="" class="form-control" name="Mota" rows="5">@ViewBag.Book.Mota</textarea>
+                                                                    </div>
+                                                                </div>
+
+                                                                @* </form>*@
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="col-sm-6 col-xs-12">
+
+                                                            <div class="m-t-20">
+                                                                @* <form action="#">*@
+                                                                <div class="form-group">
+                                                                    <label>Nhà xuất bản</label>
+                                                                    <div>
+                                                                        <input data-parsley-type="alphanum" type="text" class="form-control" required="" placeholder="Nhà xuất bản" name="nxb" value="@ViewBag.Book.Nxb">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Năm xuất bản</label>
+                                                                    <div>
+                                                                        <input data-parsley-type="alphanum" type="text" class="form-control" required="" placeholder="Năm xuất bản" name="namxb" value="@ViewBag.Book.Namxb">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Số lượng</label>
+                                                                    <div>
+                                                                        <input data-parsley-type="number" type="text" class="form-control" required="" placeholder="Số lượng sách" name="soluong" value="@ViewBag.Book.Soluong">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Phần trăm giảm</label>
+                                                                    <div>
+                                                                        <input data-parsley-type="number" type="text" class="form-control" required="" placeholder="Phần trăm giảm" name="giamgia" value="@ViewBag.Book.Giamgia">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group" style="margin-top: 17px;">
+                                                                    <label>Giá bán</label>
+                                                                    <div>
+                                                                        <input data-parsley-type="alphanum" type="text" class="form-control" required="" name="giaban" placeholder="Giá bán" value="@ViewBag.Book.Giaban">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group m-b-0">
+                                                                    <div>
+                                                                        <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                                                            Cập nhật
+                                                                        </button>
+                                                                        <button type="reset" class="btn btn-light waves-effect m-l-5">
+                                                                            Hủy
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                @* </form>*@
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <!-- end row -->
+                                                    
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- end row -->
+
+                            </div><!-- container-fluid -->
+
+                        </div> <!-- Page content Wrapper -->
+                    </form>
+                  
+
+                </div> <!-- content -->
+
+             
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('form').parsley();
+            });
+        </script>

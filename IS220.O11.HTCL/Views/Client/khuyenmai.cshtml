@@ -1,0 +1,393 @@
+﻿@model IEnumerable<voucher>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DaBook Shop</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DaBook Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+          integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="~/css/base.css" />
+    <link rel="stylesheet" href="~/css/book_sale.css" />
+    <link rel="stylesheet"
+          href="~/assets/fonts/themify-icons/themify-icons.css" />
+    <link rel="stylesheet"
+          href="~/assets/fonts/fontawesome-free-5.15.4/fontawesome-free-5.15.4-web/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,400&display=swap"
+          rel="stylesheet">
+
+    <!--<script>
+        $(document).ready(function() {
+            $('.save_voucher').on(click, function () {
+                alert("ĂN HAY KHONG ĂN");-->
+    @*var Matk = $('.ma-tai-khoan').val();
+        var makm = $(this).parent().parent().find('khachhang').val();
+        console.log(Matk, makm);
+        if (Boolean(Matk) != false) {
+            $.ajax({
+                type: "GET",
+                url: '/Client/Luukhuyenmai',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: {
+                    Matk: Matk,
+                    Makm: makm,
+                },
+            })
+            alert("Comment ok nha!");
+        } else {
+            alert("Vui lòng đăng nhập!");
+            event.preventDefault();
+        }*@
+    <!--})
+        )}
+    </script>-->
+</head>
+<body>
+    <!-- container -->
+    <div class="sale">
+        <div class="text-center">
+            <img src="~/assets/img/SIÊU KHUYẾN MÃI.png" style="min-width: 50%; min-height:50%;">
+        </div>
+        @if (ViewBag.Status == "Success")
+        {
+            <div class="text-center sale__voucher">
+                <a href="/Client/taikhoan?tentk=@ViewBag.infor.Tentk" style="text-decoration:none" class="myvoucher">
+                    <span>MÃ GIẢM GIÁ CỦA TÔI</span>
+                    <i class="fas fa-angle-right"></i>
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="text-center sale__voucher">
+                <a onclick="show()" style="text-decoration:none" class="myvoucher">
+                    <span>MÃ GIẢM GIÁ CỦA TÔI</span>
+                    <i class="fas fa-angle-right"></i>
+                </a>
+            </div>
+        }
+        <div class="grid">
+            <div class="justify-content-around sale__list">
+                <a href="#magiamgia" style="text-decoration: none;">
+                    <div class="sale__list-container">
+                        <div class="sale__list-item">
+                            <img src="~/assets/img/mã_giảm_giá.png" class="item-img">
+                        </div>
+                        <div class="sale__list-text">Mã giảm giá</div>
+                    </div>
+                </a>
+                <a href="#mienphivanchuyen" style="text-decoration: none;">
+                    <div class="sale__list-container">
+                        <div class="sale__list-item">
+                            <img src="~/assets/img/miễn_phí_vận_chuyển(1).png" class="item-img">
+                        </div>
+                        <div class="sale__list-text">Miễn phí vận chuyển</div>
+                    </div>
+                </a>
+                <a href="#uudaikhachhang" style="text-decoration: none;">
+                    <div class="sale__list-container">
+                        <div class="sale__list-item">
+                            <img src="~/assets/img/ưu_đãi.png" class="item-img">
+                        </div>
+                        <div class="sale__list-text">Ưu đãi khách hàng<br>thân thiết</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="apply">
+                <div class="apply__title">
+                    <div class="apply__title-content">
+                        <div class="apply__title-content-h1">
+                            <h1>Áp mã nhanh chóng</h1>
+                        </div>
+                        <h6>Các bước thực hiện</h6>
+                    </div>
+                </div>
+                <div class="apply-step">
+                    <div class="apply__step-container">
+                        <div class="apply__list-text">Lưu mã</div>
+                        <img src="~/assets/img/Lưu_mã.png" class="apply__list-img">
+                    </div>
+                    <i style="vertical-align: middle;" class="fas fa-angle-double-right"></i>
+                    <div class="apply__step-container">
+                        <div class="apply__list-text">Nhập mã</div>
+                        <img src="~/assets/img/Nhập_mã.png" class="apply__list-img">
+                    </div>
+                    <i class="fas fa-angle-double-right"></i>
+                    <div class="apply__step-container">
+                        <div class="apply__list-text">Áp dụng</div>
+                        <img src="~/assets/img/Áp_dụng.png" class="apply__list-img">
+                    </div>
+                </div>
+            </div>
+            <div class="sale__list-voucher" id="magiamgia">
+                <div class="sale__voucher-title">
+                    <img src="~/assets/img/3.png" alt="">
+                </div>
+                <div class="list-card">
+                    @foreach (var item in ViewBag.khuyenmai)
+                    {
+                        @if (item.Loai == "mã giảm giá")
+                        {
+                            <div class="sale__card">
+                                <div class="sale__card-img">
+                                    <img src="~/assets/img/logo_mgg.png" class="sale__voucher-logo">
+                                </div>
+                                <div class="sale__card-content">
+                                    <div class="card-container">
+                                        <h3 class="card-title khachhang" value="@item.Makm">Giảm @item.Phantram%</h3>
+                                        <p class="card-text sale__card-text">Nhập mã @item.Manhap</p>
+                                        <p class="card-text sale__card-text"><small class="text-muted">HSD: @item.Ngaykt</small></p>
+                                    </div>
+                                    <div class="card-button">
+                                        @if (ViewBag.Status == "Success" && ViewBag.soluong > 0) //Kiểm tra đã đăng nhập chưa
+                                        {
+                                            var count = 0;
+                                            @foreach (var item1 in ViewBag.ds_voucher)
+                                            {
+                                                @if (item.Makm == item1.Makm)  // kiểm tra voucher đã lưu chưa
+                                                {
+                                                    count = 0;
+                                                    <button class="btn__save btn__save--disable"><b>Đã lưu</b></button>//Lưu rồi
+
+                                                    break;
+                                                }
+                                                else //Chưa lưu
+                                                {
+                                                    count = count + 1;
+                                                }
+                                            }
+                                            @if (count > 0)
+                                            {
+                                                @if (item.Sl > 0)
+                                                {
+                                                    if (ViewBag.status == "Success")
+                                                    {
+                                                        <a href="/Client/Luukhuyenmai?makm=@item.Makm" class="btn__save btn__save--primary">Lưu</a> }
+                                                    else
+                                                    {
+                                                        <a onclick="show()" class="btn__save btn__save--primary">Lưu</a>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <button class="btn__save btn__save--disable"><b>Đã hết</b></button>
+                                                }
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            @if (item.Sl > 0)
+                                            {
+                                                if (ViewBag.status == "Success")
+                                                {
+                                                    <a href="/Client/Luukhuyenmai?makm=@item.Makm" class="btn__save btn__save--primary">Lưu</a> }
+                                                else
+                                                {
+                                                    <a onclick="show()" class="btn__save btn__save--primary">Lưu</a>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <button class="btn__save btn__save--disable"><b>Đã hết</b></button>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="sale__list-voucher" id="mienphivanchuyen">
+                <div class="sale__voucher-title">
+                    <img src="~/assets/img/1.png" alt="">
+                </div>
+                <div class="list-card">
+                    @foreach (var item in ViewBag.khuyenmai)
+                    {
+                        @if (item.Loai == "Free Ship")
+                        {
+                            <div class="sale__card">
+                                <div class="sale__card-img">
+                                    <img src="~/assets/img/logo_mgg.png" class="sale__voucher-logo">
+                                </div>
+                                <div class="sale__card-content">
+                                    <div class="card-container">
+                                        <h3 class="card-title khachhang" value="@item.Makm">Giảm @item.Phantram%</h3>
+                                        <p class="card-text sale__card-text">Nhập mã @item.Manhap</p>
+                                        <p class="card-text sale__card-text"><small class="text-muted">HSD: @item.Ngaykt</small></p>
+                                    </div>
+                                    <div class="card-button">
+                                        @if (ViewBag.Status == "Success" && ViewBag.soluong > 0) //Kiểm tra đã đăng nhập chưa
+                                        {
+                                            var count = 0;
+                                            @foreach (var item1 in ViewBag.ds_voucher)
+                                            {
+                                                @if (item.Makm == item1.Makm)  // kiểm tra voucher đã lưu chưa
+                                                {
+                                                    count = 0;
+                                                    <button class="btn__save btn__save--disable"><b>Đã lưu</b></button>//Lưu rồi
+
+                                                    break;
+                                                }
+                                                else //Chưa lưu
+                                                {
+                                                    count = count + 1;
+                                                }
+                                            }
+                                            @if (count > 0)
+                                            {
+                                                @if (item.Sl > 0)
+                                                {
+                                                    <a href="/Client/Luukhuyenmai?makm=@item.Makm" class="btn__save btn__save--primary">Lưu</a>
+                                                }
+                                                else
+                                                {
+                                                    <button class="btn__save btn__save--disable"><b>Đã hết</b></button>
+                                                }
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            @if (item.Sl > 0)
+                                            {
+                                                <a href="/Client/Luukhuyenmai?makm=@item.Makm" class="btn__save btn__save--primary">Lưu</a>
+                                            }
+                                            else
+                                            {
+                                                <button class="btn__save btn__save--disable"><b>Đã hết</b></button>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="sale__list-voucher" id="uudaikhachhang">
+                <div class="sale__voucher-title">
+                    <img src="~/assets/img/2.png" alt="">
+                </div>
+
+                <div class="list-card">
+                    @foreach (var item in ViewBag.khuyenmai)
+                    {
+                        @if (item.Loai == "ưu đãi khách hàng")
+                        {
+                            <div class="sale__card">
+                                <div class="sale__card-img">
+                                    <img src="~/assets/img/logo_mgg.png" class="sale__voucher-logo">
+                                </div>
+                                <div class="sale__card-content">
+                                    <div class="card-container">
+                                        <h3 class="card-title khachhang" value="@item.Makm">Giảm @item.Phantram%</h3>
+                                        <p class="card-text sale__card-text">Nhập mã @item.Manhap</p>
+                                        <p class="card-text sale__card-text"><small class="text-muted">HSD: @item.Ngaykt</small></p>
+                                    </div>
+                                    <div class="card-button">
+                                        @if (ViewBag.Status == "Success" && ViewBag.soluong > 0) //Kiểm tra đã đăng nhập chưa
+                                        {
+                                            var count = 0;
+                                            @foreach (var item1 in ViewBag.ds_voucher)
+                                            {
+                                                @if (item.Makm == item1.Makm)  // kiểm tra voucher đã lưu chưa
+                                                {
+                                                    count = 0;
+                                                    <button class="btn__save btn__save--disable"><b>Đã lưu</b></button>//Lưu rồi
+
+                                                    break;
+                                                }
+                                                else //Chưa lưu
+                                                {
+                                                    count = count + 1;
+                                                }
+                                            }
+                                            @if (count > 0)
+                                            {
+                                                @if (item.Sl > 0)
+                                                {
+                                                    <a href="/Client/Luukhuyenmai?makm=@item.Makm" class="btn__save btn__save--primary">Lưu</a>
+                                                }
+                                                else
+                                                {
+                                                    <button class="btn__save btn__save--disable"><b>Đã hết</b></button>
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            @if (item.Sl > 0)
+                                            {
+                                                <a href="/Client/Luukhuyenmai?makm=@item.Makm" class="btn__save btn__save--primary">Lưu</a>
+                                            }
+                                            else
+                                            {
+                                                <button class="btn__save btn__save--disable"><b>Đã hết</b></button>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+
+        .btn {
+            min-width: 180px;
+            max-width: 230px;
+            height: 40px;
+            text-decoration: none;
+            border: none;
+            border-radius: 3px;
+            font-size: 1.5rem;
+            padding: 0 8px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .btn:hover {
+                background-color: rgba(0,0,0,0.2);
+            }
+
+        .btn--primary {
+            color: var(--white-color);
+            background-color: var(--blue-color);
+            cursor: pointer;
+        }
+
+        .btn .btn--disable {
+            cursor: default;
+            background-color: rgba(0,0,0,0.2);
+        }
+    </style>
+
+    <script>
+        function show() {
+            alert("Bạn chưa đăng nhập");
+        }
+    </script>
+
+</body>
+</html>

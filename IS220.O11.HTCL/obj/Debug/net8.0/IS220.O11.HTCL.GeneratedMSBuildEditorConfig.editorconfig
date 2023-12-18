@@ -1,0 +1,187 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = IS220.O11.HTCL
+build_property.RootNamespace = IS220.O11.HTCL
+build_property.ProjectDir = C:\Users\minhc\source\repos\IS220.O11.HTCL\IS220.O11.HTCL\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\minhc\source\repos\IS220.O11.HTCL\IS220.O11.HTCL
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/Admin/CapNhap_KM.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cQ2FwTmhhcF9LTS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/Admin/CapNhat_Sach.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cQ2FwTmhhdF9TYWNoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/Admin/CapNhat_VanChuyen.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cQ2FwTmhhdF9WYW5DaHV5ZW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/Admin/DS_DonHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cRFNfRG9uSGFuZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/Admin/DS_KhuyenMai.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cRFNfS2h1eWVuTWFpLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/Admin/InsertBook.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cSW5zZXJ0Qm9vay5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/Admin/login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cbG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/Admin/menu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cbWVudS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/Admin/QL_taikhoan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cUUxfdGFpa2hvYW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/Admin/QuenMK.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cUXVlbk1LLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/Admin/ThemSach.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cVGhlbVNhY2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/Admin/Them_KM.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cVGhlbV9LTS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/Admin/ThongKe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cVGhvbmdLZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/Admin/VanChuyen.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cVmFuQ2h1eWVuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Areas/Admin/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Views/Client/cart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XGNhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Views/Client/chitietdonhang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XGNoaXRpZXRkb25oYW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Views/Client/chitietsach.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XGNoaXRpZXRzYWNoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Views/Client/DangKy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XERhbmdLeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Views/Client/DetailOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XERldGFpbE9yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Views/Client/khuyenmai.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XGtodXllbm1haS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Views/Client/payment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XHBheW1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Views/Client/Search_Book.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XFNlYXJjaF9Cb29rLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Views/Client/Search_Category.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XFNlYXJjaF9DYXRlZ29yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Views/Client/Search_Filter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XFNlYXJjaF9GaWx0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Views/Client/taikhoan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XHRhaWtob2FuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Views/Client/thanhyou.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XHRoYW5oeW91LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhc/source/repos/IS220.O11.HTCL/IS220.O11.HTCL/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-sdonaqljkc

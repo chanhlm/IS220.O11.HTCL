@@ -1,0 +1,94 @@
+﻿
+            <div class="content">
+
+                <div class="">
+                    <div class="page-header-title">
+                        <h4 class="page-title" style="margin-left: 300px;">Thêm khuyến mãi</h4>
+                    </div>
+                </div>
+
+                <div class="page-content-wrapper ">
+                    <form class="" action="/Admin/InsertKhuyenMai" method="post">
+
+                        <div class="container-fluid">
+                            <div class="row">
+
+
+                                <div class="col-lg-6" style="margin-left: 300px;">
+
+                                    <div class="card">
+
+                                        <div class="card-body">
+                                            <h4 class="m-b-30 m-t-0">Nhập thông tin khuyến mãi</h4>
+                                            <div class="demo-box">
+                                                <div class="form-group">
+                                                    <p class="text-muted m-b-15 font-13">
+                                                        Nhập mã khuyến mãi
+                                                    </p>
+                                                    <input type="text" class="form-control" maxlength="25" name="Makm" id="placement" placeholder="Mã khuyến mãi">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p class="text-muted m-b-15 font-13">
+                                                        Nhập mã áp dụng khuyến mãi
+                                                    </p>
+                                                    <input type="text" class="form-control" maxlength="30" name="Manhap" id="placement" placeholder="Mã áp dụng khuyến mãi">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="m-t-20">
+                                                        <p class="text-muted m-b-15 font-13">
+                                                            Nhập nội dung khuyến mãi
+                                                        </p>
+                                                        <textarea id="textarea" class="form-control" maxlength="225" rows="3" placeholder="Nội dung khuyến mãi" name="Noidung" style="margin-bottom: 18px;"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="m-t-20">
+                                                        <p class="text-muted m-b-15 font-13">
+                                                            Nhập điều kiện
+                                                        </p>
+                                                        <input type="text" class="form-control" maxlength="30" name="Dieukien" id="placement" placeholder="Số lượng">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label class="control-label">Phần trăm khuyến mãi</label>
+                                                    <input id="demo1" type="text" name="Phantram" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Ngày bắt đầu và ngày kết thúc khuyến mãi</label>
+                                                    <div>
+                                                        <div class="input-daterange input-group" id="date-range">
+                                                            <input type="date" class="form-control" name="Ngaybd">
+                                                            <span class="input-group-addon bg-primary text-white b-0">to</span>
+                                                            <input type="date" class="form-control" name="Ngaykt">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group m-b-0">
+                                                    <div>
+                                                        <button type="submit" class="btn btn-primary" style="display: flex; justify-content: center;">
+                                                            Thêm
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            </div> <!-- card-body -->
+
+                                    </div> <!-- card -->
+                                </div> <!-- col -->
+
+                            </div> <!-- End row -->
+
+                        </div><!-- container-fluid -->
+                    </form>
+
+                </div> <!-- Page content Wrapper -->
+            </div> <!-- content -->
+
+
+

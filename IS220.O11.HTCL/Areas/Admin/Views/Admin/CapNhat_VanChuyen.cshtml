@@ -1,0 +1,183 @@
+﻿
+            <!-- Start content -->
+            <div class="content">
+
+                <div class="">
+                    <div class="page-header-title">
+                        <h4 class="page-title">Quản lý vận chuyển</h4>
+                    </div>
+                </div>
+
+                <div class="page-content-wrapper ">
+
+                    <div class="container-fluid">
+
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="col-lg-6" style="margin-left: -10px;">
+                                            <form action="/Admin/FilterCNDonHang" method="post">
+                                                <div class="form-group">
+                                                    <label>Đơn hàng trong khoảng thời gian</label>
+                                                    <div>
+                                                        <div class="input-daterange input-group" id="date-range">
+                                                            <input type="date" class="form-control" name="start" required />
+                                                            <span class="input-group-addon bg-primary text-white b-0">to</span>
+                                                            <input type="date" class="form-control" name="end" required /> &emsp;
+                                                            <button id="buttonTimKiem" type="submit" class="input-group-addon bg-primary text-white b-0">Tìm kiếm</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <h4 class="m-b-30 m-t-0">Danh sách đơn hàng</h4>
+                                        <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+
+                                                    <th>Mã ĐH</th>
+                                                    @*<th>Ngày lập</th>*@
+                                                    @*<th>Mã tài khoản</th>*@
+                                                    <th>Hình thức thanh toán</th>
+                                                    @*<th>Mã khuyến mãi</th>*@
+                                                    @*<th>Tổng tiền</th>*@
+                                                    @*<th>Tình trạng thanh toán</th>*@
+                                                    <th>Tình trạng vận chuyển</th>
+                                                   @* <th>Xem chi tiết đơn hàng</th>*@
+                                                   @* <th>Đơn vị vận chuyển</th>*@
+                                                    <th>Cập nhật trạng thái giao hàng</th>
+                                                    <th class="textOver">Phản hồi từ phía giao hàng</th>
+                                                    <th>Hành Động</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in ViewBag.listDonHang)
+                                                {
+                                                    
+                                                    <tr class="donhang-tab">
+                                                        <form action="/Admin/UpdateDonHangById?Id=@item.Madh" method="post">
+                                                        <td>@item.Madh</td>
+                                                       @* <td>@item.Ngaylap</td>*@
+                                                        @*<td>@item.Matk</td>*@
+                                                        <td>@item.Hinhthucthanhtoan</td>
+                                                       @* <td>@item.Makm</td>*@
+                                                       @* <td>@item.Tongtien</td>*@
+                                                       @* <td>@item.Tinhtrangthanhtoan</td>*@
+                                                        <td>@item.Tinhtrangdonhang</td>
+                                                      @*  @foreach (var item1 in ViewBag.listaccount)
+                                                        {
+                                                            if (@item.Matk == @item1.Matk)
+                                                            {
+                                                                <td>@item1.Hoten,@item1.Sodt,@item1.Diachi </td>
+                                                            }
+
+                                                        }*@
+                                                       @* <td>DaBook Ship</td>*@
+                                                        <td style="display: flex; flex-wrap:wrap; width:200px">
+                                                            <label class="form-check">
+                                                                <input id="choxacnhan" name="Tinhtrangdonhang"
+                                                                       class="form-check-input"
+                                                                       type="radio"
+                                                                       value="Chờ xác nhận" />
+                                                                <span class="form-check-label textOver">
+                                                                    Chờ xác nhận
+                                                                </span><br />
+                                                            </label>
+                                                            <label class="form-check">
+                                                                <input name="Tinhtrangdonhang"
+                                                                       id="danglayhang"
+                                                                       class="form-check-input"
+                                                                       type="radio"
+                                                                       value="đang lấy hàng" />
+                                                                <span class="form-check-label textOver">
+                                                                    Đang lấy hàng
+                                                                </span>
+                                                            </label><br />
+                                                            <!-- form-check.// -->
+                                                            <label class="form-check">
+                                                                <input name="Tinhtrangdonhang"
+                                                                       class="form-check-input"
+                                                                       ID="danggiaohang"
+                                                                       type="radio"
+                                                                       value="đang giao hàng" />
+                                                                <span class="form-check-label textOver">
+                                                                    Đang giao hàng
+                                                                </span>
+                                                            </label><br />
+                                                            <!-- form-check.// -->
+                                                            <label class="form-check">
+                                                                <input name="Tinhtrangdonhang"
+                                                                       class="form-check-input"
+                                                                       ID="giaohangthanhcong"
+                                                                       type="radio"
+                                                                       value="giao hàng thành công" />
+                                                                <span class="form-check-label textOver">
+                                                                    Giao hàng thành công
+                                                                </span>
+                                                            </label><br />
+                                                            <!-- form-check.// -->
+                                                            <label class="form-check">
+                                                                <input name="Tinhtrangdonhang"
+                                                                       class="form-check-input"
+                                                                       ID="giaohangthatbai"
+                                                                       type="radio"
+                                                                       value="giao hàng thất bại" />
+                                                                <span class="form-check-label textOver">
+                                                                    Giao hàng thất bại
+                                                                </span>
+                                                            </label>
+
+
+                                                            @* <input name="madh" class="form-check-input" type="hidden" value="this.madh" </input>*@
+                                                        </td>
+                                                        <td>
+                                                            <input class="form-control" name="Phanhoi" id="review-text" rows="3" type="text" value="@item.Phanhoi" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="submit" class="btn btn-primary btn-update" style="justify-content: center; " value="Cập nhật" />
+                                                        </td>
+
+                                                        </form>
+                                                    </tr>
+                                                    
+
+                                                }
+                                            </tbody>
+                                        </table>
+                                        @*</form>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Row -->
+                        <!-- <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="m-b-30 m-t-0">Scroller Datatable Example</h4>
+
+                                        <table id="datatable-scroller" class="table table-striped table-bordered nowrap">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>First name</th>
+                                                <th>Last name</th>
+                                                <th>ZIP / Post code</th>
+                                                <th>Country</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>  -->
+                        <!-- End Row -->
+                    </div><!-- container -->
+                </div> <!-- Page content Wrapper -->
+            </div> <!-- content -->
+          
+ 

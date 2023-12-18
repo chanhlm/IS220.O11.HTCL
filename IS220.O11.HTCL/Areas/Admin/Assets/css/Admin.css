@@ -1,0 +1,19 @@
+﻿
+
+.btn .btn-danger {
+    margin-bottom: 10px;
+}
+* {
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+
+    overflow-y: scroll;
+}
+
+    *::-webkit-scrollbar {
+        display: none; /* for Chrome, Safari, and Opera */
+    }
+    .textOver{
+        white-space:nowrap
+    }
+
+

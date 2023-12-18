@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <_WebToolingArtifacts Remove="Properties\serviceDependencies.json" />
+    <_WebToolingArtifacts Remove="Properties\serviceDependencies.local.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Properties\serviceDependencies.json" />
+    <Content Include="Properties\serviceDependencies.local.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Admin\Views\Admin\CapNhap_KM.cshtml" />
+    <None Include="Areas\Admin\Views\Admin\CapNhat_Sach.cshtml" />
+    <None Include="Areas\Admin\Views\Admin\CapNhat_VanChuyen.cshtml" />
+    <None Include="Areas\Admin\Views\Admin\DS_DonHang.cshtml" />
+    <None Include="Areas\Admin\Views\Admin\DS_KhuyenMai.cshtml" />
+    <None Include="Areas\Admin\Views\Admin\InsertBook.cshtml" />
+    <None Include="Areas\Admin\Views\Admin\login.cshtml" />
+    <None Include="Areas\Admin\Views\Admin\menu.cshtml" />
+    <None Include="Areas\Admin\Views\Admin\QL_taikhoan.cshtml" />
+    <None Include="Areas\Admin\Views\Admin\QuenMK.cshtml" />
+    <None Include="Areas\Admin\Views\Admin\ThemSach.cshtml" />
+    <None Include="Areas\Admin\Views\Admin\Them_KM.cshtml" />
+    <None Include="Areas\Admin\Views\Admin\ThongKe.cshtml" />
+    <None Include="Areas\Admin\Views\Admin\VanChuyen.cshtml" />
+    <None Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Home\Privacy.cshtml" />
+    <None Include="Areas\Admin\Views\Shared\Error.cshtml" />
+    <None Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <None Include="Areas\Admin\Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Properties\serviceDependencies.local.json.user" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
+    <PackageReference Include="MySql.Data" Version="8.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,193 @@
+﻿
+@model List<object>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Admin Dashboard" name="description">
+    <meta content="ThemeDesign" name="author">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>DaBook Shop</title>
+
+    <link rel="shortcut icon" href=".\images\logo.png">
+
+    <!-- DataTables -->
+    <link href="~/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="~/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="~/plugins/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/plugins/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="~/plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css">
+
+
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="~/css/style.css" rel="stylesheet" type="text/css">
+     <link href="~/css/Admin.css" rel="stylesheet" type="text/css">
+
+   
+
+</head>
+
+
+<body class="fixed-left layout2">
+
+    <!-- Begin page -->
+    <div id="wrapper">
+
+        <!--Header Start -->
+        <header class="topbar">
+            <!-- LOGO -->
+            <div class="topbar-left">
+                <div class="text-center">
+                    <a href="/Home/Index"><img class="logo" src="~/images/logo.png" style="width:80px;" alt="logo-img"></a>
+                    <img class="logo-sm" src="~/images/logo.png" style="width:80px" alt="logo-img">
+                </div>
+            </div>
+            <!-- Button mobile view to collapse sidebar menu -->
+
+
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <ul class="list-inline menu-left mb-0">
+                        <li class="float-left">
+                            <button class="button-menu-mobile open-left waves-light waves-effect">
+                                <i class="mdi mdi-menu"></i>
+                            </button>
+                        </li>
+                        @*<li class="hide-phone app-search float-left">
+                            <form role="search" class="navbar-form">
+                                <input type="text" placeholder="Search..." class="form-control search-bar">
+                                <a href="" class="btn-search"><i class="fa fa-search"></i></a>
+                            </form>
+                        </li>*@
+                    </ul>
+
+                    <ul class="nav navbar-right float-right list-inline">
+
+                        <li class="d-none d-sm-block">
+                            <a href="#" id="btn-fullscreen" class="waves-effect waves-light notification-icon-box"><i class="mdi mdi-fullscreen"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Header End -->
+        <!-- ========== Menu ========== -->
+
+        <div class="left side-menu">
+            <div class="sidebar-inner slimscrollleft">
+
+                <div id="sidebar-menu">
+                    <ul>
+
+                        <li class="has_sub">
+                            <a class="waves-effect"><i class="fas fa-book-open"></i> <span> Sách </span> <span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+
+                            <ul class="list-unstyled">
+                                <li><a asp-controller="Home" asp-action="Index">Xem danh sách sách</a></li>
+                                <li><a asp-controller="Admin" asp-action="ThemSach">Thêm sách</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="has_sub">
+                            <a class="waves-effect"><i class="fas fa-user-cog"></i><span> Tài khoản </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                            <ul class="list-unstyled">
+                                <li><a asp-controller="Admin" asp-action="QL_taikhoan">Xem danh sách tài khoản</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="has_sub">
+                            <a class="waves-effect"><i class="fas fa-receipt"></i><span> Đơn hàng </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                            <ul class="list-unstyled">
+                                <li><a asp-controller="Admin" asp-action="DS_DonHang">Xem danh sách đơn hàng</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="has_sub">
+                            <a class="waves-effect"><i class="fas fa-piggy-bank"></i><span> Khuyến mãi </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                            <ul class="list-unstyled">
+                                <li><a asp-controller="Admin" asp-action="DS_KhuyenMai">Danh sách khuyến mãi</a></li>
+                                <li><a asp-controller="Admin" asp-action="Them_KM">Thêm khuyến mãi</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="has_sub">
+                            <a class="waves-effect"><i class="fas fa-truck"></i> <span> Vận chuyển </span> <span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                            <ul class="list-unstyled">
+                                <li><a asp-controller="Admin" asp-action="CapNhat_VanChuyen">Cập nhật trạng thái đơn hàng</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="has_sub">
+                            <a class="waves-effect"><i class="ti-stats-up"></i><span> Thống kê </span><span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                            <ul class="list-unstyled">
+                                <li><a asp-controller="Admin" asp-action="ThongKe">Thống kê</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div> <!-- end sidebarinner -->
+        </div>
+        <!--Menu End -->
+        <!-- Start right Content here -->
+
+        <div class="content-page">
+            @RenderBody()
+
+
+        </div>
+        <!-- End Right content here -->
+        <footer class="footer">
+        </footer>
+    </div>
+    <!-- END wrapper -->
+    <!-- jQuery  -->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/modernizr.min.js"></script>
+    <script src="~/js/detect.js"></script>
+    <script src="~/js/fastclick.js"></script>
+    <script src="~/js/jquery.slimscroll.js"></script>
+    <script src="~/js/jquery.blockUI.js"></script>
+    <script src="~/js/waves.js"></script>
+    <script src="~/js/wow.min.js"></script>
+    <script src="~/js/jquery.nicescroll.js"></script>
+    <script src="~/js/jquery.scrollTo.min.js"></script>
+
+    <!-- Required datatable js-->
+    <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Buttons examples -->
+    <script src="~/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="~/plugins/datatables/buttons.bootstrap4.min.js"></script>
+
+    <script src="~/plugin/datatables/jszip.min.js"></script>
+    <script src="~/plugins/datatables/pdfmake.min.js"></script>
+    <script src="~/plugins/datatables/vfs_fonts.js"></script>
+    <script src="~/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="~/plugins/datatables/buttons.print.min.js"></script>
+    <script src="~/plugins/datatables/dataTables.fixedHeader.min.js"></script>
+    <script src="~/plugins/datatables/dataTables.keyTable.min.js"></script>
+    <script src="~/plugins/datatables/dataTables.scroller.min.js"></script>
+
+    <!-- Responsive examples -->
+    <script src="~/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="~/plugins/datatables/responsive.bootstrap4.min.js"></script>
+
+    <!-- Datatable init js -->
+    <script src="~/pages/datatables.init.js"></script>
+
+
+
+    <script src="~/js/app.js"></script>
+    @RenderSection("chart", required: false)
+
+
+</body>
+</html>
