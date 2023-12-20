@@ -21,11 +21,11 @@ namespace IS220.O11.HTCL.Controllers
             if (res != null)
             {
                 account usersession = JsonSerializer.Deserialize<account>(res);
-                usersession = context.Login(usersession.Tentk, usersession.Matkhau);
+                usersession = context.Login(usersession.Email, usersession.Matkhau);
                 ViewBag.infor = usersession;
                 ViewBag.status = "Success";
-                string tentk = ViewBag.infor.Tentk;
-                ViewBag.ds_voucher = context.User_Voucher(tentk);
+                string email = ViewBag.infor.Email;
+                ViewBag.ds_voucher = context.User_Voucher(email);
                 int Matk = Convert.ToInt32(usersession.Matk);
                 int sl = 0;
                 sl = context.User_Vouchers(Matk);
@@ -53,7 +53,7 @@ namespace IS220.O11.HTCL.Controllers
             if (res != null)
             {
                 account usersession = JsonSerializer.Deserialize<account>(res);
-                usersession = context.Login(usersession.Tentk, usersession.Matkhau);
+                usersession = context.Login(usersession.Email, usersession.Matkhau);
                 ViewBag.infor = usersession;
                 ViewBag.status = "Success";
                 ViewBag.avatar = HttpContext.Session.GetString("Avatar");
@@ -77,7 +77,7 @@ namespace IS220.O11.HTCL.Controllers
 
             StoreContext context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
             count = context.DangKy(kh);
-            account res = context.Login(kh.Tentk, kh.Matkhau);
+            account res = context.Login(kh.Email, kh.Matkhau);
             if (res != null)
             {
                 ViewBag.status = "Success";
@@ -98,12 +98,12 @@ namespace IS220.O11.HTCL.Controllers
             if (res != null)
             {
                 account usersession = JsonSerializer.Deserialize<account>(res);
-                usersession = context.Login(usersession.Tentk, usersession.Matkhau);
+                usersession = context.Login(usersession.Email, usersession.Matkhau);
                 ViewBag.infor = usersession;
                 ViewBag.status = "Success";
                 List<object> list = context.Cart(usersession.Matk);
                 ViewBag.ListCart = list;
-                ViewBag.Tentk = usersession.Tentk;
+                ViewBag.Tentk = usersession.Email;
                 ViewBag.Hoten = usersession.Hoten;
                 ViewBag.Diachi = usersession.Diachi;
                 ViewBag.Sodt = usersession.Sodt;
@@ -113,7 +113,7 @@ namespace IS220.O11.HTCL.Controllers
         }
 
 
-        public IActionResult themgiohang(string matk, string masach, string soluong)
+        public IActionResult themgiohang(int matk, string masach, string soluong)
         {
             StoreContext context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
             context.themvaogiohang(matk, masach, soluong);
@@ -122,11 +122,11 @@ namespace IS220.O11.HTCL.Controllers
 
         public IActionResult Login()
         {
-            string username = HttpContext.Request.Form["username"];
+            string email = HttpContext.Request.Form["email"];
             string password = HttpContext.Request.Form["password"];
             var url = HttpContext.Request.GetEncodedUrl();
             StoreContext context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
-            account res = context.Login(username, password);
+            account res = context.Login(email, password);
             if (res != null)
             {
                 ViewBag.status = "Success";
@@ -149,19 +149,19 @@ namespace IS220.O11.HTCL.Controllers
 
 
 
-        public IActionResult taikhoan(string tentk)
+        public IActionResult taikhoan(string email)
         {
             StoreContext context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
             var res = HttpContext.Session.GetString("UserSession");
             if (res != null)
             {
                 account usersession = JsonSerializer.Deserialize<account>(res);
-                usersession = context.Login(usersession.Tentk, usersession.Matkhau);
+                usersession = context.Login(usersession.Email, usersession.Matkhau);
                 ViewBag.infor = usersession;
                 ViewBag.status = "Success";
             }
-            ViewBag.taikhoan = context.Client_Accounts(tentk);
-            ViewBag.khuyenmai = context.User_Voucher(tentk);
+            ViewBag.taikhoan = context.Accounts(email);
+            ViewBag.khuyenmai = context.User_Voucher(email);
             ViewBag.avatar = HttpContext.Session.GetString("Avatar");
             int matk = Convert.ToInt32(ViewBag.taikhoan.Matk);
             ViewBag.orders = context.DonHang(matk);
@@ -169,7 +169,7 @@ namespace IS220.O11.HTCL.Controllers
             return View();
         }
 
-        public IActionResult capnhattaikhoan(string Matk, string Email, string Sodt, string Gioitinh, string Ngaysinh)
+        public IActionResult capnhattaikhoan(int Matk, string Email, string Sodt, string Gioitinh, string Ngaysinh)
         {
             int count;
             StoreContext context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
@@ -185,7 +185,7 @@ namespace IS220.O11.HTCL.Controllers
 
         }
 
-        public IActionResult capnhatdiachi(string Matk, string Sodt, string Diachi, string Hoten)
+        public IActionResult capnhatdiachi(int Matk, string Sodt, string Diachi, string Hoten)
         {
             int count;
             StoreContext context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
@@ -201,7 +201,7 @@ namespace IS220.O11.HTCL.Controllers
 
         }
 
-        public IActionResult capnhatmatkhau(string Matk, string Matkhau)
+        public IActionResult capnhatmatkhau(int Matk, string Matkhau)
         {
             int count;
             StoreContext context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
@@ -223,7 +223,7 @@ namespace IS220.O11.HTCL.Controllers
             if (res != null)
             {
                 account usersession = JsonSerializer.Deserialize<account>(res);
-                usersession = context.Login(usersession.Tentk, usersession.Matkhau);
+                usersession = context.Login(usersession.Email, usersession.Matkhau);
                 ViewBag.infor = usersession;
                 ViewBag.status = "Success";
                 ViewBag.avatar = HttpContext.Session.GetString("Avatar");
@@ -240,7 +240,7 @@ namespace IS220.O11.HTCL.Controllers
             if (res != null)
             {
                 account usersession = JsonSerializer.Deserialize<account>(res);
-                usersession = context.Login(usersession.Tentk, usersession.Matkhau);
+                usersession = context.Login(usersession.Email, usersession.Matkhau);
                 ViewBag.infor = usersession;
                 ViewBag.status = "Success";
                 ViewBag.avatar = HttpContext.Session.GetString("Avatar");
@@ -276,7 +276,7 @@ namespace IS220.O11.HTCL.Controllers
             if (res != null)
             {
                 account usersession = JsonSerializer.Deserialize<account>(res);
-                usersession = context.Login(usersession.Tentk, usersession.Matkhau);
+                usersession = context.Login(usersession.Email, usersession.Matkhau);
                 ViewBag.infor = usersession;
                 ViewBag.status = "Success";
                 ViewBag.chitietdh = context.chitietdh(madh);
@@ -301,7 +301,7 @@ namespace IS220.O11.HTCL.Controllers
             if (res != null)
             {
                 account usersession = JsonSerializer.Deserialize<account>(res);
-                usersession = context.Login(usersession.Tentk, usersession.Matkhau);
+                usersession = context.Login(usersession.Email, usersession.Matkhau);
                 ViewBag.infor = usersession;
                 ViewBag.status = "Success";
                 ViewBag.avatar = HttpContext.Session.GetString("Avatar");
@@ -312,7 +312,7 @@ namespace IS220.O11.HTCL.Controllers
         }
 
 
-        /*public IActionResult updategiohang(string matk, string masach, string soluong)
+        /*public IActionResult updategiohang(int matk, string masach, string soluong)
         {
             StoreContext context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
             context.updategiohang(matk, masach, soluong);
@@ -338,7 +338,7 @@ namespace IS220.O11.HTCL.Controllers
                 if (res != null)
                 {
                     account usersession = JsonSerializer.Deserialize<account>(res);
-                    usersession = context.Login(usersession.Tentk, usersession.Matkhau);
+                    usersession = context.Login(usersession.Email, usersession.Matkhau);
                     ViewBag.infor = usersession;
                     ViewBag.status = "Success";
                     var temp = JsonSerializer.Deserialize<sach[]>(data);
@@ -348,7 +348,7 @@ namespace IS220.O11.HTCL.Controllers
                         soluong += Convert.ToInt32(item.soluong);
                         thanhtien += Convert.ToInt32(item.giaban) * Convert.ToInt32(item.soluong);
                     }
-                    List<object> ListVoucher = context.get_voucher(usersession.Matk.ToString());
+                    List<object> ListVoucher = context.get_voucher(usersession.Matk);
                     ViewBag.ListVoucher = ListVoucher;
                     DateTime dateTime = DateTime.Today;
                     string date = dateTime.ToString("dd/MM/yyyy");
@@ -359,7 +359,7 @@ namespace IS220.O11.HTCL.Controllers
                     ViewBag.Hoten = usersession.Hoten;
                     ViewBag.Diachi = usersession.Diachi;
                     ViewBag.Sodt = usersession.Sodt;
-                    ViewBag.Tentk = usersession.Tentk;
+                    ViewBag.Email = usersession.Email;
                     ViewBag.avatar = HttpContext.Session.GetString("Avatar");
             }
             return View();
@@ -381,10 +381,10 @@ namespace IS220.O11.HTCL.Controllers
             {
                 StoreContext context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
                 account usersession = JsonSerializer.Deserialize<account>(res);
-                usersession = context.Login(usersession.Tentk, usersession.Matkhau);
+                usersession = context.Login(usersession.Email, usersession.Matkhau);
                 ViewBag.infor = usersession;
                 ViewBag.status = "Success";
-                string matk = usersession.Matk;
+                int matk = usersession.Matk;
                ViewBag.madh = context.thanhyou(matk, data, tongtien, soluong, hinhthucthanhtoan, tinhtrangthanhtoan, tinhtrangdonhang, tienship,voucher_used);
                 //context.thanhyou(matk, data, tongtien, soluong, hinhthucthanhtoan, tinhtrangthanhtoan, tinhtrangdonhang, tienship);
                 ViewBag.avatar = HttpContext.Session.GetString("Avatar");
@@ -400,7 +400,7 @@ namespace IS220.O11.HTCL.Controllers
             {
                 StoreContext context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
                 account usersession = JsonSerializer.Deserialize<account>(res);
-                usersession = context.Login(usersession.Tentk, usersession.Matkhau);
+                usersession = context.Login(usersession.Email, usersession.Matkhau);
                 ViewBag.infor = usersession;
                 ViewBag.status = "Success";
                 ViewBag.avatar = HttpContext.Session.GetString("Avatar");
@@ -416,7 +416,7 @@ namespace IS220.O11.HTCL.Controllers
             {
                 StoreContext context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
                 account usersession = JsonSerializer.Deserialize<account>(res);
-                usersession = context.Login(usersession.Tentk, usersession.Matkhau);
+                usersession = context.Login(usersession.Email, usersession.Matkhau);
                 ViewBag.infor = usersession;
                 ViewBag.status = "Success";
                 context.xoagiohang(usersession.Matk, masach);
@@ -424,7 +424,7 @@ namespace IS220.O11.HTCL.Controllers
             return View();
         }
 
-       /* public IActionResult themgiohang(string matk, string masach, string soluong)
+       /* public IActionResult themgiohang(int matk, string masach, string soluong)
         {
             StoreContext context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
             context.themvaogiohang(matk, masach, soluong);

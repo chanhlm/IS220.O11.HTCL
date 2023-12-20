@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Text.Json;
 
+
 namespace IS220.O11.HTCL.Controllers
 {
     public class HomeController : Controller
@@ -33,7 +34,7 @@ namespace IS220.O11.HTCL.Controllers
             if (res != null)
             {
                 account usersession = JsonSerializer.Deserialize<account>(res);
-                usersession = context.Login(usersession.Tentk, usersession.Matkhau);
+                usersession = context.Login(usersession.Email, usersession.Matkhau);
                 ViewBag.infor = usersession;
                 ViewBag.status = "Success";
                 ViewBag.avatar = HttpContext.Session.GetString("Avatar");

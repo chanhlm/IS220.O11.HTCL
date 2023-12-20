@@ -7,11 +7,12 @@ namespace IS220.O11.HTCL.Models
 {
     public class voucher
     {
-        private string makm, img, loai, manhap, noidung;
+        private string  img, loai, manhap, noidung;
         private int daluu, sl, phantram, dieukien;
         private DateTime ngaybd, ngaykt;
+        private int makm;
 
-        public string Makm { get => makm; set => makm = value; }
+        public int Makm { get => makm; set => makm = value; }
         public string Img { get => img; set => img = value; }
         public string Loai { get => loai; set => loai = value; }
         public string Manhap { get => manhap; set => manhap = value; }
@@ -24,7 +25,7 @@ namespace IS220.O11.HTCL.Models
         public DateTime Ngaykt { get => ngaykt; set => ngaykt = value; }
         public voucher() {  }
 
-        public voucher(string makm, string img, string loai, string manhap, string noidung, int daluu, int sl, int phantram, int dieukien, DateTime ngaybd, DateTime ngaykt)
+        public voucher(int makm, string img, string loai, string manhap, string noidung, int daluu, int sl, int phantram, int dieukien, DateTime ngaybd, DateTime ngaykt)
         {
             Makm = makm;
             Img = img;

@@ -135,7 +135,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                     list.Hinhthuc = reader["hinhthuc"].ToString();                        
                     list.Mota = reader["mota"].ToString();
                     list.Nxb = reader["nxb"].ToString();
-                    list.Sobinhchon = reader["sobinhchon"].ToString();
+                    list.Sobinhchon = Convert.ToInt32(reader["sobinhchon"]);
                     list.Tacgia = reader["tacgia"].ToString();
                     list.Namxb = Convert.ToDateTime(reader["namxb"]);
                     list.Tensach = reader["tensach"].ToString();
@@ -211,7 +211,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                string str = "select * from client_accounts";
+                string str = "select * from accounts";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -226,7 +226,6 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                             Email = reader["email"].ToString(),
                             Gioitinh = reader["gioitinh"].ToString(),
                             Hoten = reader["hoten"].ToString(),
-                            Tentk = reader["tentk"].ToString(),
                             Matkhau = reader["matkhau"].ToString(),
                             Ngaytao = Convert.ToDateTime(reader["ngaytao"]),
                             Tinhtrang = reader["tinhtrang"].ToString(),
@@ -252,7 +251,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                string str = "select * from client_accounts where matk=@matk";
+                string str = "select * from accounts where matk=@matk";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("matk", Id);
                 using (var reader = cmd.ExecuteReader())
@@ -268,7 +267,6 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                             Email = reader["email"].ToString(),
                             Gioitinh = reader["gioitinh"].ToString(),
                             Hoten = reader["hoten"].ToString(),
-                            Tentk = reader["tentk"].ToString(),
                             Matkhau = reader["matkhau"].ToString(),
                             Ngaytao = Convert.ToDateTime(reader["ngaytao"]),
                             Tinhtrang = reader["tinhtrang"].ToString(),
@@ -294,7 +292,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             {
 
                 conn.Open();
-                var str = "UPDATE client_accounts SET tinhtrang='Đã khóa' WHERE matk=@matk";
+                var str = "UPDATE accounts SET tinhtrang='Đã khóa' WHERE matk=@matk";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 Console.WriteLine(kh.Matk);
                 Console.WriteLine(kh.Tinhtrang);
@@ -311,7 +309,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             {
 
                 conn.Open();
-                var str = "UPDATE client_accounts SET tinhtrang='Đang sử dụng' WHERE matk=@matk";
+                var str = "UPDATE accounts SET tinhtrang='Đang sử dụng' WHERE matk=@matk";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 Console.WriteLine(kh.Matk);
                 Console.WriteLine(kh.Tinhtrang);
@@ -1121,22 +1119,23 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
         }
 
 
-        public account login(string username, string password)
+        public account login(string email, string password)
         {
             account admin_Accounts = new account();
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                var str = "select * from account where tenad=@username and matkhau=@password";
+                var str = "select * from account where email=@email and matkhau=@password";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
-                cmd.Parameters.AddWithValue("username", username);
+                cmd.Parameters.AddWithValue("email", email);
                 cmd.Parameters.AddWithValue("password", password);
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        admin_Accounts.Maad = Convert.ToInt32(reader["maad"]);
-                        admin_Accounts.Tenad = reader["tenad"].ToString();
+                        admin_Accounts.Matk = Convert.ToInt32(reader["matk"]);
+                        admin_Accounts.Email = reader["email"].ToString();
+                        admin_Accounts.Hoten = reader["hoten"].ToString();
                         admin_Accounts.Matkhau = reader["matkhau"].ToString();
                     }
                     reader.Close();

@@ -5,6 +5,38 @@
       "PackagePath": "staticwebassets\\IS220.O11.HTCL.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\minhc\\source\\repos\\IS220.O11.HTCL\\IS220.O11.HTCL\\wwwroot\\assets\\css\\account.css",
+      "PackagePath": "staticwebassets\\assets\\css\\account.css"
+    },
+    {
+      "Id": "C:\\Users\\minhc\\source\\repos\\IS220.O11.HTCL\\IS220.O11.HTCL\\wwwroot\\assets\\css\\base.css",
+      "PackagePath": "staticwebassets\\assets\\css\\base.css"
+    },
+    {
+      "Id": "C:\\Users\\minhc\\source\\repos\\IS220.O11.HTCL\\IS220.O11.HTCL\\wwwroot\\assets\\css\\book_detail.css",
+      "PackagePath": "staticwebassets\\assets\\css\\book_detail.css"
+    },
+    {
+      "Id": "C:\\Users\\minhc\\source\\repos\\IS220.O11.HTCL\\IS220.O11.HTCL\\wwwroot\\assets\\css\\book_sale.css",
+      "PackagePath": "staticwebassets\\assets\\css\\book_sale.css"
+    },
+    {
+      "Id": "C:\\Users\\minhc\\source\\repos\\IS220.O11.HTCL\\IS220.O11.HTCL\\wwwroot\\assets\\css\\cart.css",
+      "PackagePath": "staticwebassets\\assets\\css\\cart.css"
+    },
+    {
+      "Id": "C:\\Users\\minhc\\source\\repos\\IS220.O11.HTCL\\IS220.O11.HTCL\\wwwroot\\assets\\css\\main.css",
+      "PackagePath": "staticwebassets\\assets\\css\\main.css"
+    },
+    {
+      "Id": "C:\\Users\\minhc\\source\\repos\\IS220.O11.HTCL\\IS220.O11.HTCL\\wwwroot\\assets\\css\\payment.css",
+      "PackagePath": "staticwebassets\\assets\\css\\payment.css"
+    },
+    {
+      "Id": "C:\\Users\\minhc\\source\\repos\\IS220.O11.HTCL\\IS220.O11.HTCL\\wwwroot\\assets\\css\\site.css",
+      "PackagePath": "staticwebassets\\assets\\css\\site.css"
+    },
+    {
       "Id": "C:\\Users\\minhc\\source\\repos\\IS220.O11.HTCL\\IS220.O11.HTCL\\wwwroot\\assets\\fonts\\fontawesome-free-5.15.4\\LICENSE.txt",
       "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome-free-5.15.4\\LICENSE.txt"
     },
@@ -15259,38 +15291,6 @@
     {
       "Id": "C:\\Users\\minhc\\source\\repos\\IS220.O11.HTCL\\IS220.O11.HTCL\\wwwroot\\assets\\img\\ưu_đãi.png",
       "PackagePath": "staticwebassets\\assets\\img\\ưu_đãi.png"
-    },
-    {
-      "Id": "C:\\Users\\minhc\\source\\repos\\IS220.O11.HTCL\\IS220.O11.HTCL\\wwwroot\\css\\account.css",
-      "PackagePath": "staticwebassets\\css\\account.css"
-    },
-    {
-      "Id": "C:\\Users\\minhc\\source\\repos\\IS220.O11.HTCL\\IS220.O11.HTCL\\wwwroot\\css\\base.css",
-      "PackagePath": "staticwebassets\\css\\base.css"
-    },
-    {
-      "Id": "C:\\Users\\minhc\\source\\repos\\IS220.O11.HTCL\\IS220.O11.HTCL\\wwwroot\\css\\book_detail.css",
-      "PackagePath": "staticwebassets\\css\\book_detail.css"
-    },
-    {
-      "Id": "C:\\Users\\minhc\\source\\repos\\IS220.O11.HTCL\\IS220.O11.HTCL\\wwwroot\\css\\book_sale.css",
-      "PackagePath": "staticwebassets\\css\\book_sale.css"
-    },
-    {
-      "Id": "C:\\Users\\minhc\\source\\repos\\IS220.O11.HTCL\\IS220.O11.HTCL\\wwwroot\\css\\cart.css",
-      "PackagePath": "staticwebassets\\css\\cart.css"
-    },
-    {
-      "Id": "C:\\Users\\minhc\\source\\repos\\IS220.O11.HTCL\\IS220.O11.HTCL\\wwwroot\\css\\main.css",
-      "PackagePath": "staticwebassets\\css\\main.css"
-    },
-    {
-      "Id": "C:\\Users\\minhc\\source\\repos\\IS220.O11.HTCL\\IS220.O11.HTCL\\wwwroot\\css\\payment.css",
-      "PackagePath": "staticwebassets\\css\\payment.css"
-    },
-    {
-      "Id": "C:\\Users\\minhc\\source\\repos\\IS220.O11.HTCL\\IS220.O11.HTCL\\wwwroot\\css\\site.css",
-      "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\minhc\\source\\repos\\IS220.O11.HTCL\\IS220.O11.HTCL\\wwwroot\\favicon.ico",

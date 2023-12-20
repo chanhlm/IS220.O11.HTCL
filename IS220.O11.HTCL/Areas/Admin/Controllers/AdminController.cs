@@ -187,11 +187,11 @@ namespace IS220.O11.HTCL.Areas.Admin.Controllers
 
         public IActionResult login()
         {
-            string username = HttpContext.Request.Form["username"];
+            string email = HttpContext.Request.Form["email"];
             string password = HttpContext.Request.Form["password"];
 
             StoreContextAdmin context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Areas.Admin.Models.StoreContextAdmin)) as StoreContextAdmin;
-            admin_accounts res = context.login(username, password);
+            account res = context.login(email, password);
             if (res != null)
             {
                 ViewBag.status = "Success";

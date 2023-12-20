@@ -15,6 +15,7 @@ namespace IS220.O11.HTCL.Models
         private int giagoc;
         private int giamgia;
         private string mota;
+        private string ngonngu;
         private string tacgia;
         private DateTime namxb;
         private string nxb;
@@ -30,6 +31,8 @@ namespace IS220.O11.HTCL.Models
         public int Giagoc { get => giagoc; set => giagoc = value; }
         public int Giamgia { get => giamgia; set => giamgia = value; }
         public string Mota { get => mota; set => mota = value; }
+
+        public string Ngonngu { get => ngonngu; set => ngonngu = value; }
         public string Tacgia { get => tacgia; set => tacgia = value; }
         public DateTime Namxb { get => namxb; set => namxb = value; }
         public string Nxb { get => nxb; set => nxb = value; }
@@ -37,6 +40,7 @@ namespace IS220.O11.HTCL.Models
         public int Soluong { get => soluong; set => soluong = value; }
         public int Danhgia { get => danhgia; set => danhgia = value; }
         public int Sobinhchon { get => sobinhchon; set => sobinhchon = value; }
+
 
 
 
