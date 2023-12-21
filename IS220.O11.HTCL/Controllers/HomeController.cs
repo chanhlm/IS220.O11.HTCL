@@ -1,7 +1,9 @@
+using IS220.O11.HTCL.Areas.Admin.Models;
 using IS220.O11.HTCL.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Text.Json;
+using Microsoft.AspNetCore.Http;
 
 
 namespace IS220.O11.HTCL.Controllers
@@ -43,9 +45,45 @@ namespace IS220.O11.HTCL.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        //public IActionResult Error()
+        //{
+        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        //}
+
+        public IActionResult Login()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            string email = HttpContext.Request.Form["email"];
+            string password = HttpContext.Request.Form["password"];
+
+            StoreContextAdmin adminContext = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Areas.Admin.Models.StoreContextAdmin)) as StoreContextAdmin;
+            StoreContext clientContext = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
+
+            // Try to log in as Admin
+            account adminResult = adminContext.login(email, password);
+            if (adminResult != null)
+            {
+                // Admin logged in
+                ViewBag.status = "Success";
+                ViewBag.infor = adminResult;
+                HttpContext.Session.SetString("UserSession", JsonSerializer.Serialize(adminResult));
+                return RedirectToAction("Index", "Home", new { area = "Admin" });
+            }
+
+            // If not an admin, try to log in as User
+            account clientResult = clientContext.Login(email, password);
+            if (clientResult != null)
+            {
+                // User logged in
+                ViewBag.status = "Success";
+                ViewBag.infor = clientResult;
+                HttpContext.Session.SetString("UserSession", JsonSerializer.Serialize(clientResult));
+                return Redirect("/Home/Index");
+            }
+
+            // If no login was successful
+            ViewBag.status = "Fail";
+            return View();
         }
+
     }
 }

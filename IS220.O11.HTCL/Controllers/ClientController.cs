@@ -120,25 +120,25 @@ namespace IS220.O11.HTCL.Controllers
             return Redirect("/Home/Index");
         }
 
-        public IActionResult Login()
-        {
-            string email = HttpContext.Request.Form["email"];
-            string password = HttpContext.Request.Form["password"];
-            var url = HttpContext.Request.GetEncodedUrl();
-            StoreContext context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
-            account res = context.Login(email, password);
-            if (res != null)
-            {
-                ViewBag.status = "Success";
-                ViewBag.infor = res;
-                HttpContext.Session.SetString("UserSession", JsonSerializer.Serialize(res));
-            }
-            else
-            {
-                ViewBag.status = "Fail";
-            }
-            return Redirect("/Home/Index");
-        }
+        //public IActionResult Login()
+        //{
+        //    string email = HttpContext.Request.Form["email"];
+        //    string password = HttpContext.Request.Form["password"];
+        //    var url = HttpContext.Request.GetEncodedUrl();
+        //    StoreContext context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
+        //    account res = context.Login(email, password);
+        //    if (res != null)
+        //    {
+        //        ViewBag.status = "Success";
+        //        ViewBag.infor = res;
+        //        HttpContext.Session.SetString("UserSession", JsonSerializer.Serialize(res));
+        //    }
+        //    else
+        //    {
+        //        ViewBag.status = "Fail";
+        //    }
+        //    return Redirect("/Home/Index");
+        //}
 
         public IActionResult Logout()
         {

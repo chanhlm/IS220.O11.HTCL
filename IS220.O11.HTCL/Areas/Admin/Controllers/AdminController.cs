@@ -185,24 +185,24 @@ namespace IS220.O11.HTCL.Areas.Admin.Controllers
 
         }
 
-        public IActionResult login()
-        {
-            string email = HttpContext.Request.Form["email"];
-            string password = HttpContext.Request.Form["password"];
+        //public IActionResult login()
+        //{
+        //    string email = HttpContext.Request.Form["email"];
+        //    string password = HttpContext.Request.Form["password"];
 
-            StoreContextAdmin context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Areas.Admin.Models.StoreContextAdmin)) as StoreContextAdmin;
-            account res = context.login(email, password);
-            if (res != null)
-            {
-                ViewBag.status = "Success";
-                ViewBag.infor = res;
-                HttpContext.Session.SetString("UserSession", JsonSerializer.Serialize(res));
-            }
-            else
-            {
-                ViewBag.status = "Fail";
-            }
-            return View();
-        }
+        //    StoreContextAdmin context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Areas.Admin.Models.StoreContextAdmin)) as StoreContextAdmin;
+        //    account res = context.login(email, password);
+        //    if (res != null)
+        //    {
+        //        ViewBag.status = "Success";
+        //        ViewBag.infor = res;
+        //        HttpContext.Session.SetString("UserSession", JsonSerializer.Serialize(res));
+        //    }
+        //    else
+        //    {
+        //        ViewBag.status = "Fail";
+        //    }
+        //    return View();
+        //}
     }
 }

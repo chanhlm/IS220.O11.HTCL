@@ -7,7 +7,7 @@ namespace IS220.O11.HTCL.Models
 {
     public class account
     {
-        private string tentk, diachi, email, giohang, gioitinh, hoten, matkhau,  sodt, tinhtrang;
+        private string tentk, diachi, email, giohang, gioitinh, hoten, matkhau,  sodt, tinhtrang, phanquyen;
         private DateTime ngaysinh, ngaytao;
         private int diem, sl_giohang;
         private int matk;
@@ -26,11 +26,11 @@ namespace IS220.O11.HTCL.Models
         public string Sodt { get => sodt; set => sodt = value; }
         public string Tinhtrang { get => tinhtrang; set => tinhtrang = value; }
         public string Tentk { get => tentk; set => tentk = value; }
+        public string Phanquyen { get => phanquyen; set => phanquyen = value; }
 
         public account() {  }
-        public account(string tentk, string diachi, int diem, string email, string giohang, string gioitinh, string hoten, int matk, string matkhau, DateTime ngaysinh, DateTime ngaytao, int sl_giohang, string sodt, string tinhtrang)
+        public account(string tentk, string diachi, int diem, string email, string giohang, string gioitinh, string hoten, int matk, string matkhau, DateTime ngaysinh, DateTime ngaytao, int sl_giohang, string sodt, string tinhtrang, string phanquyen)
         {
-
             this.diachi = diachi;
             this.diem = diem;
             this.email = email;
@@ -45,8 +45,7 @@ namespace IS220.O11.HTCL.Models
             this.sl_giohang = sl_giohang;
             this.sodt = sodt;
             this.tinhtrang = tinhtrang;
+            Phanquyen = phanquyen;
         }
-
-
     }
 }

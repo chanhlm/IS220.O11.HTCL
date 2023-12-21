@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace IS220.O11.HTCL.Areas.Admin.Models
 {
@@ -14,6 +15,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
         {
             this.ConnectionString = connectionString;
         }
+
         private MySqlConnection GetConnection() //lấy connection
         {
             return new MySqlConnection(ConnectionString);
@@ -782,10 +784,8 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                             Tongtien = Convert.ToInt32(reader["tongtien"]),
                             Hinhthucthanhtoan = reader["hinhthucthanhtoan"].ToString(),
 
-
-
-                          Ngaycapnhat = Convert.ToDateTime(reader["ngaycapnhat"]),
-                           Ngaylap = Convert.ToDateTime(reader["ngaylap"]),
+                            Ngaycapnhat = Convert.ToDateTime(reader["ngaycapnhat"]),
+                            Ngaylap = Convert.ToDateTime(reader["ngaylap"]),
                         }; 
                     } 
                 }
@@ -832,8 +832,6 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
 
         public float GetPhanTramKM(int Id)
         {
-            
-
             using (MySqlConnection conn = GetConnection())
             {
                 float tiengiam = 0;
@@ -890,9 +888,6 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
 
         public int UpdateDonHangById(int Id, string Tinhtrangdonhang, string Phanhoi)
         {
-
-
-           
             using (MySqlConnection conn = GetConnection())
             {
 
@@ -1125,7 +1120,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                var str = "select * from account where email=@email and matkhau=@password";
+                var str = "select * from accounts where email=@email and matkhau=@password and phanquyen='admin'";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("email", email);
                 cmd.Parameters.AddWithValue("password", password);
@@ -1137,6 +1132,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                         admin_Accounts.Email = reader["email"].ToString();
                         admin_Accounts.Hoten = reader["hoten"].ToString();
                         admin_Accounts.Matkhau = reader["matkhau"].ToString();
+                        admin_Accounts.Phanquyen = reader["phanquyen"].ToString();
                     }
                     reader.Close();
                 }

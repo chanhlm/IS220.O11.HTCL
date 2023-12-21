@@ -16,6 +16,7 @@ namespace IS220.O11.HTCL.Models
             this.ConnectionString = connectionString;
         }
 
+
         private MySqlConnection GetConnection() //lấy connection 
         {
             return new MySqlConnection(ConnectionString);
@@ -338,7 +339,7 @@ namespace IS220.O11.HTCL.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                var str = "select * from accounts where email=@email and matkhau=@password";
+                var str = "select * from accounts where email=@email and matkhau=@password and phanquyen='user'";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("email", email);
                 cmd.Parameters.AddWithValue("password", password);
@@ -359,12 +360,11 @@ namespace IS220.O11.HTCL.Models
                         client_Accounts.Sodt = reader["sodt"].ToString();
                         client_Accounts.Tinhtrang = reader["tinhtrang"].ToString();
                         client_Accounts.Tentk = reader["hoten"].ToString();
-
+                        client_Accounts.Phanquyen = reader["phanquyen"].ToString();
                     }
                     reader.Close();
                 }
                 conn.Close();
-
             }
             return client_Accounts;
         }

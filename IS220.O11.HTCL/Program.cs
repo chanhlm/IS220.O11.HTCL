@@ -1,3 +1,4 @@
+﻿using IS220.O11.HTCL.Areas.Admin.Models;
 using IS220.O11.HTCL.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -39,8 +40,8 @@ namespace IS220.O11.HTCL
         {
             services.AddMvc();
             services.Add(new ServiceDescriptor(typeof(StoreContext), new StoreContext(Configuration.GetConnectionString("DefaultConnection"))));
+            services.Add(new ServiceDescriptor(typeof(StoreContextAdmin), new StoreContextAdmin(Configuration.GetConnectionString("DefaultConnection"))));
             services.AddSession();
-            //services.AddApplicationInsightsTelemetry();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,11 +68,14 @@ namespace IS220.O11.HTCL
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(   
+                endpoints.MapControllerRoute(
+                    name: "admin",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}"
-                );
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }
