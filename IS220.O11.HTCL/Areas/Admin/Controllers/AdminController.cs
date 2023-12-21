@@ -7,6 +7,8 @@ using System.Text.Json;
 
 namespace IS220.O11.HTCL.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+    [Route("Admin/[controller]/[action]")]
     public class AdminController : Controller
     {
         private readonly ILogger<AdminController> _logger;

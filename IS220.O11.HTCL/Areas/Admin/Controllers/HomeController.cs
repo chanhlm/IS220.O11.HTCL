@@ -6,7 +6,7 @@ using System.Text.Json;
 namespace IS220.O11.HTCL.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Route("admin/[controller]/[action]")]
+    [Route("Admin/[controller]/[action]")]
     public class HomeController : Controller
     {
         //public IActionResult Index()

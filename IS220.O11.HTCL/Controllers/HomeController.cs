@@ -58,7 +58,7 @@ namespace IS220.O11.HTCL.Controllers
             StoreContextAdmin adminContext = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Areas.Admin.Models.StoreContextAdmin)) as StoreContextAdmin;
             StoreContext clientContext = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
 
-            // Try to log in as Admin
+            //Try to log in as Admin
             account adminResult = adminContext.login(email, password);
             if (adminResult != null)
             {
@@ -82,7 +82,7 @@ namespace IS220.O11.HTCL.Controllers
 
             // If no login was successful
             ViewBag.status = "Fail";
-            return View();
+            return Redirect("/Home/Index");
         }
 
     }

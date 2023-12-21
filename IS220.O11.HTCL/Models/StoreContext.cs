@@ -339,7 +339,7 @@ namespace IS220.O11.HTCL.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                var str = "select * from accounts where email=@email and matkhau=@password and phanquyen='user'";
+                var str = "select * from accounts where email = @email and matkhau = @password and phanquyen = 'user'";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("email", email);
                 cmd.Parameters.AddWithValue("password", password);
@@ -361,12 +361,13 @@ namespace IS220.O11.HTCL.Models
                         client_Accounts.Tinhtrang = reader["tinhtrang"].ToString();
                         client_Accounts.Tentk = reader["hoten"].ToString();
                         client_Accounts.Phanquyen = reader["phanquyen"].ToString();
+                        return client_Accounts;
                     }
                     reader.Close();
                 }
                 conn.Close();
             }
-            return client_Accounts;
+            return null;
         }
 
         public List<Book> Search_Book(string ten_sach)

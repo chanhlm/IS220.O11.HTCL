@@ -45,7 +45,7 @@ namespace IS220.O11.HTCL.Models
             this.sl_giohang = sl_giohang;
             this.sodt = sodt;
             this.tinhtrang = tinhtrang;
-            Phanquyen = phanquyen;
+            this.Phanquyen = phanquyen;
         }
     }
 }

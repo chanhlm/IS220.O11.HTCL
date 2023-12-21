@@ -1120,7 +1120,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                var str = "select * from accounts where email=@email and matkhau=@password and phanquyen='admin'";
+                var str = "select * from accounts where email = @email and matkhau = @password and phanquyen = 'admin'";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("email", email);
                 cmd.Parameters.AddWithValue("password", password);
@@ -1133,12 +1133,13 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                         admin_Accounts.Hoten = reader["hoten"].ToString();
                         admin_Accounts.Matkhau = reader["matkhau"].ToString();
                         admin_Accounts.Phanquyen = reader["phanquyen"].ToString();
+                        return admin_Accounts;
                     }
                     reader.Close();
                 }
                 conn.Close();
             }
-            return admin_Accounts;
+            return null;
         }
 
 
