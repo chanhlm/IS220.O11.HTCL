@@ -103,7 +103,7 @@ namespace IS220.O11.HTCL.Controllers
                 ViewBag.status = "Success";
                 List<object> list = context.Cart(usersession.Matk);
                 ViewBag.ListCart = list;
-                ViewBag.Tentk = usersession.Email;
+                ViewBag.Email = usersession.Email;
                 ViewBag.Hoten = usersession.Hoten;
                 ViewBag.Diachi = usersession.Diachi;
                 ViewBag.Sodt = usersession.Sodt;
@@ -185,14 +185,14 @@ namespace IS220.O11.HTCL.Controllers
 
         }
 
-        public IActionResult capnhatdiachi(int Matk, string Sodt, string Diachi, string Hoten)
+        public IActionResult capnhatdiachi(string Sodt, string Diachi, string Hoten, string Email)
         {
             int count;
             StoreContext context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
-            count = context.capnhatdiachi(Matk, Sodt, Diachi, Hoten);
+            count = context.capnhatdiachi(Email, Sodt, Diachi, Hoten);
             if (count > 0)
             {
-                return Redirect("/Client/taikhoan?tentk=" + Matk);
+                return Redirect("/Client/taikhoan?tentk=" + Email);
             }
             else
             {
@@ -201,14 +201,14 @@ namespace IS220.O11.HTCL.Controllers
 
         }
 
-        public IActionResult capnhatmatkhau(int Matk, string Matkhau)
+        public IActionResult capnhatmatkhau(string Email, string Matkhau)
         {
             int count;
             StoreContext context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
-            count = context.capnhatmatkhau(Matk, Matkhau);
+            count = context.capnhatmatkhau(Email, Matkhau);
             if (count > 0)
             {
-                return Redirect("/Client/taikhoan?tentk=" + Matk);
+                return Redirect("/Client/taikhoan?tentk=" + Email);
             }
             else
             {

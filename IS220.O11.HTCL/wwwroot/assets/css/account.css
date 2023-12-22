@@ -87,7 +87,7 @@
     }
 
 .account__nav-list-link--active {
-    color: var(--blue-color);
+    color: var(--black-color);
     cursor: pointer;
 }
 

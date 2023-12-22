@@ -175,7 +175,7 @@ namespace IS220.O11.HTCL.Models
             {
                 conn.Open();
                 string str = "insert into accounts (`diachi`, `diem`, `email`, `gioitinh`, `hoten`, `matkhau`, `ngaysinh`, `ngaytao`, `sl_giohang`, `sodt`,`tinhtrang` " +
-                    ") values(@diachi, @diem, @email, @gioitinh, @hoten, @matkhau, @ngaysinh, @ngaytao, @sl_giohang, @sodt, @tinhtrang)";
+                    ") values(@diachi, @diem, @email, @gioitinh, @hoten, @matkhau, @ngaysinh, NOW(), @sl_giohang, @sodt, @tinhtrang)";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("diachi", value);
                 cmd.Parameters.AddWithValue("email", value);
@@ -186,7 +186,6 @@ namespace IS220.O11.HTCL.Models
                 cmd.Parameters.AddWithValue("hoten", value);
                 cmd.Parameters.AddWithValue("matkhau", kh.Matkhau);
                 cmd.Parameters.AddWithValue("ngaysinh", value);
-                cmd.Parameters.AddWithValue("ngaytao", ngaytao);
                 cmd.Parameters.AddWithValue("sl_giohang", sl);
                 cmd.Parameters.AddWithValue("tinhtrang", tinhtrang);
                 return (cmd.ExecuteNonQuery());
@@ -242,22 +241,23 @@ namespace IS220.O11.HTCL.Models
                 cmd.Parameters.AddWithValue("email", email);
                 using (var reader = cmd.ExecuteReader())
                 {
-                    reader.Read();
-                    tk.Matk = Convert.ToInt32(reader["Matk"]);
-                    tk.Diachi = reader["diachi"].ToString();
-                    tk.Tinhtrang = reader["tinhtrang"].ToString();
-                    tk.Email = reader["email"].ToString();
-                    tk.Matkhau = reader["matkhau"].ToString();
-                    tk.Gioitinh = reader["gioitinh"].ToString();
-                    tk.Sodt = reader["sodt"].ToString();
-                    tk.Hoten = reader["hoten"].ToString();
-                    tk.Diem = Convert.ToInt32(reader["diem"]);
-                    tk.Sl_giohang = Convert.ToInt32(reader["sl_giohang"]);
-                    /*    tk.Ngaytao = Convert.ToDateTime(reader["ngaytao"]);*/
-                    tk.Ngaysinh = Convert.ToDateTime(reader["ngaysinh"]);
+                    while (reader.Read())
+                    {
+                        tk.Matk = Convert.ToInt32(reader["Matk"]);
+                        tk.Diachi = reader["diachi"].ToString();
+                        tk.Tinhtrang = reader["tinhtrang"].ToString();
+                        tk.Email = reader["email"].ToString();
+                        tk.Matkhau = reader["matkhau"].ToString();
+                        tk.Gioitinh = reader["gioitinh"].ToString();
+                        tk.Sodt = reader["sodt"].ToString();
+                        tk.Hoten = reader["hoten"].ToString();
+                        tk.Diem = Convert.ToInt32(reader["diem"]);
+                        tk.Sl_giohang = Convert.ToInt32(reader["sl_giohang"]);
+                        /*    tk.Ngaytao = Convert.ToDateTime(reader["ngaytao"]);*/
+                        tk.Ngaysinh = Convert.ToDateTime(reader["ngaysinh"]);
+                    }
                 }
             }
-
             return tk;
         }
 
@@ -351,7 +351,6 @@ namespace IS220.O11.HTCL.Models
                         client_Accounts.Diem = Convert.ToInt32(reader["diem"]);
                         client_Accounts.Email = reader["email"].ToString();
                         client_Accounts.Gioitinh = reader["gioitinh"].ToString();
-                        client_Accounts.Hoten = reader["hoten"].ToString();
                         client_Accounts.Matk = Convert.ToInt32(reader["matk"]);
                         client_Accounts.Matkhau = reader["matkhau"].ToString();
                         client_Accounts.Ngaysinh = DateTime.Parse(reader["ngaysinh"].ToString());
@@ -359,7 +358,7 @@ namespace IS220.O11.HTCL.Models
                         client_Accounts.Sl_giohang = Convert.ToInt32(reader["sl_giohang"]);
                         client_Accounts.Sodt = reader["sodt"].ToString();
                         client_Accounts.Tinhtrang = reader["tinhtrang"].ToString();
-                        client_Accounts.Tentk = reader["hoten"].ToString();
+                        client_Accounts.Hoten = reader["hoten"].ToString();
                         client_Accounts.Phanquyen = reader["phanquyen"].ToString();
                         return client_Accounts;
                     }
@@ -794,31 +793,31 @@ namespace IS220.O11.HTCL.Models
 
         }
 
-        public int capnhatdiachi(int Matk, string Sodt, string Diachi, string Hoten)
+        public int capnhatdiachi(string Email, string Sodt, string Diachi, string Hoten)
         {
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
                 string str = "update accounts set hoten = @hoten, sodt = @sodt, diachi = @diachi where email = @email";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
-                cmd.Parameters.AddWithValue("matk", Matk);
                 cmd.Parameters.AddWithValue("sodt", Sodt);
                 cmd.Parameters.AddWithValue("diachi", Diachi);
                 cmd.Parameters.AddWithValue("hoten", Hoten);
+                cmd.Parameters.AddWithValue("email", Email);
 
                 return (cmd.ExecuteNonQuery());
             }
 
         }
 
-        public int capnhatmatkhau(int Matk, string Matkhau)
+        public int capnhatmatkhau(string Email, string Matkhau)
         {
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
                 string str = "update accounts set matkhau = @matkhau where email = @email";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
-                cmd.Parameters.AddWithValue("matk", Matk);
+                cmd.Parameters.AddWithValue("email", Email);
                 cmd.Parameters.AddWithValue("matkhau", Matkhau);
 
                 return (cmd.ExecuteNonQuery());
