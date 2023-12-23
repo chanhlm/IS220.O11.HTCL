@@ -7,11 +7,11 @@ namespace IS220.O11.HTCL.Models
 {
     public class comment
     {
-        private string matk, masach, binhluan;
+        private string email, masach, binhluan;
         private int sosao;
         private DateTime ngaybl;
 
-        public string Matk { get => matk; set => matk = value; }
+        public string Email { get => email; set => email = value; }
         public string Masach { get => masach; set => masach = value; }
         public string Binhluan { get => binhluan; set => binhluan = value; }
         public int Sosao { get => sosao; set => sosao = value; }
@@ -19,9 +19,9 @@ namespace IS220.O11.HTCL.Models
 
         public comment() {  }
 
-        public comment(string MATK, string MASACH, string BINHLUAN, DateTime NGAYBL, int SOSAO)
+        public comment(string email, string MASACH, string BINHLUAN, DateTime NGAYBL, int SOSAO)
         {
-            this.matk = MATK;
+            this.email = email;
             this.masach = MASACH; ;
             this.binhluan = BINHLUAN;
             this.ngaybl = NGAYBL;

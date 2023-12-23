@@ -107,8 +107,8 @@
                                 {
                                     <img class="header__navbar-user-img" src="@ViewBag.avatar" alt="">
                                 }
-                                <input class="ma-tai-khoan" value="@ViewBag.infor.Matk" type="hidden" />
-                                <a href="/Client/taikhoan?tentk=@ViewBag.infor.Email"><p class="header__navbar-user-name header__navbar-item--link ten-dang-nhap">@ViewBag.infor.Hoten</p><a>
+                                <input class="ma-tai-khoan" value="@ViewBag.infor.Email" type="hidden" />
+                                <a href="/Client/taikhoan?email=@ViewBag.infor.Email"><p class="header__navbar-user-name header__navbar-item--link ten-dang-nhap">@ViewBag.infor.Hoten</p><a>
                             </li>
                             <li class="header__navbar-item">
                                 <a asp-controller="Client" asp-action="Logout" class="header__navbar-item--link">

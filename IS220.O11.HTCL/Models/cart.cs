@@ -7,17 +7,17 @@ namespace IS220.O11.HTCL.Models
 {
     public class cart
     {
-        private string matk, masach;
+        private string email, masach;
         private int soluong;
 
-        public string Matk { get => matk; set => matk = value; }
+        public string Email { get => email; set => email = value; }
         public string Masach { get => masach; set => masach = value; }
         public int Soluong { get => soluong; set => soluong = value; }
 
         public cart() { }
-        public cart(string matk, string masach, int soluong)
+        public cart(string email, string masach, int soluong)
         {
-            this.matk = matk;
+            this.email = email;
             this.masach = masach;
             this.soluong = soluong;
         }

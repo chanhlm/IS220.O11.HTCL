@@ -229,7 +229,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                             Gioitinh = reader["gioitinh"].ToString(),
                             Hoten = reader["hoten"].ToString(),
                             Matkhau = reader["matkhau"].ToString(),
-                            Ngaytao = Convert.ToDateTime(reader["ngaytao"]),
+                            Ngaylap = Convert.ToDateTime(reader["ngaytao"]),
                             Tinhtrang = reader["tinhtrang"].ToString(),
                             Sodt = reader["sodt"].ToString(),
                             Ngaysinh = Convert.ToDateTime(reader["ngaysinh"]),
@@ -270,7 +270,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                             Gioitinh = reader["gioitinh"].ToString(),
                             Hoten = reader["hoten"].ToString(),
                             Matkhau = reader["matkhau"].ToString(),
-                            Ngaytao = Convert.ToDateTime(reader["ngaytao"]),
+                            Ngaylap = Convert.ToDateTime(reader["ngaylap"]),
                             Tinhtrang = reader["tinhtrang"].ToString(),
                             Sodt = reader["sodt"].ToString(),
                             Ngaysinh = Convert.ToDateTime(reader["ngaysinh"]),
@@ -339,7 +339,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                         {
                            
                             Makm = Convert.ToInt32(reader["makm"]),
-                            Matk = Convert.ToInt32(reader["matk"]),
+                            Email = reader["email"].ToString(),
 
                         });
                     }
@@ -672,55 +672,48 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                string str = "select * from order";
+                string str = "select * from orders";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
+
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         list.Add(new order()
                         {
+                            Madh = reader["madh"] != DBNull.Value ? Convert.ToInt32(reader["madh"]) : 0,
+                            Email = reader["email"] != DBNull.Value ? reader["email"].ToString() : null,
+                            Makm = reader["makm"] != DBNull.Value ? Convert.ToInt32(reader["makm"]) : 0,
 
-                            Madh = Convert.ToInt32(reader["madh"]),
-                            Matk = Convert.ToInt32(reader["matk"]),
-                            Makm = Convert.ToInt32(reader["makm"]),
+                            Tienship = reader["tienship"] != DBNull.Value ? Convert.ToInt32(reader["tienship"]) : 0,
+                            Phanhoi = reader["phanhoi"] != DBNull.Value ? reader["phanhoi"].ToString() : "",
+                            Tinhtrangdonhang = reader["tinhtrangdonhang"] != DBNull.Value ? reader["tinhtrangdonhang"].ToString() : "",
+                            Tinhtrangthanhtoan = reader["tinhtrangthanhtoan"] != DBNull.Value ? reader["tinhtrangthanhtoan"].ToString() : "",
+                            Tongtien = reader["tongtien"] != DBNull.Value ? Convert.ToInt32(reader["tongtien"]) : 0,
+                            Hinhthucthanhtoan = reader["hinhthucthanhtoan"] != DBNull.Value ? reader["hinhthucthanhtoan"].ToString() : "",
 
-                            Tienship = Convert.ToInt32(reader["tienship"]),
-                            Phanhoi = reader["phanhoi"].ToString(),
-                            Tinhtrangdonhang = reader["tinhtrangdonhang"].ToString(),
-                            Tinhtrangthanhtoan = reader["tinhtrangthanhtoan"].ToString(),
-                            Tongtien = Convert.ToInt32(reader["tongtien"]),
-                            Hinhthucthanhtoan = reader["hinhthucthanhtoan"].ToString(),
-
-                               Ngaycapnhat = Convert.ToDateTime(reader["ngaycapnhat"]),
-                               Ngaylap = Convert.ToDateTime(reader["ngaylap"]),
-
-
+                            Ngaycapnhat = reader["ngaycapnhat"] != DBNull.Value ? Convert.ToDateTime(reader["ngaycapnhat"]) : DateTime.MinValue,
+                            Ngaylap = reader["ngaylap"] != DBNull.Value ? Convert.ToDateTime(reader["ngaylap"]) : DateTime.MinValue,
                         });
                     }
-                    reader.Close();
                 }
-
-                conn.Close();
-
             }
+
             return list;
         }
 
-         public List<order> FilterDonHang(DateTime Start, DateTime End)
+
+        public List<order> FilterDonHang(DateTime Start, DateTime End)
         {
             List<order> list = new List<order>();
 
             using (MySqlConnection conn = GetConnection())
             {
-
-                
-
                 string start = string.Format("{0:yyyy/MM/dd}", Convert.ToDateTime(Start));
                 string end = string.Format("{0:yyyy/MM/dd}", Convert.ToDateTime(End));
 
                 conn.Open();
-                string str = "select * from order where (ngaylap BETWEEN @start AND @end)";
+                string str = "select * from orders where (ngaylap BETWEEN @start AND @end)";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("start", start);
                 cmd.Parameters.AddWithValue("end", end);
@@ -732,7 +725,8 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                         {
 
                             Madh = Convert.ToInt32(reader["madh"]),
-                            Matk = Convert.ToInt32(reader["matk"]),
+                            Email = reader["Email"].ToString(),
+
                             Makm = Convert.ToInt32(reader["makm"]),
 
                             Tienship = Convert.ToInt32(reader["tienship"]),
@@ -763,7 +757,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                var str = "select * from order where madh=@Id";
+                var str = "select * from orders where madh=@Id";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("Id", Id);
                 using (var reader = cmd.ExecuteReader())
@@ -773,7 +767,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                         kh = new order()
                         {
                             Madh = Convert.ToInt32(reader["madh"]),
-                            Matk = Convert.ToInt32(reader["matk"]),
+                            Email = reader["email"].ToString(),
                             Makm = Convert.ToInt32(reader["makm"]),
 
                             Tienship = Convert.ToInt32(reader["tienship"]),

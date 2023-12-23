@@ -7,8 +7,8 @@ namespace IS220.O11.HTCL.Models
 {
     public class account
     {
-        private string tentk, diachi, email, giohang, gioitinh, hoten, matkhau,  sodt, tinhtrang, phanquyen;
-        private DateTime ngaysinh, ngaytao;
+        private string diachi, email, giohang, gioitinh, hoten, matkhau,  sodt, tinhtrang, phanquyen;
+        private DateTime ngaysinh, ngaylap;
         private int diem, sl_giohang;
         private int matk;
 
@@ -21,15 +21,16 @@ namespace IS220.O11.HTCL.Models
         public int Matk { get => matk; set => matk = value; }
         public string Matkhau { get => matkhau; set => matkhau = value; }
         public DateTime Ngaysinh { get => ngaysinh; set => ngaysinh = value; }
-        public DateTime Ngaytao { get => ngaytao; set => ngaytao = value; }
+        public DateTime Ngaylap { get => ngaylap; set => ngaylap = value; }
         public int Sl_giohang { get => sl_giohang; set => sl_giohang = value; }
         public string Sodt { get => sodt; set => sodt = value; }
         public string Tinhtrang { get => tinhtrang; set => tinhtrang = value; }
-        public string Tentk { get => tentk; set => tentk = value; }
         public string Phanquyen { get => phanquyen; set => phanquyen = value; }
 
+
+
         public account() {  }
-        public account(string tentk, string diachi, int diem, string email, string giohang, string gioitinh, string hoten, int matk, string matkhau, DateTime ngaysinh, DateTime ngaytao, int sl_giohang, string sodt, string tinhtrang, string phanquyen)
+        public account( string diachi, int diem, string email, string giohang, string gioitinh, string hoten, int matk, string matkhau, DateTime ngaysinh, DateTime ngaytao, int sl_giohang, string sodt, string tinhtrang, string phanquyen)
         {
             this.diachi = diachi;
             this.diem = diem;
@@ -38,10 +39,9 @@ namespace IS220.O11.HTCL.Models
             this.gioitinh = gioitinh;
             this.hoten = hoten;
             this.matk = matk;
-            this.tentk = tentk;
             this.matkhau = matkhau;
             this.ngaysinh = ngaysinh;
-            this.ngaytao = ngaytao;
+            this.ngaylap = ngaytao;
             this.sl_giohang = sl_giohang;
             this.sodt = sodt;
             this.tinhtrang = tinhtrang;

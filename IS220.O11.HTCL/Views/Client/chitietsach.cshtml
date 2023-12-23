@@ -8,816 +8,779 @@
         return a;
     }
 }
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DaBook Shop</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-          integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
-    <link rel="stylesheet" href="~/assets/css/base.css" />
-    <link rel="stylesheet" href="~/assets/css/book_detail.css" />
-    <link rel="stylesheet"
-          href="~/assets/fonts/themify-icons/themify-icons.css" />
-    <link rel="stylesheet"
-          href="~/assets/fonts/fontawesome-free-5.15.4/fontawesome-free-5.15.4-web/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,400&display=swap"
-          rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
-    <link rel="stylesheet" href="http://example.com/foobar/fonts/glyphicons-halflings-regular.woff">
+<link rel="stylesheet" href="~/assets/css/base.css" />
+<link rel="stylesheet" href="~/assets/css/main.css" />
+<link rel="stylesheet" href="~/assets/css/book_detail.css" />
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-    <div class="pd-wrap">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
-
-</head>
-
-<body>
-
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <div class="container" style="background-color: #fff; border-radius: 4px;  margin-bottom: 20px">
-        <div class="row">
-            <div class="col-md-6">
-                <div id="slider" class=" product-slider">
-                    <div class="item">
-                        <img class="hinhanh" src="@ViewBag.book.Hinhanh" style="max-height: 480px !important; max-width: 540px;" />
-                    </div>
+<div class="container" style="background-color: #fff; border-radius: 4px;  margin-bottom: 20px">
+    <div class="row">
+        <div class="col-md-6">
+            <div id="slider" class=" product-slider">
+                <div class="item">
+                    <img class="hinhanh" src="@ViewBag.book.Hinhanh" style="max-height: 480px !important; max-width: 540px;" />
                 </div>
-
-            </div>
-            <div class="col-md-6" style="margin-left: -30px">
-                <div class="product-dtl">
-                    <div class="product-info">
-                        <div class="product-name" name="tensach">
-                            <p class="ma-sach" hidden>@ViewBag.book.Masach</p>
-                            <h1><b class="tensach">@ViewBag.book.Tensach</b></h1>
-                        </div>
-
-                        <div class="product-price-discount"><span class="giaban" name="giaban">@change(@ViewBag.book.Giaban) đ</span><span class="line-through">@change(@ViewBag.book.Giagoc) đ</span></div>
-                        <div class="review-star line-through">
-                        </div>
-                        <p>Tác giả: <span>@ViewBag.book.Tacgia</span> </p>
-                        <p>Thể loại: <span>@ViewBag.book.Theloai</span> </p>
-                        <p>Nhà xuất bản: <span>View</span> </p>
-
-                        <div class="product-count">
-                            <label for="size">Số lượng</label>
-                            <form class="display-flex">
-                                <div class="qtyminus">-</div>
-                                <input type="text" name="soluong" value="1" class="soluong qty">
-                                <div class="qtyplus">+</div>
-                            </form>
-                            @if (ViewBag.Status == "Success")
-                            {
-                                <a class="add-to-cart round-black-btn">Thêm vào giỏ hàng</a>
-                            }
-                            else
-                            {
-                                <a onclick="show()" class="round-black-btn">Thêm vào giỏ hàng</a>
-
-                            }
-
-                        </div>
-                    </div>
-                </div>
-                <div class="info-item col-auto border" style="position: absolute; top: 200px; right: 20px; border-radius: 4px; border: 1px solid black; width: 244px !important; ">
-                    <div class="info-store">
-                        <img class="info-logo-img" src="~/assets/img/logo.png" alt="">
-                        <span class="info-label">DaBook Store</span>
-                    </div>
-                    <div class="info-detail">
-                        <div class="info-delivery">
-                            <i class="fas fa-truck"></i>
-                            <span>Chính sách vận chuyển</span>
-                        </div>
-                        <ul class="list-info">
-                            <li class="list-info-item">
-                                <i class="fas fa-city"></i>
-                                Nội thành: TP HCM
-                                <div class="info-prices">
-                                    <div class="info-price">
-                                        <span>20.000 đ</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-info-item">
-                                <i class="fas fa-map-marked-alt"></i>
-                                Ngoại thành
-                                <div class="info-prices">
-                                    <div class="info-price">
-                                        <span>40.000 đ</span>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
             </div>
 
-
-            <div class="swiper featured-slider" style="margin-top: 100px">
-                <p style="font-size: 22px; font-weight: 500">Sản phẩm tương tự</p>
-                <div class="swiper-wrapper" style="height: auto; width: 100%">
-                    @foreach (var item in ViewBag.books)
-                    {
-                        <div class="grid__column-2 swiper-slide box">
-                            <a class="home-product-item" href="/Client/chitietsach?name=@item.Masach">
-                                <div class="home-product-item__img"
-                                     style="background-image: url(@item.Hinhanh);">
-                                </div>
-                                <h4 class="home-product-item__name d-inline-block" style="display:-webkit-box">@item.Tensach</h4>
-                                <div class="home-product-item__price">
-                                    <span class="home-product-item__price-old">@change(@item.Giagoc) đ</span>
-                                    <span class="home-product-item__price-current">@change(@item.Giaban) đ</span>
-                                </div>
-                                <div class="home-product-item__action">
-                                    <span class="home-product-item__like home-product-item--liked">
-                                        <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                        <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                    </span>
-                                    <div class="home-product-item__rating">
-                                        <i class="home-product-item__star--gold fas fa-star"></i>
-                                        <i class="home-product-item__star--gold fas fa-star"></i>
-                                        <i class="home-product-item__star--gold fas fa-star"></i>
-                                        <i class="home-product-item__star--gold fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <span class="home-product-item__sold">57 đã bán</span>
-                                </div>
-
-                                <div class="home-product-item__favourite">
-                                    <i class="fas fa-check"></i>
-                                    <span>Yêu thích</span>
-                                </div>
-                                <div class="home-product-item__sale-off">
-                                    <span class="home-product-item__sale-off-percent">@item.Giamgia%</span>
-                                    <span class="home-product-item__sale-off-label">GIẢM</span>
-                                </div>
-                            </a>
-                        </div>
-                    }
-                </div>
-                <div class="swiper-button-next" style="height: 24px !important; width: 18px !important; font-weight:700; background-size: 15px 20px; color: transparent; "></div>
-                <div class="swiper-button-prev" style="height: 24px !important; width: 18px !important; font-weight:700; background-size: 15px 20px; color: transparent; "></div>
-            </div>
         </div>
-
-        <!-- /.recommended-items-->
-        <div class="product-description mb-5">
-            <h2 class="mb-5">Thông tin chi tiết</h2>
-            <dl class="row mb-5">
-                <dt class="col-sm-3">Tên sách</dt>
-                <dd class="col-sm-9">@ViewBag.book.Tensach</dd>
-                <dt class="col-sm-3">Tác giả</dt>
-                <dd class="col-sm-9">@ViewBag.book.Tacgia</dd>
-                <dt class="col-sm-3">Thể loại</dt>
-                <dd class="theloai col-sm-9">@ViewBag.book.Theloai</dd>
-                <dt class="col-sm-3">Nhà xuất bản</dt>
-                <dd class="col-sm-9">@ViewBag.book.Nxb</dd>
-                <dt class="col-sm-3">Năm xuất bản</dt>
-                <dd class="col-sm-9">@ViewBag.book.Namxb.Day/@ViewBag.book.Namxb.Month/@ViewBag.book.Namxb.Year</dd>
-                <dt class="col-sm-3">Ngôn ngữ</dt>
-                <dd class="col-sm-9">Tiếng Việt</dd>
-                <dt class="col-sm-3">Hình thức bìa</dt>
-                <dd class="col-sm-9">@ViewBag.book.Hinhthuc</dd>
-            </dl>
-        </div>
-
-        <div class="product-info-tabs">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Mô tả</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Đánh giá</a>
-                </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-                    @ViewBag.book.Mota
-                </div>
-                <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
-                    <div class="review-heading">Đánh giá sản phẩm</div>
-
-                    <!-- <form class="review-form">
-            <div class="form-group">
-                <label>Đánh giá của bạn</label>
-                <div class="reviews-counter">
-                    <div class="rate">
-                        <input type="radio" id="star5" name="rate" value="5" />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
-                        <label for="star1" title="text">1 star</label>
+        <div class="col-md-6" style="margin-left: -30px">
+            <div class="product-dtl">
+                <div class="product-info">
+                    <div class="product-name" name="tensach">
+                        <p class="ma-sach" hidden>@ViewBag.book.Masach</p>
+                        <h1><b class="tensach">@ViewBag.book.Tensach</b></h1>
                     </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label></label>
-                <textarea class="form-control" id="review-text" rows="3"></textarea>
-            </div>
-            <a href="" class="review-btn round-black-btn">Submit Review</a>
-        </form> -->
 
-                    <div class="card" style="margin-top:15px;">
-                        <div class="card-body">
-                            <h3 class="text-dark">Đánh giá của bạn</h3>
-                            <div class="star-area">
-                                <h1>
-                                    <i class="fa fa-star-o" aria-hidden="true" id="star_review" data-number="1"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true" id="star_review" data-number="2"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true" id="star_review" data-number="3"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true" id="star_review" data-number="4"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true" id="star_review" data-number="5"></i>
-                                </h1>
-                            </div>
-                            <div class="review-area" style="display:none;">
-                                <form>
-                                    <input type="hidden" name="name" value="@ViewBag.book.Masach" />
-                                    <input type="hidden" id="star_input" value="0">
-                                    <textarea class="form-control" rows="3" style="resize: none; font-size: 14px" id="review-text"></textarea>
-                                    <span class="float-right" style="margin-top:15px;line-height:35px;">
-                                        <span id="stars_confirm">
-                                        </span>
-                                        <button class="btn btn-success float-right review-btn" style="margin-left:20px; font-size:18px">Submit</button>
-                                    </span>
-                                </form>
-                            </div>
-                        </div>
+                    <div class="product-price-discount"><span class="giaban" name="giaban">@change(@ViewBag.book.Giaban) đ</span><span class="line-through">@change(@ViewBag.book.Giagoc) đ</span></div>
+                    <div class="review-star line-through">
                     </div>
-                    <div class="reviews" style="margin-top: 20px; margin-right: 16px; margin-left: 16px">
-                        @foreach (comment item in ViewBag.comments)
+                    <p>Tác giả: <span>@ViewBag.book.Tacgia</span> </p>
+                    <p>Thể loại: <span>@ViewBag.book.Theloai</span> </p>
+                    <p>Nhà xuất bản: <span>View</span> </p>
+
+                    <div class="product-count">
+                        <label for="size">Số lượng</label>
+                        <form class="display-flex">
+                            <div class="qtyminus">-</div>
+                            <input type="text" name="soluong" value="1" class="soluong qty">
+                            <div class="qtyplus">+</div>
+                        </form>
+                        @if (ViewBag.Status == "Success")
                         {
-                            <div class="row blockquote review-item">
-                                <div class="col-md-3 text-center">
-                                    <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
-                                    <div class="caption">
-                                        @*   {{!-- <small>by <a href="#joe">{{this.matk}}</a></small> --}}*@
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <h4>@item.Matk</h4>
-                                    <div class="review-star">
-                                        @if (@item.Sosao == 1)
-                                        {
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                        }
-                                        else if (@item.Sosao == 2)
-                                        {
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                        }
-                                        else if (@item.Sosao == 3)
-                                        {
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                        }
-                                        else if (@item.Sosao == 4)
-                                        {
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                        }
-                                        else if (@item.Sosao == 5)
-                                        {
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                        }
-
-                                    </div>
-
-                                    <div class="ratebox text-center" data-id="0" data-rating="5"></div>
-
-                                    <p class="review-text">@item.Binhluan</p>
-                                    <small class="review-date" style="font-size: 12px; color: #666">@item.Ngaybl</small>
-                                </div>
-                            </div>
+                            <a class="add-to-cart round-black-btn">Thêm vào giỏ hàng</a>
                         }
-                    </div>  
+                        else
+                        {
+                            <a onclick="show()" class="round-black-btn">Thêm vào giỏ hàng</a>
+
+                        }
+
                     </div>
                 </div>
+            </div>
+            <div class="info-item col-auto border" style="position: absolute; top: 200px; right: 20px; border-radius: 4px; border: 1px solid black; width: 244px !important; ">
+                <div class="info-store">
+                    <img class="info-logo-img" src="~/assets/img/logo.png" alt="">
+                    <span class="info-label">DaBook Store</span>
+                </div>
+                <div class="info-detail">
+                    <div class="info-delivery">
+                        <i class="fas fa-truck"></i>
+                        <span>Chính sách vận chuyển</span>
+                    </div>
+                    <ul class="list-info">
+                        <li class="list-info-item">
+                            <i class="fas fa-city"></i>
+                            Nội thành: TP HCM
+                            <div class="info-prices">
+                                <div class="info-price">
+                                    <span>20.000 đ</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-info-item">
+                            <i class="fas fa-map-marked-alt"></i>
+                            Ngoại thành
+                            <div class="info-prices">
+                                <div class="info-price">
+                                    <span>40.000 đ</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="swiper featured-slider" style="margin-top: 100px">
+            <p style="font-size: 22px; font-weight: 500">Sản phẩm tương tự</p>
+            <div class="swiper-wrapper" style="height: auto; width: 100%">
+                @foreach (var item in ViewBag.books)
+                {
+                    <div class="grid__column-2 swiper-slide box">
+                        <a class="home-product-item" href="/Client/chitietsach?name=@item.Masach">
+                            <div class="home-product-item__img"
+                                 style="background-image: url(@item.Hinhanh);">
+                            </div>
+                            <h4 class="home-product-item__name d-inline-block" style="display:-webkit-box">@item.Tensach</h4>
+                            <div class="home-product-item__price">
+                                <span class="home-product-item__price-old">@change(@item.Giagoc) đ</span>
+                                <span class="home-product-item__price-current">@change(@item.Giaban) đ</span>
+                            </div>
+                            <div class="home-product-item__action">
+                                <span class="home-product-item__like home-product-item--liked">
+                                    <i class="home-product-item__like-icon-empty far fa-heart"></i>
+                                    <i class="home-product-item__like-icon-fill fas fa-heart"></i>
+                                </span>
+                                <div class="home-product-item__rating">
+                                    <i class="home-product-item__star--gold fas fa-star"></i>
+                                    <i class="home-product-item__star--gold fas fa-star"></i>
+                                    <i class="home-product-item__star--gold fas fa-star"></i>
+                                    <i class="home-product-item__star--gold fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="home-product-item__sold">57 đã bán</span>
+                            </div>
+
+                            <div class="home-product-item__favourite">
+                                <i class="fas fa-check"></i>
+                                <span>Yêu thích</span>
+                            </div>
+                            <div class="home-product-item__sale-off">
+                                <span class="home-product-item__sale-off-percent">@item.Giamgia%</span>
+                                <span class="home-product-item__sale-off-label">GIẢM</span>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+            <div class="swiper-button-next" style="height: 24px !important; width: 18px !important; font-weight:700; background-size: 15px 20px; color: transparent; "></div>
+            <div class="swiper-button-prev" style="height: 24px !important; width: 18px !important; font-weight:700; background-size: 15px 20px; color: transparent; "></div>
         </div>
     </div>
 
-    <style>
+    <!-- /.recommended-items-->
+    <div class="product-description mb-5">
+        <h2 class="mb-5">Thông tin chi tiết</h2>
+        <dl class="row mb-5">
+            <dt class="col-sm-3">Tên sách</dt>
+            <dd class="col-sm-9">@ViewBag.book.Tensach</dd>
+            <dt class="col-sm-3">Tác giả</dt>
+            <dd class="col-sm-9">@ViewBag.book.Tacgia</dd>
+            <dt class="col-sm-3">Thể loại</dt>
+            <dd class="theloai col-sm-9">@ViewBag.book.Theloai</dd>
+            <dt class="col-sm-3">Nhà xuất bản</dt>
+            <dd class="col-sm-9">@ViewBag.book.Nxb</dd>
+            <dt class="col-sm-3">Năm xuất bản</dt>
+            <dd class="col-sm-9">@ViewBag.book.Namxb.Day/@ViewBag.book.Namxb.Month/@ViewBag.book.Namxb.Year</dd>
+            <dt class="col-sm-3">Ngôn ngữ</dt>
+            <dd class="col-sm-9">Tiếng Việt</dd>
+            <dt class="col-sm-3">Hình thức bìa</dt>
+            <dd class="col-sm-9">@ViewBag.book.Hinhthuc</dd>
+        </dl>
+    </div>
 
-        .round-black-btn:hover {
-            cursor:pointer;
-        }
+    <div class="product-info-tabs">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Mô tả</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Đánh giá</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                @ViewBag.book.Mota
+            </div>
+            <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+                <div class="review-heading">Đánh giá sản phẩm</div>
 
-        .btn {
-            min-width: 180px;
-            max-width: 230px;
-            height: 40px;
-            text-decoration: none;
-            border: none;
-            border-radius: 3px;
-            font-size: 1.5rem;
-            padding: 0 8px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+                <!-- <form class="review-form">
+                    <div class="form-group">
+                        <label>Đánh giá của bạn</label>
+                        <div class="reviews-counter">
+                            <div class="rate">
+                                <input type="radio" id="star5" name="rate" value="5" />
+                                <label for="star5" title="text">5 stars</label>
+                                <input type="radio" id="star4" name="rate" value="4" />
+                                <label for="star4" title="text">4 stars</label>
+                                <input type="radio" id="star3" name="rate" value="3" />
+                                <label for="star3" title="text">3 stars</label>
+                                <input type="radio" id="star2" name="rate" value="2" />
+                                <label for="star2" title="text">2 stars</label>
+                                <input type="radio" id="star1" name="rate" value="1" />
+                                <label for="star1" title="text">1 star</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label></label>
+                        <textarea class="form-control" id="review-text" rows="3"></textarea>
+                    </div>
+                    <a href="" class="review-btn round-black-btn">Submit Review</a>
+                </form> -->
 
-            .btn:hover {
-                background-color: rgba(0,0,0,0.2);
-            }
+                <div class="card" style="margin-top:15px;">
+                    <div class="card-body">
+                        <h3 class="text-dark">Đánh giá của bạn</h3>
+                        <div class="star-area">
+                            <h1>
+                                <i class="fa fa-star-o" aria-hidden="true" id="star_review" data-number="1"></i>
+                                <i class="fa fa-star-o" aria-hidden="true" id="star_review" data-number="2"></i>
+                                <i class="fa fa-star-o" aria-hidden="true" id="star_review" data-number="3"></i>
+                                <i class="fa fa-star-o" aria-hidden="true" id="star_review" data-number="4"></i>
+                                <i class="fa fa-star-o" aria-hidden="true" id="star_review" data-number="5"></i>
+                            </h1>
+                        </div>
+                        <div class="review-area" style="display:none;">
+                            <form>
+                                <input type="hidden" name="name" value="@ViewBag.book.Masach" />
+                                <input type="hidden" id="star_input" value="0">
+                                <textarea class="form-control" rows="3" style="resize: none; font-size: 14px" id="review-text"></textarea>
+                                <span class="float-right" style="margin-top:15px;line-height:35px;">
+                                    <span id="stars_confirm">
+                                    </span>
+                                    <button class="btn btn-success float-right review-btn" style="margin-left:20px; font-size:18px">Submit</button>
+                                </span>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="reviews" style="margin-top: 20px; margin-right: 16px; margin-left: 16px">
+                    @foreach (comment item in ViewBag.comments)
+                    {
+                        <div class="row blockquote review-item">
+                            <div class="col-md-3 text-center">
+                                <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
+                                <div class="caption">
+                                    @*   {{!-- <small>by <a href="#joe">{{this.matk}}</a></small> --}}*@
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <h4>@item.Email</h4>
+                                <div class="review-star">
+                                    @if (@item.Sosao == 1)
+                                    {
+                                        <i class="home-product-item__star--gold fas fa-star"></i>
+                                    }
+                                    else if (@item.Sosao == 2)
+                                    {
+                                        <i class="home-product-item__star--gold fas fa-star"></i>
+                                        <i class="home-product-item__star--gold fas fa-star"></i>
+                                    }
+                                    else if (@item.Sosao == 3)
+                                    {
+                                        <i class="home-product-item__star--gold fas fa-star"></i>
+                                        <i class="home-product-item__star--gold fas fa-star"></i>
+                                        <i class="home-product-item__star--gold fas fa-star"></i>
+                                    }
+                                    else if (@item.Sosao == 4)
+                                    {
+                                        <i class="home-product-item__star--gold fas fa-star"></i>
+                                        <i class="home-product-item__star--gold fas fa-star"></i>
+                                        <i class="home-product-item__star--gold fas fa-star"></i>
+                                        <i class="home-product-item__star--gold fas fa-star"></i>
+                                    }
+                                    else if (@item.Sosao == 5)
+                                    {
+                                        <i class="home-product-item__star--gold fas fa-star"></i>
+                                        <i class="home-product-item__star--gold fas fa-star"></i>
+                                        <i class="home-product-item__star--gold fas fa-star"></i>
+                                        <i class="home-product-item__star--gold fas fa-star"></i>
+                                        <i class="home-product-item__star--gold fas fa-star"></i>
+                                    }
 
-        .btn--primary {
-            color: var(--white-color);
-            background-color: var(--blue-color);
-            cursor: pointer;
-        }
+                                </div>
 
-        .btn .btn--disable {
-            cursor: default;
+                                <div class="ratebox text-center" data-id="0" data-rating="5"></div>
+
+                                <p class="review-text">@item.Binhluan</p>
+                                <small class="review-date" style="font-size: 12px; color: #666">@item.Ngaybl</small>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    .round-black-btn:hover {
+        cursor: pointer;
+    }
+
+    .btn {
+        min-width: 180px;
+        max-width: 230px;
+        height: 40px;
+        text-decoration: none;
+        border: none;
+        border-radius: 3px;
+        font-size: 1.5rem;
+        padding: 0 8px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .btn:hover {
             background-color: rgba(0,0,0,0.2);
         }
-    </style>
+
+    .btn--primary {
+        color: var(--white-color);
+        background-color: var(--blue-color);
+        cursor: pointer;
+    }
+
+    .btn .btn--disable {
+        cursor: default;
+        background-color: rgba(0,0,0,0.2);
+    }
+</style>
 
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript">
-        $('.review-btn').click(function () {
-            event.preventDefault();
-            var now = $('#review-text').val();
-            var sosao = $('#star_input').val();
-            var Matk = $('.ma-tai-khoan').val();
-            var Tentk = $('.ten-dang-nhap').text();
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $('.review-btn').click(function () {
+        event.preventDefault();
+        var now = $('#review-text').val();
+        var sosao = $('#star_input').val();
+        var Matk = $('.ma-tai-khoan').val();
+        var Tentk = $('.ten-dang-nhap').text();
 
-            if (Boolean(Matk) != false) {
-                $.ajax({
-                    type: "GET",
-                    url: '/Client/thembinhluan',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    data: {
-                        Matk: Matk,
-                        Masach: @ViewBag.book.Masach,
-                        Binhluan: now,
-                        Sosao: sosao,
-                    },
-                })
-                var currentdate = new Date();
-                var date = currentdate.getDate() + "/"
-                    + (currentdate.getMonth() + 1) + "/"
-                    + currentdate.getFullYear() + "   "
-                    + currentdate.getHours() + ":"
-                    + currentdate.getMinutes() + ":"
-                    + currentdate.getSeconds();
-                if (sosao == 1) {
-                    $('.reviews').append(`<div class="row blockquote review-item">
-                                <div class="col-md-3 text-center">
-                                    <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
-                                    <div class="caption">
-                                    </div>
+        if (Boolean(Matk) != false) {
+            $.ajax({
+                type: "GET",
+                url: '/Client/thembinhluan',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: {
+                    Matk: Matk,
+                    Masach: @ViewBag.book.Masach,
+                    Binhluan: now,
+                    Sosao: sosao,
+                },
+            })
+            var currentdate = new Date();
+            var date = currentdate.getDate() + "/"
+                + (currentdate.getMonth() + 1) + "/"
+                + currentdate.getFullYear() + "   "
+                + currentdate.getHours() + ":"
+                + currentdate.getMinutes() + ":"
+                + currentdate.getSeconds();
+            if (sosao == 1) {
+                $('.reviews').append(`<div class="row blockquote review-item">
+                            <div class="col-md-3 text-center">
+                                <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
+                                <div class="caption">
                                 </div>
-                                <div class="col-md-9">
-                                    <h4>${Tentk}</h4>
-                                    <div class="review-star">
-                                        <i class="home-product-item__star--gold fas fa-star"></i>
-                                    </div>
-                                    <div class="ratebox text-center" data-id="0" data-rating="5"></div>
-                                    <p class="review-text">${now}</p>
-                                    <small class="review-date" style="font-size: 12px; color: #666">${date}</small>
+                            </div>
+                            <div class="col-md-9">
+                                <h4>${Tentk}</h4>
+                                <div class="review-star">
+                                    <i class="home-product-item__star--gold fas fa-star"></i>
                                 </div>
-                            </div>`);
-                } else if (sosao == 2) {
-                    $('.reviews').append(` <div class="row blockquote review-item">
-                                <div class="col-md-3 text-center">
-                                    <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
-                                    <div class="caption">
-                                    </div>
+                                <div class="ratebox text-center" data-id="0" data-rating="5"></div>
+                                <p class="review-text">${now}</p>
+                                <small class="review-date" style="font-size: 12px; color: #666">${date}</small>
+                            </div>
+                        </div>`);
+            } else if (sosao == 2) {
+                $('.reviews').append(` <div class="row blockquote review-item">
+                            <div class="col-md-3 text-center">
+                                <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
+                                <div class="caption">
                                 </div>
-                                <div class="col-md-9">
-                                    <h4>${Tentk}</h4>
-                                    <div class="review-star">
-                                        <i class="home-product-item__star--gold fas fa-star"></i>
-                                        <i class="home-product-item__star--gold fas fa-star"></i>
-                                    </div>
-                                    <div class="ratebox text-center" data-id="0" data-rating="5"></div>
-                                    <p class="review-text">${now}</p>
-                                    <small class="review-date" style="font-size: 12px; color: #666">${date}</small>
+                            </div>
+                            <div class="col-md-9">
+                                <h4>${Tentk}</h4>
+                                <div class="review-star">
+                                    <i class="home-product-item__star--gold fas fa-star"></i>
+                                    <i class="home-product-item__star--gold fas fa-star"></i>
                                 </div>
-                            </div>`);
-                } else if (sosao == 3) {
-                    $('.reviews').append(` <div class="row blockquote review-item">
-                                <div class="col-md-3 text-center">
-                                    <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
-                                    <div class="caption">
-                                    </div>
+                                <div class="ratebox text-center" data-id="0" data-rating="5"></div>
+                                <p class="review-text">${now}</p>
+                                <small class="review-date" style="font-size: 12px; color: #666">${date}</small>
+                            </div>
+                        </div>`);
+            } else if (sosao == 3) {
+                $('.reviews').append(` <div class="row blockquote review-item">
+                            <div class="col-md-3 text-center">
+                                <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
+                                <div class="caption">
                                 </div>
-                                <div class="col-md-9">
-                                    <h4>${Tentk}</h4>
-                                    <div class="review-star">
-                                        <i class="home-product-item__star--gold fas fa-star"></i>
-                                        <i class="home-product-item__star--gold fas fa-star"></i>
-                                        <i class="home-product-item__star--gold fas fa-star"></i>
-                                    </div>
-                                    <div class="ratebox text-center" data-id="0" data-rating="5"></div>
-                                    <p class="review-text">${now}</p>
-                                    <small class="review-date" style="font-size: 12px; color: #666">${date}</small>
+                            </div>
+                            <div class="col-md-9">
+                                <h4>${Tentk}</h4>
+                                <div class="review-star">
+                                    <i class="home-product-item__star--gold fas fa-star"></i>
+                                    <i class="home-product-item__star--gold fas fa-star"></i>
+                                    <i class="home-product-item__star--gold fas fa-star"></i>
                                 </div>
-                            </div>`);
-                }else if (sosao == 4) {
-                    $('.reviews').append(` <div class="row blockquote review-item">
-                                <div class="col-md-3 text-center">
-                                    <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
-                                    <div class="caption">
-                                    </div>
+                                <div class="ratebox text-center" data-id="0" data-rating="5"></div>
+                                <p class="review-text">${now}</p>
+                                <small class="review-date" style="font-size: 12px; color: #666">${date}</small>
+                            </div>
+                        </div>`);
+            }else if (sosao == 4) {
+                $('.reviews').append(` <div class="row blockquote review-item">
+                            <div class="col-md-3 text-center">
+                                <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
+                                <div class="caption">
                                 </div>
-                                <div class="col-md-9">
-                                    <h4>${Tentk}</h4>
-                                    <div class="review-star">
-                                        <i class="home-product-item__star--gold fas fa-star"></i>
-                                        <i class="home-product-item__star--gold fas fa-star"></i>
-                                        <i class="home-product-item__star--gold fas fa-star"></i>
-                                        <i class="home-product-item__star--gold fas fa-star"></i>
-                                    </div>
-                                    <div class="ratebox text-center" data-id="0" data-rating="5"></div>
-                                    <p class="review-text">${now}</p>
-                                    <small class="review-date" style="font-size: 12px; color: #666">${date}</small>
+                            </div>
+                            <div class="col-md-9">
+                                <h4>${Tentk}</h4>
+                                <div class="review-star">
+                                    <i class="home-product-item__star--gold fas fa-star"></i>
+                                    <i class="home-product-item__star--gold fas fa-star"></i>
+                                    <i class="home-product-item__star--gold fas fa-star"></i>
+                                    <i class="home-product-item__star--gold fas fa-star"></i>
                                 </div>
-                            </div>`);
-                } else {
-                    $('.reviews').append(` <div class="row blockquote review-item">
-                                <div class="col-md-3 text-center">
-                                    <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
-                                    <div class="caption">
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <h4>${Tentk}</h4>
-                                    <div class="review-star">
-                                        <i class="home-product-item__star--gold fas fa-star"></i>
-                                        <i class="home-product-item__star--gold fas fa-star"></i>
-                                        <i class="home-product-item__star--gold fas fa-star"></i>
-                                        <i class="home-product-item__star--gold fas fa-star"></i>
-                                        <i class="home-product-item__star--gold fas fa-star"></i>
-                                    </div>
-                                    <div class="ratebox text-center" data-id="0" data-rating="5"></div>
-                                    <p class="review-text">${now}</p>
-                                    <small class="review-date" style="font-size: 12px; color: #666">${date}</small>
-                                </div>
-                            </div>`);
-                }
-            
+                                <div class="ratebox text-center" data-id="0" data-rating="5"></div>
+                                <p class="review-text">${now}</p>
+                                <small class="review-date" style="font-size: 12px; color: #666">${date}</small>
+                            </div>
+                        </div>`);
             } else {
-                alert("Vui lòng đăng nhập!");
-                event.preventDefault();
+                $('.reviews').append(` <div class="row blockquote review-item">
+                            <div class="col-md-3 text-center">
+                                <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
+                                <div class="caption">
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <h4>${Tentk}</h4>
+                                <div class="review-star">
+                                    <i class="home-product-item__star--gold fas fa-star"></i>
+                                    <i class="home-product-item__star--gold fas fa-star"></i>
+                                    <i class="home-product-item__star--gold fas fa-star"></i>
+                                    <i class="home-product-item__star--gold fas fa-star"></i>
+                                    <i class="home-product-item__star--gold fas fa-star"></i>
+                                </div>
+                                <div class="ratebox text-center" data-id="0" data-rating="5"></div>
+                                <p class="review-text">${now}</p>
+                                <small class="review-date" style="font-size: 12px; color: #666">${date}</small>
+                            </div>
+                        </div>`);
             }
-         })
-			 @* var star = 0;
-		var list = document.querySelectorAll('#star_review');
-        Array.prototype.forEach.call(list, function (element,index) {
-        	star = element.attr('data-number');
-        }); *@
-    </script>
 
-    <script>
-        !function (t) { function a(a, r) { t('.raterater-input[data-id="' + a + '"]').data("input").val(r).change() } function r() { g.each(function () { var a = t(this); if (p.mode == u && ("INPUT" == a.prop("tagName") || "SELECT" == a.prop("tagName"))) { var r = "input-" + y++, e = t('<div class="raterater-input"></div>').attr("data-id", r).attr("data-rating", a.val()).data("input", a); a.attr("data-id", r).attr("data-id", r).attr("data-rating", a.val()).data("input", a).after(e).hide(), l = a = e } l = a; var s = c(a); if (!s) throw "Error: Each raterater element needs a unique data-id attribute."; f[s] = { state: "inactive", stars: null }, "static" === a.css("position") && a.css("position", "relative"), a.addClass("raterater-wrapper"), a.html(""), t.each(["bg", "hover", "rating", "outline", "cover"], function () { a.append(' <div class="raterater-layer raterater-' + this + '-layer"></div>') }); for (var n = 0; n < p.numStars; n++)a.children(".raterater-bg-layer").first().append('<i class="fa fa-star"></i>'), a.children(".raterater-outline-layer").first().append('<i class="fa fa-star-o"></i>'), a.children(".raterater-hover-layer").first().append('<i class="fa fa-star"></i>'), a.children(".raterater-rating-layer").first().append('<i class="fa fa-star"></i>'); p.isStatic || (a.find(".raterater-cover-layer").hover(o, h), a.find(".raterater-cover-layer").mousemove(d), a.find(".raterater-cover-layer").click(i)) }) } function e() { g.each(function () { var a; a = p.mode == u ? t(this).parent().find('.raterater-input[data-id="' + c(this) + '"]') : t(this); var r = (c(a), p.width + "px"), e = Math.floor(p.starWidth / p.starAspect) + "px"; a.css("width", r).css("height", e), a.find(".raterater-layer").each(function () { t(this).css("width", r).css("height", e) }); for (var i = 0; i < p.numStars; i++)t.each(["bg", "hover", "rating", "outline"], function () { a.children(".raterater-" + this + "-layer").first().children("i").eq(i).css("left", i * (p.starWidth + p.spaceWidth) + "px").css("font-size", Math.floor(p.starWidth / p.starAspect) + "px") }); var s = parseFloat(a.attr("data-rating")), d = Math.floor(s), o = s - d; n(a.find(".raterater-rating-layer").first(), d, o) }) } function i(r) { var e = t(r.target).parent(), i = c(e), s = f[i].whole_stars_hover + f[i].partial_star_hover; s = Math.round(100 * s) / 100, f[i].state = "rated", f[i].stars = s, e.find(".raterater-hover-layer").addClass("rated"), "input" != p.mode && void 0 !== window[p.submitFunction] && "function" == typeof window[p.submitFunction] ? window[p.submitFunction](i, s) : a(i, s) } function s(t, a) { var r = Math.floor(t / (p.starWidth + p.spaceWidth)), e = t - r * (p.starWidth + p.spaceWidth); if (e > p.starWidth && (e = p.starWidth), e /= p.starWidth, p.step !== !1) { var i = 1 / p.step; e = Math.round(e * i) / i } f[a].whole_stars_hover = r, f[a].partial_star_hover = e } function n(t, a, r) { for (var e = (c(t.parent()), 0); a > e; e++)t.find("i").eq(e).css("width", p.starWidth + "px"); t.find("i").eq(a).css("width", p.starWidth * r + "px"); for (var e = a + 1; e < p.numStars; e++)t.find("i").eq(e).css("width", "0px") } function d(a) { var r = c(t(a.target).parent()); if ("hover" === f[r].state) { var e = a.offsetX; void 0 === e && (e = a.pageX - t(a.target).offset().left), f[r].stars = s(e, r); var i = t(a.target).parent().children(".raterater-hover-layer").first(); n(i, f[r].whole_stars_hover, f[r].partial_star_hover) } } function o(a) { var r = c(t(a.target).parent()); ("rated" !== f[r].state || p.allowChange) && (f[r].state = "hover", t(a.target).parent().children(".raterater-rating-layer").first().css("display", "none"), t(a.target).parent().children(".raterater-hover-layer").first().css("display", "block")) } function h(a) { var r = t(a.target).parent(), e = c(r); if (t(a.target).parent().children(".raterater-hover-layer").first().css("display", "none"), t(a.target).parent().children(".raterater-rating-layer").first().css("display", "block"), "rated" === f[e].state) { var i = parseFloat(f[e].stars), s = Math.floor(i), d = i - s; return void n(r.find(".raterater-rating-layer").first(), s, d) } f[e].state = "inactive" } function c(a) { return t(a).attr("data-id") } var l, f = {}, p = {}, u = "input", v = "callback", g = null, y = 0; t.fn.raterater = function (a) { if (t.fn.raterater.defaults = { submitFunction: "", allowChange: !1, starWidth: 20, spaceWidth: 5, numStars: 5, isStatic: !1, mode: v, step: !1 }, p = t.extend({}, t.fn.raterater.defaults, a), p.width = p.numStars * (p.starWidth + p.spaceWidth), p.starAspect = .9226, p.step !== !1 && (p.step = parseFloat(p.step), p.step <= 0 || p.step > 1)) throw "Error: step must be between 0 and 1"; return g = this, r(), e(), this } }(jQuery);
+        } else {
+            alert("Vui lòng đăng nhập!");
+            event.preventDefault();
+        }
+     })
+    @* var star = 0;
+    var list = document.querySelectorAll('#star_review');
+    Array.prototype.forEach.call(list, function (element,index) {
+        star = element.attr('data-number');
+    }); *@
+</script>
 
-        $(document).ready(function () {
-            $('.ratebox').raterater({
-                submitFunction: 'rateAlert',
-                allowChange: false,
-                starWidth: 15,
-                spaceWidth: 2,
-                numStars: 3,
-            });
+<script>
+    !function (t) { function a(a, r) { t('.raterater-input[data-id="' + a + '"]').data("input").val(r).change() } function r() { g.each(function () { var a = t(this); if (p.mode == u && ("INPUT" == a.prop("tagName") || "SELECT" == a.prop("tagName"))) { var r = "input-" + y++, e = t('<div class="raterater-input"></div>').attr("data-id", r).attr("data-rating", a.val()).data("input", a); a.attr("data-id", r).attr("data-id", r).attr("data-rating", a.val()).data("input", a).after(e).hide(), l = a = e } l = a; var s = c(a); if (!s) throw "Error: Each raterater element needs a unique data-id attribute."; f[s] = { state: "inactive", stars: null }, "static" === a.css("position") && a.css("position", "relative"), a.addClass("raterater-wrapper"), a.html(""), t.each(["bg", "hover", "rating", "outline", "cover"], function () { a.append(' <div class="raterater-layer raterater-' + this + '-layer"></div>') }); for (var n = 0; n < p.numStars; n++)a.children(".raterater-bg-layer").first().append('<i class="fa fa-star"></i>'), a.children(".raterater-outline-layer").first().append('<i class="fa fa-star-o"></i>'), a.children(".raterater-hover-layer").first().append('<i class="fa fa-star"></i>'), a.children(".raterater-rating-layer").first().append('<i class="fa fa-star"></i>'); p.isStatic || (a.find(".raterater-cover-layer").hover(o, h), a.find(".raterater-cover-layer").mousemove(d), a.find(".raterater-cover-layer").click(i)) }) } function e() { g.each(function () { var a; a = p.mode == u ? t(this).parent().find('.raterater-input[data-id="' + c(this) + '"]') : t(this); var r = (c(a), p.width + "px"), e = Math.floor(p.starWidth / p.starAspect) + "px"; a.css("width", r).css("height", e), a.find(".raterater-layer").each(function () { t(this).css("width", r).css("height", e) }); for (var i = 0; i < p.numStars; i++)t.each(["bg", "hover", "rating", "outline"], function () { a.children(".raterater-" + this + "-layer").first().children("i").eq(i).css("left", i * (p.starWidth + p.spaceWidth) + "px").css("font-size", Math.floor(p.starWidth / p.starAspect) + "px") }); var s = parseFloat(a.attr("data-rating")), d = Math.floor(s), o = s - d; n(a.find(".raterater-rating-layer").first(), d, o) }) } function i(r) { var e = t(r.target).parent(), i = c(e), s = f[i].whole_stars_hover + f[i].partial_star_hover; s = Math.round(100 * s) / 100, f[i].state = "rated", f[i].stars = s, e.find(".raterater-hover-layer").addClass("rated"), "input" != p.mode && void 0 !== window[p.submitFunction] && "function" == typeof window[p.submitFunction] ? window[p.submitFunction](i, s) : a(i, s) } function s(t, a) { var r = Math.floor(t / (p.starWidth + p.spaceWidth)), e = t - r * (p.starWidth + p.spaceWidth); if (e > p.starWidth && (e = p.starWidth), e /= p.starWidth, p.step !== !1) { var i = 1 / p.step; e = Math.round(e * i) / i } f[a].whole_stars_hover = r, f[a].partial_star_hover = e } function n(t, a, r) { for (var e = (c(t.parent()), 0); a > e; e++)t.find("i").eq(e).css("width", p.starWidth + "px"); t.find("i").eq(a).css("width", p.starWidth * r + "px"); for (var e = a + 1; e < p.numStars; e++)t.find("i").eq(e).css("width", "0px") } function d(a) { var r = c(t(a.target).parent()); if ("hover" === f[r].state) { var e = a.offsetX; void 0 === e && (e = a.pageX - t(a.target).offset().left), f[r].stars = s(e, r); var i = t(a.target).parent().children(".raterater-hover-layer").first(); n(i, f[r].whole_stars_hover, f[r].partial_star_hover) } } function o(a) { var r = c(t(a.target).parent()); ("rated" !== f[r].state || p.allowChange) && (f[r].state = "hover", t(a.target).parent().children(".raterater-rating-layer").first().css("display", "none"), t(a.target).parent().children(".raterater-hover-layer").first().css("display", "block")) } function h(a) { var r = t(a.target).parent(), e = c(r); if (t(a.target).parent().children(".raterater-hover-layer").first().css("display", "none"), t(a.target).parent().children(".raterater-rating-layer").first().css("display", "block"), "rated" === f[e].state) { var i = parseFloat(f[e].stars), s = Math.floor(i), d = i - s; return void n(r.find(".raterater-rating-layer").first(), s, d) } f[e].state = "inactive" } function c(a) { return t(a).attr("data-id") } var l, f = {}, p = {}, u = "input", v = "callback", g = null, y = 0; t.fn.raterater = function (a) { if (t.fn.raterater.defaults = { submitFunction: "", allowChange: !1, starWidth: 20, spaceWidth: 5, numStars: 5, isStatic: !1, mode: v, step: !1 }, p = t.extend({}, t.fn.raterater.defaults, a), p.width = p.numStars * (p.starWidth + p.spaceWidth), p.starAspect = .9226, p.step !== !1 && (p.step = parseFloat(p.step), p.step <= 0 || p.step > 1)) throw "Error: step must be between 0 and 1"; return g = this, r(), e(), this } }(jQuery);
+
+    $(document).ready(function () {
+        $('.ratebox').raterater({
+            submitFunction: 'rateAlert',
+            allowChange: false,
+            starWidth: 15,
+            spaceWidth: 2,
+            numStars: 3,
         });
+    });
 
-    </script>
+</script>
 
-    <script>
-        $(document).ready(function () {
-            document.querySelectorAll('#star_review').forEach(function (element) {
-                element.addEventListener("mouseenter", function (event) {
-                    $('#stars_confirm').html('');
-                    var stars = event.target.dataset.number;
-                    $('#star_input').val(stars);
-                    var count = 0;
-                    document.querySelectorAll('#star_review').forEach(function (el) {
-                        if (count < stars) {
-                            $(el).removeClass('fa-star-o');
-                            $(el).addClass('fa-star');
-                            $('#stars_confirm').append('<i class="fa fa-star" aria-hidden="true" style="color:#212529 !important"></i>');
-                        } else {
-                            $(el).removeClass('fa-star');
-                            $(el).addClass('fa-star-o');
-                        }
-                        count = count + 1;
-                    });
-                });
-                element.addEventListener("click", function (event) {
-                    console.log('clicked')
-                    $('.star-area').hide();
-                    $('.review-area').fadeIn();
-                });
-                element.addEventListener("mouseleave", function (event) {
-                    document.querySelectorAll('#star_review').forEach(function (el) {
+<script>
+    $(document).ready(function () {
+        document.querySelectorAll('#star_review').forEach(function (element) {
+            element.addEventListener("mouseenter", function (event) {
+                $('#stars_confirm').html('');
+                var stars = event.target.dataset.number;
+                $('#star_input').val(stars);
+                var count = 0;
+                document.querySelectorAll('#star_review').forEach(function (el) {
+                    if (count < stars) {
+                        $(el).removeClass('fa-star-o');
+                        $(el).addClass('fa-star');
+                        $('#stars_confirm').append('<i class="fa fa-star" aria-hidden="true" style="color:#212529 !important"></i>');
+                    } else {
                         $(el).removeClass('fa-star');
                         $(el).addClass('fa-star-o');
-                    });
+                    }
+                    count = count + 1;
+                });
+            });
+            element.addEventListener("click", function (event) {
+                console.log('clicked')
+                $('.star-area').hide();
+                $('.review-area').fadeIn();
+            });
+            element.addEventListener("mouseleave", function (event) {
+                document.querySelectorAll('#star_review').forEach(function (el) {
+                    $(el).removeClass('fa-star');
+                    $(el).addClass('fa-star-o');
                 });
             });
         });
-    </script>
+    });
+</script>
 
-    <script>
-        var swiper = new Swiper(".featured-slider", {
-            //slidesPerView: '1',
-            spaceBetween: 10,
-            autoplay: true,
-            //effect: 'coverflow',
-            //grabCursor: true,
-            //centeredSlides: true,
-            slidesPerView: 'auto',
-            //spaceBetween: 10,
-            loop: true,
-            centeredSlides: true,
-            autoplay: {
-                delay: 9000,
-                disableOnInteraction: false,
-                preloadImages: true,
-                speed: 200
+<script>
+    var swiper = new Swiper(".featured-slider", {
+        //slidesPerView: '1',
+        spaceBetween: 10,
+        autoplay: true,
+        //effect: 'coverflow',
+        //grabCursor: true,
+        //centeredSlides: true,
+        slidesPerView: 'auto',
+        //spaceBetween: 10,
+        loop: true,
+        centeredSlides: true,
+        autoplay: {
+            delay: 9000,
+            disableOnInteraction: false,
+            preloadImages: true,
+            speed: 200
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
             },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
+            450: {
+                slidesPerView: 2,
             },
-            breakpoints: {
-                0: {
-                    slidesPerView: 1,
-                },
-                450: {
-                    slidesPerView: 2,
-                },
-                768: {
-                    slidesPerView: 3,
-                },
-                1024: {
-                    slidesPerView: 4,
-                },
+            768: {
+                slidesPerView: 3,
             },
-        });
-        swiper.update();
-    </script>
+            1024: {
+                slidesPerView: 4,
+            },
+        },
+    });
+    swiper.update();
+</script>
 
-    <script>
-		  @*  var slider = $("#slider");
-		    var thumb = $("#thumb");
-		    var slidesPerPage = 4; // globaly define number of elements per page
-		    var syncedSecondary = true;
-		    slider.owlCarousel({
-		        items: 1,
-		        slideSpeed: 2000,
-		        nav: false,
-		        autoplay: false,
-		        dots: false,
-		        loop: true,
-		        responsiveRefreshRate: 200
-		    }).on('changed.owl.carousel', syncPosition);
-		    thumb
-		        .on('initialized.owl.carousel', function() {
-		            thumb.find(".owl-item").eq(0).addClass("current");
-		        })
-		        .owlCarousel({
-		            items: slidesPerPage,
-		            dots: false,
-		            nav: true,
-		            item: 4,
-		            smartSpeed: 200,
-		            slideSpeed: 500,
-		            slideBy: slidesPerPage,
-		        	navText: ['<svg width="18px" height="18px" viewBox="0 0 11 20"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M9.554,1.001l-8.607,8.607l8.607,8.606"/></svg>', '<svg width="25px" height="25px" viewBox="0 0 11 20" version="1.1"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M1.054,18.214l8.606,-8.606l-8.606,-8.607"/></svg>'],
-		            responsiveRefreshRate: 100
-		        }).on('changed.owl.carousel', syncPosition2);
-		    function syncPosition(el) {
-		        var count = el.item.count - 1;
-		        var current = Math.round(el.item.index - (el.item.count / 2) - .5);
-		        if (current < 0) {
-		            current = count;
-		        }
-		        if (current > count) {
-		            current = 0;
-		        }
-		        thumb
-		            .find(".owl-item")
-		            .removeClass("current")
-		            .eq(current)
-		            .addClass("current");
-		        var onscreen = thumb.find('.owl-item.active').length - 1;
-		        var start = thumb.find('.owl-item.active').first().index();
-		        var end = thumb.find('.owl-item.active').last().index();
-		        if (current > end) {
-		            thumb.data('owl.carousel').to(current, 100, true);
-		        }
-		        if (current < start) {
-		            thumb.data('owl.carousel').to(current - onscreen, 100, true);
-		        }
-		    }
-		    function syncPosition2(el) {
-		        if (syncedSecondary) {
-		            var number = el.item.index;
-		            slider.data('owl.carousel').to(number, 100, true);
-		        }
-		    }
-		    thumb.on("click", ".owl-item", function(e) {
-		        e.preventDefault();
-		        var number = $(this).index();
-		        slider.data('owl.carousel').to(number, 300, true);
-		    });
-*@
-
-            $(".qtyminus").on("click",function(){
-                var now = $(".qty").val();
-                if ($.isNumeric(now)){
-                    if (parseInt(now) -1> 0)
-                    { now--;}
-                    $(".qty").val(now);
-                }
-            })
-            $(".qtyplus").on("click",function(){
-                var now = $(".qty").val();
-                if ($.isNumeric(now)){
-                    $(".qty").val(parseInt(now)+1);
-                }
-            });
-
-        console.log($('.ma-tai-khoan').val())
-        console.log($('.ma-sach').text())
-        console.log($('.tensach').text())
-
-			// Thêm giỏ hàng
-			$('.add-to-cart').on("click", function()
-            {
-                console.log("Hello")
-				//event.preventDefault()
-				var now = $(".qty").val();
-				//this.href = "/themgiohang?tensach={{books.tensach}}&giaban={{books.giaban}}&hinhanh={{books.hinhanh}}&soluong=" + now;
-				var tensach = $('.tensach').text()
-				var hinhanh = $('.hinhanh').attr('src')
-				var giaban = parseInt($('.giaban').text())*1000
-				var soluong = parseInt($('.soluong').val())
-				var matk=$('.ten-dang-nhap').text()
-                var theloai = $('.theloai').text()
-                var masach = $('.ma-sach').text()
-                var matk = $('.ma-tai-khoan').val()
-				console.log(theloai)
-                console.log(matk)
-                console.log(masach)
-                $.get('/Client/themgiohang?matk=' + matk + '&masach=' + masach + '&soluong=' + soluong.toString())
-                    .done(function (res)
-                    {
-                        var sl = $('.sl_giohang').text()
-                        sl = (parseInt(sl) + 1).toString();
-                        $('.sl_giohang').text(sl);
-                        alert("Thêm vào giỏ hàng thành công!")
+<script>
+    @*  var slider = $("#slider");
+                var thumb = $("#thumb");
+                var slidesPerPage = 4; // globaly define number of elements per page
+                var syncedSecondary = true;
+                slider.owlCarousel({
+                    items: 1,
+                    slideSpeed: 2000,
+                    nav: false,
+                    autoplay: false,
+                    dots: false,
+                    loop: true,
+                    responsiveRefreshRate: 200
+                }).on('changed.owl.carousel', syncPosition);
+                thumb
+                    .on('initialized.owl.carousel', function() {
+                        thumb.find(".owl-item").eq(0).addClass("current");
                     })
-               
-			})
+                    .owlCarousel({
+                        items: slidesPerPage,
+                        dots: false,
+                        nav: true,
+                        item: 4,
+                        smartSpeed: 200,
+                        slideSpeed: 500,
+                        slideBy: slidesPerPage,
+                        navText: ['<svg width="18px" height="18px" viewBox="0 0 11 20"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M9.554,1.001l-8.607,8.607l8.607,8.606"/></svg>', '<svg width="25px" height="25px" viewBox="0 0 11 20" version="1.1"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M1.054,18.214l8.606,-8.606l-8.606,-8.607"/></svg>'],
+                        responsiveRefreshRate: 100
+                    }).on('changed.owl.carousel', syncPosition2);
+                function syncPosition(el) {
+                    var count = el.item.count - 1;
+                    var current = Math.round(el.item.index - (el.item.count / 2) - .5);
+                    if (current < 0) {
+                        current = count;
+                    }
+                    if (current > count) {
+                        current = 0;
+                    }
+                    thumb
+                        .find(".owl-item")
+                        .removeClass("current")
+                        .eq(current)
+                        .addClass("current");
+                    var onscreen = thumb.find('.owl-item.active').length - 1;
+                    var start = thumb.find('.owl-item.active').first().index();
+                    var end = thumb.find('.owl-item.active').last().index();
+                    if (current > end) {
+                        thumb.data('owl.carousel').to(current, 100, true);
+                    }
+                    if (current < start) {
+                        thumb.data('owl.carousel').to(current - onscreen, 100, true);
+                    }
+                }
+                function syncPosition2(el) {
+                    if (syncedSecondary) {
+                        var number = el.item.index;
+                        slider.data('owl.carousel').to(number, 100, true);
+                    }
+                }
+                thumb.on("click", ".owl-item", function(e) {
+                    e.preventDefault();
+                    var number = $(this).index();
+                    slider.data('owl.carousel').to(number, 300, true);
+                });
+    *@
 
-			// Submit review
-    </script>
+                $(".qtyminus").on("click",function(){
+                    var now = $(".qty").val();
+                    if ($.isNumeric(now)){
+                        if (parseInt(now) -1> 0)
+                        { now--;}
+                        $(".qty").val(now);
+                    }
+                })
+                $(".qtyplus").on("click",function(){
+                    var now = $(".qty").val();
+                    if ($.isNumeric(now)){
+                        $(".qty").val(parseInt(now)+1);
+                    }
+                });
+
+            console.log($('.ma-tai-khoan').val())
+            console.log($('.ma-sach').text())
+            console.log($('.tensach').text())
+
+                // Thêm giỏ hàng
+                $('.add-to-cart').on("click", function()
+                {
+                    console.log("Hello")
+                    //event.preventDefault()
+                    var now = $(".qty").val();
+                    //this.href = "/themgiohang?tensach={{books.tensach}}&giaban={{books.giaban}}&hinhanh={{books.hinhanh}}&soluong=" + now;
+                    var tensach = $('.tensach').text()
+                    var hinhanh = $('.hinhanh').attr('src')
+                    var giaban = parseInt($('.giaban').text())*1000
+                    var soluong = parseInt($('.soluong').val())
+                    var matk=$('.ten-dang-nhap').text()
+                    var theloai = $('.theloai').text()
+                    var masach = $('.ma-sach').text()
+                    var matk = $('.ma-tai-khoan').val()
+                    console.log(theloai)
+                    console.log(matk)
+                    console.log(masach)
+                    $.get('/Client/themgiohang?matk=' + matk + '&masach=' + masach + '&soluong=' + soluong.toString())
+                        .done(function (res)
+                        {
+                            var sl = $('.sl_giohang').text()
+                            sl = (parseInt(sl) + 1).toString();
+                            $('.sl_giohang').text(sl);
+                            alert("Thêm vào giỏ hàng thành công!")
+                        })
+
+                })
+
+                // Submit review
+</script>
 
 
-    <script>
-        function show() {
-            alert("Bạn chưa đăng nhập");
-        }
-    </script>
+<script>
+    function show() {
+        alert("Bạn chưa đăng nhập");
+    }
+</script>
 
-    <style>
-        .col-md-6 {
-            position: relative;
-            //margin-bottom: -130px;
-        }
+<style>
+    .col-md-6 {
+        position: relative;
+        //margin-bottom: -130px;
+    }
 
-        //Vận chuyển
+    //Vận chuyển
 
-        .info-item {
+    .info-item {
+        position: absolute;
+        top: -250px;
+        right: -280px;
+        border-radius: 4px;
+        border: 1px solid black;
+        width: 244px !important;
+    }
+
+    .info-logo-img {
+        width: 74px;
+        padding-left: 0;
+    }
+
+    .info-store {
+        position: absolute;
+        background-color: #1A94FF;
+        text-align: center;
+        width: 243px;
+        left: -1px;
+        top: -1px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+    }
+
+        .info-store::after {
+            content: "";
             position: absolute;
-            top: -250px;
-            right: -280px;
-            border-radius: 4px;
-            border: 1px solid black;
-            width: 244px !important;
-        }
-
-        .info-logo-img {
-            width: 74px;
-            padding-left: 0;
-        }
-
-        .info-store {
-            position: absolute;
-            background-color: #1A94FF;
-            text-align: center;
-            width: 243px;
-            left: -1px;
-            top: -1px;
-            border-top-left-radius: 4px;
-            border-top-right-radius: 4px;
-        }
-
-            .info-store::after {
-                content: "";
-                position: absolute;
-                left: 0;
-                top: 74px;
-                transform: translateY(-50%);
-                width: 100%;
-                height: 1px;
-                background: var(--white-color);
-                z-index: 1;
-            }
-
-        .info-label {
-            padding-left: 6px;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--white-color);
-        }
-
-        .info-detail {
-            padding-top: 78px;
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-
-        .info-delivery {
-            padding: 20px 0;
-            font-weight: 500;
-        }
-
-            .info-delivery i {
-                margin-right: 8px;
-                color: rgb(255, 57, 69);
-            }
-
-        .list-info {
-            list-style: none;
-            padding: 0 0;
-        }
-
-        .list-info-item {
+            left: 0;
+            top: 74px;
+            transform: translateY(-50%);
             width: 100%;
-            padding: 20px 0;
-            font-weight: 500;
-            border-top: 1px solid #43c3c7;
+            height: 1px;
+            background: var(--white-color);
+            z-index: 1;
         }
 
-            .list-info-item i {
-                margin-right: 8px;
-                color: #1A94FF;
-            }
+    .info-label {
+        padding-left: 6px;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--white-color);
+    }
 
-        .info-price {
-            font-size: 1.6rem;
-            text-align: center;
-            border: 1px solid rgb(255, 57, 69);
-            background-color: rgb(255, 240, 241);
-            border-radius: 3px;
+    .info-detail {
+        padding-top: 78px;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+
+    .info-delivery {
+        padding: 20px 0;
+        font-weight: 500;
+    }
+
+        .info-delivery i {
+            margin-right: 8px;
             color: rgb(255, 57, 69);
-            padding: 4px 0;
         }
 
-        .info-prices {
-            margin-top: 10px;
+    .list-info {
+        list-style: none;
+        padding: 0 0;
+    }
+
+    .list-info-item {
+        width: 100%;
+        padding: 20px 0;
+        font-weight: 500;
+        border-top: 1px solid #43c3c7;
+    }
+
+        .list-info-item i {
+            margin-right: 8px;
+            color: #1A94FF;
         }
-    </style>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="	sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    .info-price {
+        font-size: 1.6rem;
+        text-align: center;
+        border: 1px solid rgb(255, 57, 69);
+        background-color: rgb(255, 240, 241);
+        border-radius: 3px;
+        color: rgb(255, 57, 69);
+        padding: 4px 0;
+    }
 
-</body>
+    .info-prices {
+        margin-top: 10px;
+    }
+</style>
 
-</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="	sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

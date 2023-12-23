@@ -23,7 +23,6 @@
     <None Include="Areas\Admin\Views\Admin\DS_DonHang.cshtml" />
     <None Include="Areas\Admin\Views\Admin\DS_KhuyenMai.cshtml" />
     <None Include="Areas\Admin\Views\Admin\InsertBook.cshtml" />
-    <None Include="Areas\Admin\Views\Admin\login.cshtml" />
     <None Include="Areas\Admin\Views\Admin\menu.cshtml" />
     <None Include="Areas\Admin\Views\Admin\QL_taikhoan.cshtml" />
     <None Include="Areas\Admin\Views\Admin\QuenMK.cshtml" />
@@ -226,11 +225,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
     <PackageReference Include="MySql.Data" Version="8.2.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Assets\" />
-    <Folder Include="Areas\Admin\Data\" />
   </ItemGroup>
 
 </Project>

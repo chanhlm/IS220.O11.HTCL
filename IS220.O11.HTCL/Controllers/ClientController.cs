@@ -26,9 +26,8 @@ namespace IS220.O11.HTCL.Controllers
                 ViewBag.status = "Success";
                 string email = ViewBag.infor.Email;
                 ViewBag.ds_voucher = context.User_Voucher(email);
-                int Matk = Convert.ToInt32(usersession.Matk);
                 int sl = 0;
-                sl = context.User_Vouchers(Matk);
+                sl = context.User_Vouchers(email);
                 ViewBag.soluong = sl;
             }
             else
@@ -101,7 +100,7 @@ namespace IS220.O11.HTCL.Controllers
                 usersession = context.Login(usersession.Email, usersession.Matkhau);
                 ViewBag.infor = usersession;
                 ViewBag.status = "Success";
-                List<object> list = context.Cart(usersession.Matk);
+                List<object> list = context.Cart(usersession.Email);
                 ViewBag.ListCart = list;
                 ViewBag.Email = usersession.Email;
                 ViewBag.Hoten = usersession.Hoten;
@@ -113,10 +112,10 @@ namespace IS220.O11.HTCL.Controllers
         }
 
 
-        public IActionResult themgiohang(int matk, string masach, string soluong)
+        public IActionResult themgiohang(string email, string masach, string soluong)
         {
             StoreContext context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
-            context.themvaogiohang(matk, masach, soluong);
+            context.themvaogiohang(email, masach, soluong);
             return Redirect("/Home/Index");
         }
 
@@ -152,31 +151,43 @@ namespace IS220.O11.HTCL.Controllers
         public IActionResult taikhoan(string email)
         {
             StoreContext context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
+
             var res = HttpContext.Session.GetString("UserSession");
+
             if (res != null)
             {
                 account usersession = JsonSerializer.Deserialize<account>(res);
-                usersession = context.Login(usersession.Email, usersession.Matkhau);
-                ViewBag.infor = usersession;
-                ViewBag.status = "Success";
+
+                // Ensure usersession.Email and usersession.Matkhau are not null before calling context.Login
+                if (!string.IsNullOrEmpty(usersession.Email) && !string.IsNullOrEmpty(usersession.Matkhau))
+                {
+                    usersession = context.Login(usersession.Email, usersession.Matkhau);
+                    ViewBag.infor = usersession;
+                    ViewBag.status = "Success";
+                }
             }
+
             ViewBag.taikhoan = context.Accounts(email);
             ViewBag.khuyenmai = context.User_Voucher(email);
             ViewBag.avatar = HttpContext.Session.GetString("Avatar");
-            int matk = Convert.ToInt32(ViewBag.taikhoan.Matk);
-            ViewBag.orders = context.DonHang(matk);
-            ViewBag.books = context.BookOfOrder(matk);
+
+            // Ensure ViewBag.taikhoan is not null before converting to int
+            
+            ViewBag.orders = context.DonHang(email);
+            ViewBag.books = context.BookOfOrder(email);
+
             return View();
         }
 
-        public IActionResult capnhattaikhoan(int Matk, string Email, string Sodt, string Gioitinh, string Ngaysinh)
+
+        public IActionResult capnhattaikhoan(string Email, string Sodt, string Gioitinh, DateTime Ngaysinh)
         {
             int count;
             StoreContext context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
-            count = context.capnhattaikhoan(Matk, Email, Sodt, Gioitinh, Ngaysinh);
+            count = context.capnhattaikhoan(Email, Sodt, Gioitinh, Ngaysinh);
             if (count > 0)
             {
-                return Redirect("/Client/taikhoan?tentk=" + Matk);
+                return Redirect("/Client/taikhoan?email=" + Email);
             }
             else
             {
@@ -192,7 +203,7 @@ namespace IS220.O11.HTCL.Controllers
             count = context.capnhatdiachi(Email, Sodt, Diachi, Hoten);
             if (count > 0)
             {
-                return Redirect("/Client/taikhoan?tentk=" + Email);
+                return Redirect("/Client/taikhoan?email=" + Email);
             }
             else
             {
@@ -208,7 +219,7 @@ namespace IS220.O11.HTCL.Controllers
             count = context.capnhatmatkhau(Email, Matkhau);
             if (count > 0)
             {
-                return Redirect("/Client/taikhoan?tentk=" + Email);
+                return Redirect("/Client/taikhoan?email=" + Email);
             }
             else
             {
@@ -280,9 +291,9 @@ namespace IS220.O11.HTCL.Controllers
                 ViewBag.infor = usersession;
                 ViewBag.status = "Success";
                 ViewBag.chitietdh = context.chitietdh(madh);
-                int Matk = Convert.ToInt32(usersession.Matk);
+
                 ViewBag.tamtinh = context.Tamtinh(madh);
-                ViewBag.orders = context.ViewDonHang(Matk);
+                ViewBag.orders = context.ViewDonHang(usersession.Email);
                 ViewBag.slmua = context.SoluongMua(madh);
                 ViewBag.avatar = HttpContext.Session.GetString("Avatar");
                 int giamgia = ViewBag.tamtinh + ViewBag.orders.Tienship - ViewBag.orders.Tongtien;
@@ -305,8 +316,8 @@ namespace IS220.O11.HTCL.Controllers
                 ViewBag.infor = usersession;
                 ViewBag.status = "Success";
                 ViewBag.avatar = HttpContext.Session.GetString("Avatar");
-                int Matk = Convert.ToInt32(usersession.Matk);
-                count = context.Save_voucher( Matk, Makm);
+
+                count = context.Save_voucher( usersession.Email, Makm);
             }
             return Redirect("/Client/khuyenmai");
         }
@@ -348,7 +359,7 @@ namespace IS220.O11.HTCL.Controllers
                         soluong += Convert.ToInt32(item.soluong);
                         thanhtien += Convert.ToInt32(item.giaban) * Convert.ToInt32(item.soluong);
                     }
-                    List<object> ListVoucher = context.get_voucher(usersession.Matk);
+                    List<object> ListVoucher = context.get_voucher(usersession.Email);
                     ViewBag.ListVoucher = ListVoucher;
                     DateTime dateTime = DateTime.Today;
                     string date = dateTime.ToString("dd/MM/yyyy");
@@ -384,8 +395,8 @@ namespace IS220.O11.HTCL.Controllers
                 usersession = context.Login(usersession.Email, usersession.Matkhau);
                 ViewBag.infor = usersession;
                 ViewBag.status = "Success";
-                int matk = usersession.Matk;
-               ViewBag.madh = context.thanhyou(matk, data, tongtien, soluong, hinhthucthanhtoan, tinhtrangthanhtoan, tinhtrangdonhang, tienship,voucher_used);
+                string email = usersession.Email;
+                ViewBag.madh = context.thanhyou(email,data, tongtien, soluong, hinhthucthanhtoan, tinhtrangthanhtoan, tinhtrangdonhang, tienship,voucher_used);
                 //context.thanhyou(matk, data, tongtien, soluong, hinhthucthanhtoan, tinhtrangthanhtoan, tinhtrangdonhang, tienship);
                 ViewBag.avatar = HttpContext.Session.GetString("Avatar");
             }
@@ -404,7 +415,7 @@ namespace IS220.O11.HTCL.Controllers
                 ViewBag.infor = usersession;
                 ViewBag.status = "Success";
                 ViewBag.avatar = HttpContext.Session.GetString("Avatar");
-                context.deletevoucher(usersession.Matk,data);
+                context.deletevoucher(usersession.Email,data);
             }
             return View();
         }
@@ -419,7 +430,7 @@ namespace IS220.O11.HTCL.Controllers
                 usersession = context.Login(usersession.Email, usersession.Matkhau);
                 ViewBag.infor = usersession;
                 ViewBag.status = "Success";
-                context.xoagiohang(usersession.Matk, masach);
+                context.xoagiohang(usersession.Email, masach);
             }
             return View();
         }

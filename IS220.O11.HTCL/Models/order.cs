@@ -7,13 +7,13 @@ namespace IS220.O11.HTCL.Models
 {
     public class order
     {
-        private int madh, makm, matk, tienship, tongtien;
-        private string hinhthucthanhtoan, phanhoi, tinhtrangdonhang, tinhtrangthanhtoan;
+        private int madh, makm, tienship, tongtien;
+        private string hinhthucthanhtoan, phanhoi, tinhtrangdonhang, tinhtrangthanhtoan, email;
         private DateTime ngaycapnhat, ngaylap;
 
         public int Madh { get => madh; set => madh = value; }
         public int Makm { get => makm; set => makm = value; }
-        public int Matk { get => matk; set => matk = value; }
+        public string Email { get => email; set => email = value; }
         public int Tienship { get => tienship; set => tienship = value; }
         public int Tongtien { get => tongtien; set => tongtien = value; }
 
@@ -27,12 +27,12 @@ namespace IS220.O11.HTCL.Models
 
         public order() { }
 
-        public order(int madh, string hinhthucthanhtoan, int makm, int matk, DateTime ngaycapnhat, DateTime ngaylap, string phanhoi, int tienship, string tinhtrangdonhang, string tinhtrangthanhtoan, int tongtien)
+        public order(int madh, string hinhthucthanhtoan, int makm, string email, DateTime ngaycapnhat, DateTime ngaylap, string phanhoi, int tienship, string tinhtrangdonhang, string tinhtrangthanhtoan, int tongtien)
         {
             this.madh = madh;
             this.hinhthucthanhtoan = hinhthucthanhtoan;
             this.makm = makm;
-            this.matk = matk;
+            this.email = email;
             this.ngaycapnhat = ngaycapnhat;
             this.ngaylap = ngaylap;
             this.phanhoi = phanhoi;

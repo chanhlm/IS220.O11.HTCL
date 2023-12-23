@@ -253,12 +253,12 @@ namespace IS220.O11.HTCL.Models
                         tk.Hoten = reader["hoten"].ToString();
                         tk.Diem = Convert.ToInt32(reader["diem"]);
                         tk.Sl_giohang = Convert.ToInt32(reader["sl_giohang"]);
-                        /*    tk.Ngaytao = Convert.ToDateTime(reader["ngaytao"]);*/
+                        tk.Ngaylap = Convert.ToDateTime(reader["ngaytao"]);
                         tk.Ngaysinh = Convert.ToDateTime(reader["ngaysinh"]);
                     }
+                    return tk;
                 }
             }
-            return tk;
         }
 
         public List<Models.voucher> User_Voucher(string email)
@@ -269,7 +269,7 @@ namespace IS220.O11.HTCL.Models
             {
                 conn.Open();
                 string str = "Select vc.makm, loai, img, noidung, phantram, dieukien, sl, daluu, manhap,ngaybd, ngaykt" +
-                    " from voucher k, user_voucher vc, accounts c where k.makm = vc.makm and vc.matk = c.matk and c.email = @email";
+                    " from voucher k, user_voucher vc, accounts c where k.makm = vc.makm and vc.email = c.email and c.email = @email";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("email", email);
                 using (var reader = cmd.ExecuteReader())
@@ -299,16 +299,16 @@ namespace IS220.O11.HTCL.Models
             return list;
         }
 
-        public List<object> Cart(int matk)
+        public List<object> Cart(string email)
         {
             List<object> list = new List<object>();
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
                 string str = "select booklist.masach as masach, tensach, hinhanh, giaban, cart.soluong as soluong, theloai " +
-                    "from booklist,cart,accounts WHERE booklist.masach=cart.masach and accounts.matk=cart.matk and accounts.matk=@matk";
+                    "from booklist,cart,accounts WHERE booklist.masach=cart.masach and accounts.email=cart.email and accounts.email=@email";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
-                cmd.Parameters.AddWithValue("matk", matk);
+                cmd.Parameters.AddWithValue("email", email);
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -354,7 +354,7 @@ namespace IS220.O11.HTCL.Models
                         client_Accounts.Matk = Convert.ToInt32(reader["matk"]);
                         client_Accounts.Matkhau = reader["matkhau"].ToString();
                         client_Accounts.Ngaysinh = DateTime.Parse(reader["ngaysinh"].ToString());
-                        client_Accounts.Ngaytao = DateTime.Parse(reader["ngaytao"].ToString());
+                        client_Accounts.Ngaylap = DateTime.Parse(reader["ngaytao"].ToString());
                         client_Accounts.Sl_giohang = Convert.ToInt32(reader["sl_giohang"]);
                         client_Accounts.Sodt = reader["sodt"].ToString();
                         client_Accounts.Tinhtrang = reader["tinhtrang"].ToString();
@@ -536,7 +536,7 @@ namespace IS220.O11.HTCL.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                string str = "select * from user_cmt cmt, accounts c where cmt.matk = c.matk and masach = @tensach";
+                string str = "select * from user_cmt cmt, accounts c where cmt.email = c.email and masach = @tensach";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("tensach", masach);
                 using (var reader = cmd.ExecuteReader())
@@ -545,7 +545,7 @@ namespace IS220.O11.HTCL.Models
                     {
                         list.Add(new comment()
                         {
-                            Matk = reader["matk"].ToString(),
+                            Email = reader["email"].ToString(),
                             Masach = reader["masach"].ToString(),
                             Binhluan = reader["binhluan"].ToString(),
                             Ngaybl = Convert.ToDateTime(reader["ngaybl"]),
@@ -568,11 +568,11 @@ namespace IS220.O11.HTCL.Models
                 using (MySqlConnection conn = GetConnection())
                 {
                     conn.Open();
-                    string str = "insert into user_cmt (`matk`, `masach`,`binhluan`, `ngaybl`, `sosao`) values" +
-                        "(@matk, @masach, @binhluan, @ngaybl, @sosao);";
+                    string str = "insert into user_cmt (`email`, `masach`,`binhluan`, `ngaybl`, `sosao`) values" +
+                        "(@email, @masach, @binhluan, @ngaybl, @sosao);";
                     MySqlCommand cmd = new MySqlCommand(str, conn);
                     cmd.Parameters.AddWithValue("masach", c.Masach);
-                    cmd.Parameters.AddWithValue("matk", c.Matk);
+                    cmd.Parameters.AddWithValue("email", c.Email);
                     cmd.Parameters.AddWithValue("binhluan", c.Binhluan);
                     cmd.Parameters.AddWithValue("ngaybl", Ngaybl);
                     cmd.Parameters.AddWithValue("sosao", c.Sosao);
@@ -598,42 +598,37 @@ namespace IS220.O11.HTCL.Models
                 return (cmd.ExecuteNonQuery());
             }
         }
-        public List<order> DonHang(int matk)
+        public List<order> DonHang(string email)
         {
             List<order> list = new List<order>();
 
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                string str = "select * from orders where matk = @matk";
+                string str = "select * from orders where email = @email";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
-                cmd.Parameters.AddWithValue("matk", matk);
+                cmd.Parameters.AddWithValue("email", email);
                 using (var reader = cmd.ExecuteReader())
                 {
-                    
-                        while (reader.Read())
-                        {
-                        if (reader["madh"] != DBNull.Value)
-                        {
-                            list.Add(new order()
-                            {
+                    while (reader.Read())
+                    {
 
-                                Madh = Convert.ToInt32(reader["madh"]),
-                                Matk = Convert.ToInt32(reader["matk"]),
-                                Makm = Convert.ToInt32(reader["makm"]),
-                                Tienship = Convert.ToInt32(reader["tienship"]),
-                                Phanhoi = reader["phanhoi"].ToString(),
-                                Tinhtrangdonhang = reader["tinhtrangdonhang"].ToString(),
-                                Tinhtrangthanhtoan = reader["tinhtrangthanhtoan"].ToString(),
-                                Tongtien = Convert.ToInt32(reader["tongtien"]),
-                                Hinhthucthanhtoan = reader["hinhthucthanhtoan"].ToString(),
-                                Ngaycapnhat = Convert.ToDateTime(reader["ngaycapnhat"]),
-                                Ngaylap = Convert.ToDateTime(reader["ngaylap"]),
-                            });
-                        }
-                        }
-                    
-                   
+                    list.Add(new order()
+                    {
+                        Madh = reader["madh"] != DBNull.Value ? Convert.ToInt32(reader["madh"]) : 0, // Default value if DBNull
+                        Email = reader["email"].ToString(),
+                        Makm = reader["makm"] != DBNull.Value ? Convert.ToInt32(reader["makm"]) : 0,
+                        Tienship = reader["tienship"] != DBNull.Value ? Convert.ToInt32(reader["tienship"]) : 0,
+                        Phanhoi = reader["phanhoi"].ToString(),
+                        Tinhtrangdonhang = reader["tinhtrangdonhang"].ToString(),
+                        Tinhtrangthanhtoan = reader["tinhtrangthanhtoan"].ToString(),
+                        Tongtien = reader["tongtien"] != DBNull.Value ? Convert.ToInt32(reader["tongtien"]) : 0,
+                        Hinhthucthanhtoan = reader["hinhthucthanhtoan"].ToString(),
+                        Ngaycapnhat = reader["ngaycapnhat"] != DBNull.Value ? Convert.ToDateTime(reader["ngaycapnhat"]) : DateTime.MinValue,
+                        Ngaylap = reader["ngaylap"] != DBNull.Value ? Convert.ToDateTime(reader["ngaylap"]) : DateTime.MinValue,
+                    });
+
+                    }   
                     reader.Close();
                 }
 
@@ -643,21 +638,21 @@ namespace IS220.O11.HTCL.Models
             return list;
         }
 
-        public order ViewDonHang(int matk)
+        public order ViewDonHang(string email)
         {
             order o = new order();
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                string str = "select * from orders where matk = @matk";
+                string str = "select * from orders where email = @email";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
-                cmd.Parameters.AddWithValue("matk", matk);
+                cmd.Parameters.AddWithValue("email", email);
 
                 using (var reader = cmd.ExecuteReader())
                 {
                     reader.Read();
                     o.Madh = Convert.ToInt32(reader["madh"]);
-                    o.Matk = Convert.ToInt32(reader["matk"]);
+                    o.Email = reader["email"].ToString();
                     o.Makm = Convert.ToInt32(reader["makm"]);
                     o.Tienship = Convert.ToInt32(reader["tienship"]);
                     o.Phanhoi = reader["phanhoi"].ToString();
@@ -708,7 +703,7 @@ namespace IS220.O11.HTCL.Models
             }
             return tamtinh;
         }
-        public List<Book> BookOfOrder(int matk)
+        public List<Book> BookOfOrder(string email)
         {
             List<Book> list = new List<Book>();
 
@@ -716,9 +711,9 @@ namespace IS220.O11.HTCL.Models
             {
                 conn.Open();
                 string str = "select b.masach, b.hinhanh, theloai, giaban, giagoc,giamgia, d.soluong, d.madh, b.tensach from booklist b," +
-                    " detail_order d, orders o where b.masach = d.masach and o.madh = d.madh and o.matk = @matk";
+                    " detail_order d, orders o where b.masach = d.masach and o.madh = d.madh and o.email = @email";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
-                cmd.Parameters.AddWithValue("matk", matk);
+                cmd.Parameters.AddWithValue("email", email);
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -775,23 +770,32 @@ namespace IS220.O11.HTCL.Models
             return list;
         }
 
-        public int capnhattaikhoan(int Matk, string Email, string Sodt, string Gioitinh, string Ngaysinh)
+        public int capnhattaikhoan(string Email, string Sodt, string Gioitinh, DateTime Ngaysinh)
         {
-            using (MySqlConnection conn = GetConnection())
+            try
             {
-                conn.Open();
-                string str = "update accounts set email = @email, sodt = @sodt, ngaysinh = @ngaysinh, gioitinh = @gioitinh where email = @email";
-                MySqlCommand cmd = new MySqlCommand(str, conn);
-                cmd.Parameters.AddWithValue("matk", Matk);
-                cmd.Parameters.AddWithValue("sodt", Sodt);
-                cmd.Parameters.AddWithValue("gioitinh", Gioitinh);
-                cmd.Parameters.AddWithValue("ngaysinh", Ngaysinh);
-                cmd.Parameters.AddWithValue("email", Email);
+                using (MySqlConnection conn = GetConnection())
+                {
+                    conn.Open();
+                    string str = "UPDATE accounts SET sodt = @sodt, ngaysinh = @ngaysinh, gioitinh = @gioitinh WHERE email = @email";
+                    MySqlCommand cmd = new MySqlCommand(str, conn);
+                    cmd.Parameters.AddWithValue("sodt", Sodt);
+                    cmd.Parameters.AddWithValue("gioitinh", Gioitinh);
+                    cmd.Parameters.AddWithValue("ngaysinh", Ngaysinh);
+                    cmd.Parameters.AddWithValue("email", Email);
 
-                return (cmd.ExecuteNonQuery());
+                    return cmd.ExecuteNonQuery();
+                }
             }
-
+            catch (Exception ex)
+            {
+                // Log or handle the exception appropriately
+                Console.WriteLine($"Error updating account: {ex.Message}");
+                return -1; // or throw the exception if you want to propagate it
+            }
         }
+
+
 
         public int capnhatdiachi(string Email, string Sodt, string Diachi, string Hoten)
         {
@@ -825,7 +829,7 @@ namespace IS220.O11.HTCL.Models
 
         }
 
-        public int Save_voucher(int matk, int makm)
+        public int Save_voucher(string email, int makm)
         {
             int count = Update_khuyenmai(makm);
             if(count > 0)
@@ -833,9 +837,9 @@ namespace IS220.O11.HTCL.Models
                 using (MySqlConnection conn = GetConnection())
                 {
                     conn.Open();
-                    string str = "insert into user_voucher values (@matk, @makm)";
+                    string str = "insert into user_voucher values (@email, @makm)";
                             MySqlCommand cmd = new MySqlCommand(str, conn);
-                    cmd.Parameters.AddWithValue("matk", matk);
+                    cmd.Parameters.AddWithValue("email", email);
                     cmd.Parameters.AddWithValue("makm", makm);
                     return (cmd.ExecuteNonQuery());
                 }
@@ -854,29 +858,29 @@ namespace IS220.O11.HTCL.Models
                 return (cmd.ExecuteNonQuery());
             }
         }
-        public int User_Vouchers(int matk)
+        public int User_Vouchers(string email)
         {
             int count = 0;
-            List<int> termsList = new List<int>();
+            List<string> termsList = new List<string>();
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                string str = "select matk from user_voucher";
+                string str = "select email from user_voucher";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        termsList.Add(Convert.ToInt32(reader["matk"]));
+                        termsList.Add(reader["email"].ToString());
                     }
-                    var ob = matk;
+                    var ob = email;
                 }
             }
            
             
             for(int i = 0; i < termsList.Count; i++)
             {
-                if (termsList[i] == matk)
+                if (termsList[i] == email)
                 {
                     count = count + 1;
                 }
@@ -884,14 +888,14 @@ namespace IS220.O11.HTCL.Models
             return count;
         }
 
-        public void updategiohang(int matk, string masach, string soluong)
+        public void updategiohang(string email, string masach, string soluong)
         {
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                var str = "update cart set soluong=@soluong where matk=@matk and masach=@masach";
+                var str = "update cart set soluong=@soluong where email=@email and masach=@masach";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
-                cmd.Parameters.AddWithValue("matk", matk);
+                cmd.Parameters.AddWithValue("email", email);
                 cmd.Parameters.AddWithValue("masach", masach);
                 cmd.Parameters.AddWithValue("soluong", soluong);
                 cmd.ExecuteNonQuery();
@@ -912,7 +916,7 @@ namespace IS220.O11.HTCL.Models
         public class voucher
         {
             public string makm { get; set; }
-            public int matk { get; set; }
+            public string email { get; set; }
             public string manhap { get; set; }
             public string phantram { get; set; }
             public string dieukien { get; set; }
@@ -922,7 +926,7 @@ namespace IS220.O11.HTCL.Models
 
         }
 
-        public int thanhyou(int matk, string data, string tongtien, string soluong, string hinhthucthanhtoan, string tinhtrangthanhtoan, string tinhtrangdonhang, string phiship, string voucher_used)
+        public int thanhyou(string email, string data, string tongtien, string soluong, string hinhthucthanhtoan, string tinhtrangthanhtoan, string tinhtrangdonhang, string phiship, string voucher_used)
         {
             DateTime Ngaylap = DateTime.Now;
             int madh = 0;
@@ -940,13 +944,13 @@ namespace IS220.O11.HTCL.Models
                 }
 
 
-                var str1 = "insert into orders(hinhthucthanhtoan, matk, ngaylap,tinhtrangdonhang,tinhtrangthanhtoan,tongtien,tienship) " +
-                    "values(@hinhthucthanhtoan,@matk, @ngaylap, @tinhtrangdonhang,@tinhtrangthanhtoan,@tongtien,@tienship)";
+                var str1 = "insert into orders(hinhthucthanhtoan, email, ngaylap,tinhtrangdonhang,tinhtrangthanhtoan,tongtien,tienship) " +
+                    "values(@hinhthucthanhtoan,@email, @ngaylap, @tinhtrangdonhang,@tinhtrangthanhtoan,@tongtien,@tienship)";
 
                 MySqlCommand mySql1 = new MySqlCommand(str1, conn);
 
                 mySql1.Parameters.AddWithValue("hinhthucthanhtoan", hinhthucthanhtoan);
-                mySql1.Parameters.AddWithValue("matk", matk);
+                mySql1.Parameters.AddWithValue("email", email);
                 mySql1.Parameters.AddWithValue("tinhtrangdonhang", tinhtrangdonhang);
                 mySql1.Parameters.AddWithValue("tinhtrangthanhtoan", tinhtrangthanhtoan);
                 mySql1.Parameters.AddWithValue("tongtien", tongtien);
@@ -990,14 +994,14 @@ namespace IS220.O11.HTCL.Models
             return madh + 1;
         }
 
-        public List<object> get_voucher(int matk)
+        public List<object> get_voucher(string email)
         {
             List<object> list = new List<object>();
             using (MySqlConnection conn = GetConnection())
             {
-                var str = "select user_voucher.matk as matk, user_voucher.makm as makm ,manhap ,phantram ,dieukien ,ngaybd ,ngaykt, loai from user_voucher,voucher where voucher.makm=user_voucher.makm and user_voucher.matk=@matk";
+                var str = "select user_voucher.email as email, user_voucher.makm as makm ,manhap ,phantram ,dieukien ,ngaybd ,ngaykt, loai from user_voucher,voucher where voucher.makm=user_voucher.makm and user_voucher.email=@email";
                 MySqlCommand mySql = new MySqlCommand(str, conn);
-                mySql.Parameters.AddWithValue("matk", matk);
+                mySql.Parameters.AddWithValue("email", email);
                 conn.Open();
                 using (var reader = mySql.ExecuteReader())
                 {
@@ -1005,7 +1009,7 @@ namespace IS220.O11.HTCL.Models
                     {
                         list.Add(new 
                         { 
-                            Matk= reader["matk"].ToString(),
+                            Email= reader["email"].ToString(),
                             Makm = reader["makm"].ToString(),
                             MaNhap = reader["manhap"].ToString(),
                             PhanTram = reader["phantram"].ToString(),
@@ -1020,39 +1024,38 @@ namespace IS220.O11.HTCL.Models
             return list;
         }
         
-        public void deletevoucher(int matk,string data)
+        public void deletevoucher(string email,string data)
         {
-            int Matk = Convert.ToInt32(matk);
             var list_voucher_used = JsonSerializer.Deserialize<voucher[]>(data);
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                var str3 = "delete from user_voucher where matk=@matk and makm=@makm";
+                var str3 = "delete from user_voucher where email=@email and makm=@makm";
                 foreach (var item in list_voucher_used)
                 {
                     int Makm = Convert.ToInt32(item.makm);
                     MySqlCommand mySql3 = new MySqlCommand(str3, conn);
-                    mySql3.Parameters.AddWithValue("matk", Matk);
+                    mySql3.Parameters.AddWithValue("email", email);
                     mySql3.Parameters.AddWithValue("makm", Makm);
                     mySql3.ExecuteNonQuery();
                 }
             }
         }
 
-        public void xoagiohang(int matk,string masach)
+        public void xoagiohang(string email,string masach)
         {
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                var str3 = "delete from cart where matk=@matk and masach=@masach";
+                var str3 = "delete from cart where email=@email and masach=@masach";
                 MySqlCommand sql_com = new MySqlCommand(str3, conn);
-                sql_com.Parameters.AddWithValue("matk", matk);
+                sql_com.Parameters.AddWithValue("email", email);
                 sql_com.Parameters.AddWithValue("masach", masach);
                 sql_com.ExecuteNonQuery();
 
-                var str4 = "update accounts set sl_giohang=sl_giohang-1 where matk=@matk";
+                var str4 = "update accounts set sl_giohang=sl_giohang-1 where email=@email";
                 MySqlCommand mySql = new MySqlCommand(str4, conn);
-                mySql.Parameters.AddWithValue("matk", matk);
+                mySql.Parameters.AddWithValue("email", email);
                 mySql.ExecuteNonQuery();
 
 
@@ -1060,23 +1063,22 @@ namespace IS220.O11.HTCL.Models
         }
 
 
-        public void themvaogiohang(int matk, string masach, string soluong)
+        public void themvaogiohang(string email, string masach, string soluong)
         {
-            int Matk = Convert.ToInt32(matk);
             int Masach = Convert.ToInt32(masach);
             int Soluong = Convert.ToInt32(soluong);
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                var str = "insert into cart values(@matk,@masach,@soluong)";
+                var str = "insert into cart values(@email,@masach,@soluong)";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
-                cmd.Parameters.AddWithValue("matk", Matk);
+                cmd.Parameters.AddWithValue("email", email);
                 cmd.Parameters.AddWithValue("masach", Masach);
                 cmd.Parameters.AddWithValue("soluong", Soluong);
                 cmd.ExecuteNonQuery();
-                str = "update accounts set sl_giohang=sl_giohang+1 where matk=@matk";
+                str = "update accounts set sl_giohang=sl_giohang+1 where email=@email";
                 MySqlCommand cmd2 = new MySqlCommand(str, conn);
-                cmd2.Parameters.AddWithValue("matk", Matk);
+                cmd2.Parameters.AddWithValue("email", email);
                 cmd2.ExecuteNonQuery();
                 conn.Close();
             }

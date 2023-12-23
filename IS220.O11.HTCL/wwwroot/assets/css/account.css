@@ -81,7 +81,7 @@
     .account__nav-title-link:hover,
     .account__nav-list-link:hover,
     .account__nav-title-text:hover {
-        color: var(--blue-color);
+        opacity: 0.6;
         cursor: pointer;
         text-decoration: none;
     }
@@ -183,7 +183,7 @@
 }
 
     .account__content-profile-dropdown:hover {
-        border-color: var(--blue-color);
+        opacity: 0.8;
         cursor: pointer;
     }
 
@@ -237,7 +237,7 @@
 }
 
 .account-btn--primary {
-    color: var(--white-color);
+    color: var(--black-color);
     background-color: var(--blue-color);
 }
 
@@ -544,7 +544,7 @@ tbody {
 }
 
 .dashboard-order .plus {
-    color: var(--blue-color);
+    color: var(--black-color);
 }
 
 .dashboard-order .minus {

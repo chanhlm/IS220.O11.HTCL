@@ -58,7 +58,6 @@ namespace IS220.O11.HTCL.Areas.Admin.Controllers
 
         }
 
-
         public IActionResult QL_taikhoan()
         {
 
@@ -84,9 +83,6 @@ namespace IS220.O11.HTCL.Areas.Admin.Controllers
             ViewBag.khuyenmai = _storeContext.GetKhuyenMai();
             /* ViewBag.TinhTrangKhuyenMai = _storeContext.TinhTrangKhuyenMai();*/
             return View();
-
-
-
         }
 
         public IActionResult CapNhap_KM(int Id)
@@ -119,7 +115,6 @@ namespace IS220.O11.HTCL.Areas.Admin.Controllers
             return RedirectToAction("DS_KhuyenMai", "Admin");
 
         }
-
 
         // ĐƠN HÀNG
 
