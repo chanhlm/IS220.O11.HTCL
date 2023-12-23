@@ -293,7 +293,7 @@ namespace IS220.O11.HTCL.Controllers
                 ViewBag.chitietdh = context.chitietdh(madh);
 
                 ViewBag.tamtinh = context.Tamtinh(madh);
-                ViewBag.orders = context.ViewDonHang(usersession.Email);
+                ViewBag.orders = context.ViewDonHang(usersession.Email, madh);
                 ViewBag.slmua = context.SoluongMua(madh);
                 ViewBag.avatar = HttpContext.Session.GetString("Avatar");
                 int giamgia = ViewBag.tamtinh + ViewBag.orders.Tienship - ViewBag.orders.Tongtien;

@@ -581,12 +581,13 @@
 .home-product-item__action {
     display: flex;
     justify-content: space-between;
-    margin: 8px 10px;
+    margin: 8px 4px;
     padding-bottom: 8px;
 }
 
 .home-product-item__like {
     font-size: 1.3rem;
+    padding-left:8px;
 }
 
 i.home-product-item__like-icon-fill {
@@ -669,7 +670,7 @@ i.home-product-item__like-icon-fill {
     right: 0;
     top: 0;
     width: 40px;
-    height: 36px;
+    height: 44px;
     text-align: center;
     background-color: rgba(255, 216, 64, 0.95);
     border-top-right-radius: 2px;

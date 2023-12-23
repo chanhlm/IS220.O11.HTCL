@@ -638,15 +638,16 @@ namespace IS220.O11.HTCL.Models
             return list;
         }
 
-        public order ViewDonHang(string email)
+        public order ViewDonHang(string email, int madh)
         {
             order o = new order();
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                string str = "select * from orders where email = @email";
+                string str = "select * from orders where email = @email and madh = @madh";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("email", email);
+                cmd.Parameters.AddWithValue("madh", madh);
 
                 using (var reader = cmd.ExecuteReader())
                 {

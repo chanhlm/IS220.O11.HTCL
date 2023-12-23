@@ -93,7 +93,7 @@
                 <div class="col-3 border" style="padding-top:80px;">
                     <div class="cart-store">
                         <img class="cart-logo-img" src="~/assets/img/logo.png" alt="">
-                        <span class="cart-label">DaBook Store</span>
+                        <span class="cart-label">HiBook Store</span>
                     </div>
                     <div class="cart-detail">
                         <div class="user__cart-delivery">
@@ -107,7 +107,7 @@
                             <div class="cart_address">
                                 <span style="font-weight: 400;">Địa chỉ: @ViewBag.Diachi</span>
                             </div>
-                            <a href="/Client/taikhoan?tentk=@ViewBag.Tentk" style="text-decoration: none; justify-content: space-around;">Thay đổi</a>
+                            <a href="/Client/taikhoan?email=@ViewBag.Email" style="text-decoration: none; justify-content: space-around;">Thay đổi</a>
                         </div>
                         <div class="cart-delivery" style="padding: 5px 0 4px;">
                             <p style="font-weight: 400; font-size: 1.8rem; color: #666;">Thông tin đơn hàng</p>
@@ -216,7 +216,7 @@
            var checkbox = $this.parent().parent().find('.checkbuy')
            var tensach = $this.parent().parent().find('.tensach').text()
            var soluong = parseInt($this.parent().find('.soluong').val())
-           var matk = $('.ten-dang-nhap').text()
+           var email = $('.email').text()
            //$('.input__qty').value=6
 
 
@@ -241,7 +241,7 @@
            var codesach = $(this).parent().parent().find('.ma-sach').text()
            var codesl = $(this).parent().find('.soluong').val()
 
-           $.get('/Client/updategiohang?matk=' + codetk + '&masach=' + codesach + '&soluong=' + codesl)
+           $.get('/Client/updategiohang?email=' + codetk + '&masach=' + codesach + '&soluong=' + codesl)
                .done(
 
                )
@@ -270,7 +270,7 @@
            var value = parseInt($input.val());
            var tensach = $this.parent().parent().find('.tensach').text()
            var soluong = parseInt($this.parent().find('.soluong').val())
-           var matk = $('.ten-dang-nhap').text()
+           var email = $('.email').text()
 
            if (value < 100) {
                value = value + 1;
@@ -291,7 +291,7 @@
            var codesach = $(this).parent().parent().find('.ma-sach').text()
            var codesl = $(this).parent().find('.soluong').val()
 
-           $.get('/Client/updategiohang?matk=' + codetk + '&masach=' + codesach + '&soluong=' + codesl)
+           $.get('/Client/updategiohang?email=' + codetk + '&masach=' + codesach + '&soluong=' + codesl)
                .done(
 
                )

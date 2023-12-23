@@ -324,7 +324,7 @@ a.qty-minus {
 
 .cart-store {
   position: absolute;
-  background-color: #1A94FF;
+  background-color: var(--blue-color);
   text-align: center;
   border: 1px solid #1A94FF;
   width: 300px;
@@ -338,7 +338,7 @@ a.qty-minus {
   padding-left: 6px;
   font-size: 16px;
   font-weight: 600;
-  color: var(--white-color);
+  color: var(--black-color);
 }
 
 .cart-detail {

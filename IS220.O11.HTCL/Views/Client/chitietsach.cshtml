@@ -61,10 +61,10 @@
                     </div>
                 </div>
             </div>
-            <div class="info-item col-auto border" style="position: absolute; top: 200px; right: 20px; border-radius: 4px; border: 1px solid black; width: 244px !important; ">
+            <div class="info-item col-auto border" style="position: absolute; top: 140px; right: 20px; border-radius: 4px; border: 1px solid black; width: 244px !important; ">
                 <div class="info-store">
                     <img class="info-logo-img" src="~/assets/img/logo.png" alt="">
-                    <span class="info-label">DaBook Store</span>
+                    <span class="info-label">HiBook Store</span>
                 </div>
                 <div class="info-detail">
                     <div class="info-delivery">
@@ -239,7 +239,7 @@
                             <div class="col-md-3 text-center">
                                 <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
                                 <div class="caption">
-                                    @*   {{!-- <small>by <a href="#joe">{{this.matk}}</a></small> --}}*@
+                                    @*   {{!-- <small>by <a href="#joe">{{this.email}}</a></small> --}}*@
                                 </div>
                             </div>
                             <div class="col-md-9">
@@ -335,17 +335,17 @@
         event.preventDefault();
         var now = $('#review-text').val();
         var sosao = $('#star_input').val();
-        var Matk = $('.ma-tai-khoan').val();
+        var Email = $('.email-user').val();
         var Tentk = $('.ten-dang-nhap').text();
 
-        if (Boolean(Matk) != false) {
+        if (Boolean(Email) != false) {
             $.ajax({
                 type: "GET",
                 url: '/Client/thembinhluan',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 data: {
-                    Matk: Matk,
+                    Email: Email,
                     Masach: @ViewBag.book.Masach,
                     Binhluan: now,
                     Sosao: sosao,
@@ -638,7 +638,7 @@
                     }
                 });
 
-            console.log($('.ma-tai-khoan').val())
+            console.log($('.email-user').val())
             console.log($('.ma-sach').text())
             console.log($('.tensach').text())
 
@@ -653,14 +653,14 @@
                     var hinhanh = $('.hinhanh').attr('src')
                     var giaban = parseInt($('.giaban').text())*1000
                     var soluong = parseInt($('.soluong').val())
-                    var matk=$('.ten-dang-nhap').text()
+                    var Email=$('.email-user').text()
                     var theloai = $('.theloai').text()
                     var masach = $('.ma-sach').text()
-                    var matk = $('.ma-tai-khoan').val()
+                    var email = $('.email-user').val()
                     console.log(theloai)
-                    console.log(matk)
+                    console.log(Email)
                     console.log(masach)
-                    $.get('/Client/themgiohang?matk=' + matk + '&masach=' + masach + '&soluong=' + soluong.toString())
+                    $.get('/Client/themgiohang?email=' + email + '&masach=' + masach + '&soluong=' + soluong.toString())
                         .done(function (res)
                         {
                             var sl = $('.sl_giohang').text()
@@ -703,16 +703,6 @@
         padding-left: 0;
     }
 
-    .info-store {
-        position: absolute;
-        background-color: #1A94FF;
-        text-align: center;
-        width: 243px;
-        left: -1px;
-        top: -1px;
-        border-top-left-radius: 4px;
-        border-top-right-radius: 4px;
-    }
 
         .info-store::after {
             content: "";
@@ -730,7 +720,7 @@
         padding-left: 6px;
         font-size: 16px;
         font-weight: 600;
-        color: var(--white-color);
+        color: var(--black-color);
     }
 
     .info-detail {
