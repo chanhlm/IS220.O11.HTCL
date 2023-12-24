@@ -286,10 +286,10 @@
                                         <div class="auth-form__group">
                                             <label class="auth-form__label">Tên tài khoản</label>
                                             <input id="input_tentk"
-                                                   name="Tentk"
+                                                   name="Hoten"
                                                    type="text"
                                                    class="auth-form__input"
-                                                   placeholder="Nhập tên tài khoản" />
+                                                   placeholder="Nhập tên tài khoản" required/>
                                             <small class="text-error hide-message">Tên tài khoản không để trống</small>
                                         </div>
                                         <div class="auth-form__group">
@@ -298,7 +298,7 @@
                                                    type="text"
                                                    class="auth-form__input"
                                                    placeholder="Email"
-                                                   id="input_lienlac" />
+                                                   id="input_lienlac" required />
                                             @*<input type="text" name="password"
                                         pattern="[0-9.-]{10,}$" class="auth-form__input" id="input_lienlac"
                                         title="Số điện thoại không hợp lệ!" placeholder="Số điện thoại" />*@
@@ -310,7 +310,7 @@
                                                    name="Matkhau"
                                                    type="password"
                                                    class="auth-form__input"
-                                                   placeholder="Nhập mật khẩu" />
+                                                   placeholder="Nhập mật khẩu" required />
                                             @*<input  type="password" class="auth-form__input" name="matkhau"
                                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                         title="Mật khẩu không hợp lệ!" placeholder="Nhập mật khẩu"/> *@
@@ -321,7 +321,7 @@
                                             <input type="password"
                                                    class="auth-form__input"
                                                    placeholder="Nhập lại mật khẩu"
-                                                   id="input_xacnhanmk" />
+                                                   id="input_xacnhanmk" required />
                                             <small class="text-error hide-message">Xác nhận mật khẩu không chính xác</small>
                                         </div>
                                     </div>

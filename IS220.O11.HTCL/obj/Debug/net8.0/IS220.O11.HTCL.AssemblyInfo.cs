@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IS220.O11.HTCL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+baaf995db34ac69679683b079bd8ef626dd21a5e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+757a8619c7eb885be145c29025260a810ec02667")]
 [assembly: System.Reflection.AssemblyProductAttribute("IS220.O11.HTCL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IS220.O11.HTCL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -25,11 +25,11 @@
 
     <div class="page-content-wrapper ">
 
-        <div class="container-fluid">
+        <div class="container-fluid pt-5">
             @foreach (var item in ViewBag.ThongKe)
             {
 
-                <div class="row">
+                <div class="row pt-5">
                     <div class="col-sm-6 col-lg-3">
                         <div class="card text-center">
                             <div class="card-heading">
@@ -131,11 +131,10 @@
 
         const month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         var datas = [];
-       var items = @Html.Raw(Json.Serialize(ViewBag.DataDoanhThu));
+        var items = @Html.Raw(Json.Serialize(ViewBag.DataDoanhThu));
         var k = 0;
 
-        for (let i = 1; i <=12; i++)
-        {
+        for (let i = 1; i <= 12; i++) {
             console.log(items[k].month);
             if (items[k].month == i) {
                 datas.push(items[k].doanhthu);
@@ -184,7 +183,7 @@
                         beginAtZero: true
                     }
                 },
-                
+
             },
         };
     </script>

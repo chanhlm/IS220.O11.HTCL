@@ -129,7 +129,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                 {
                     reader.Read();
                     
-                    list.Danhgia = Convert.ToInt32(reader["danhgia"]);
+                    list.Danhgia = Convert.ToInt32(reader["danhgia"]);  
                     list.Giaban = Convert.ToInt32(reader["giaban"]);
                     list.Giagoc = Convert.ToInt32(reader["giagoc"]);
                     list.Giamgia = Convert.ToInt32(reader["giamgia"]);
@@ -246,16 +246,16 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             return list;
         }
 
-        public List<account> GetAccountById(int Id)
+        public List<account> GetAccountById(string email)
         {
             List<account> list = new List<account>();
 
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                string str = "select * from accounts where matk=@matk";
+                string str = "select * from accounts where email=@email";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
-                cmd.Parameters.AddWithValue("matk", Id);
+                cmd.Parameters.AddWithValue("email", email);
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -270,7 +270,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                             Gioitinh = reader["gioitinh"].ToString(),
                             Hoten = reader["hoten"].ToString(),
                             Matkhau = reader["matkhau"].ToString(),
-                            Ngaylap = Convert.ToDateTime(reader["ngaylap"]),
+                            Ngaylap = Convert.ToDateTime(reader["ngaytao"]),
                             Tinhtrang = reader["tinhtrang"].ToString(),
                             Sodt = reader["sodt"].ToString(),
                             Ngaysinh = Convert.ToDateTime(reader["ngaysinh"]),
@@ -287,36 +287,31 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             return list;
         }
 
-        public int KhoaTK(account kh)
+        public int KhoaTK(string email)
         {
-
             using (MySqlConnection conn = GetConnection())
             {
-
                 conn.Open();
-                var str = "UPDATE accounts SET tinhtrang='Đã khóa' WHERE matk=@matk";
+                var str = "UPDATE accounts SET tinhtrang='Đã khóa' WHERE email=@email";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
-                Console.WriteLine(kh.Matk);
-                Console.WriteLine(kh.Tinhtrang);
-                cmd.Parameters.AddWithValue("matk", kh.Matk);
-                cmd.Parameters.AddWithValue("Đã khóa", kh.Tinhtrang);
+
+                cmd.Parameters.AddWithValue("@email", email);
                 return (cmd.ExecuteNonQuery());
             }
         }
 
-        public int MoTK(account kh)
+
+        public int MoTK(string email)
         {
 
             using (MySqlConnection conn = GetConnection())
             {
 
                 conn.Open();
-                var str = "UPDATE accounts SET tinhtrang='Đang sử dụng' WHERE matk=@matk";
+                var str = "UPDATE accounts SET tinhtrang='Đang hoạt động' WHERE email=@email";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
-                Console.WriteLine(kh.Matk);
-                Console.WriteLine(kh.Tinhtrang);
-                cmd.Parameters.AddWithValue("matk", kh.Matk);
-                cmd.Parameters.AddWithValue("Đang sử dụng", kh.Tinhtrang);
+                
+                cmd.Parameters.AddWithValue("email", email);
                 return (cmd.ExecuteNonQuery());
             }
         }
@@ -794,7 +789,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                string str = "select o.masach,tongtien, giaban, o.soluong, o.madh, tienship from Booklist s, detail_order o, order where s.masach=o.masach and order.madh=o.madh and o.madh=@Madh";
+                string str = "select o.masach,tongtien, giaban, o.soluong, o.madh, tienship from Booklist s, detail_order o, orders where s.masach=o.masach and orders.madh=o.madh and o.madh=@Madh";
 
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("Madh", Id);
@@ -830,7 +825,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             {
                 float tiengiam = 0;
                 conn.Open();
-                string str = "select phantram, tongtien, sum(o.soluong*giaban) as tamtinh from  Booklist b, detail_order o, order, voucher km where b.masach=o.masach and order.madh=o.madh and order.makm=km.makm and o.madh=@Madh group by o.madh";
+                string str = "select phantram, tongtien, sum(o.soluong*giaban) as tamtinh from  Booklist b, detail_order o, orders, voucher km where b.masach=o.masach and orders.madh=o.madh and orders.makm=km.makm and o.madh=@Madh group by o.madh";
                 
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("Madh", Id);
@@ -858,7 +853,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                 int phantram = 0;*/
                 int tamtinh = 0 ;
                 conn.Open();
-                string str = "SELECT sum(o.soluong*giaban) as tamtinh  from Booklist b, detail_order o, order where b.masach=o.masach and o.madh=order.madh and o.madh=@madh group by o.madh";
+                string str = "SELECT sum(o.soluong*giaban) as tamtinh  from Booklist b, detail_order o, orders where b.masach=o.masach and o.madh=orders.madh and o.madh=@madh group by o.madh";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("madh", Madh);
                 using (var reader = cmd.ExecuteReader())
@@ -886,7 +881,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             {
 
                 conn.Open();
-                var str = @"UPDATE  order 
+                var str = @"UPDATE  orders
                             SET phanhoi=@phanhoi,tinhtrangdonhang=@tinhtrangdonhang 
                             WHERE madh=@madh";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
@@ -909,7 +904,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                string str = "SELECT DISTINCT sum(o.soluong) as slSach, count(o.madh) as slDonHang, count(order.matk) as slTaiKhoan, sum(tongtien) as tongTien  from Booklist b, detail_order o, order where b.masach=o.masach and o.madh=order.madh and tinhtrangthanhtoan = 'Đã thanh toán'";
+                string str = "SELECT DISTINCT sum(o.soluong) as slSach, count(o.madh) as slDonHang, count(orders.email) as slTaiKhoan, sum(tongtien) as tongTien  from Booklist b, detail_order o, orders where b.masach=o.masach and o.madh=orders.madh and tinhtrangthanhtoan = 'Đã thanh toán'";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -974,7 +969,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                 string start = string.Format("{0:yyyy/MM/dd}", Convert.ToDateTime(Start));
                 string end = string.Format("{0:yyyy/MM/dd}", Convert.ToDateTime(End));
                 conn.Open();
-                string str = "SELECT DISTINCT sum(o.soluong) as slSach, count(o.madh) as slDonHang, count(order.matk) as slTaiKhoan, sum(tongtien) as tongTien  from Booklist b, detail_order o, order where b.masach=o.masach and o.madh=order.madh and (ngaylap BETWEEN @start AND @end) and tinhtrangthanhtoan = 'Đã thanh toán'";
+                string str = "SELECT DISTINCT sum(o.soluong) as slSach, count(o.madh) as slDonHang, count(orders.email) as slTaiKhoan, sum(tongtien) as tongTien  from Booklist b, detail_order o, orders where b.masach=o.masach and o.madh=orders.madh and (ngaylap BETWEEN @start AND @end) and tinhtrangthanhtoan = 'Đã thanh toán'";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("start", start);
                 cmd.Parameters.AddWithValue("end", end);
@@ -1013,8 +1008,8 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                 string end = string.Format("{0:yyyy/MM/dd}", Convert.ToDateTime(End));
                 string str = @"SELECT theloai, sum(o.soluong) as slban from Booklist b, detail_order o where b.masach = o.masach 
                             and o.masach in (SELECT DISTINCT o.masach
-                            from Booklist b, detail_order o, order
-                            where b.masach = o.masach and o.madh = order.madh and (ngaylap BETWEEN @start AND @end) and tinhtrangthanhtoan = 'Đã thanh toán') GROUP by theloai";
+                            from Booklist b, detail_order o, orders
+                            where b.masach = o.masach and o.madh = orders.madh and (ngaylap BETWEEN @start AND @end) and tinhtrangthanhtoan = 'Đã thanh toán') GROUP by theloai";
 
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("start", start);
@@ -1045,11 +1040,11 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                string str = @"SELECT DISTINCT sum(tongtien) as doanhthu, Month(order.ngaylap) as month
-                            from Booklist b, detail_order o, order
-                                where b.masach = o.masach and o.madh = order.madh and tinhtrangthanhtoan = 'Đã thanh toán'
-                                GROUP by Month(order.ngaylap)
-                            ORDER BY Month(order.ngaylap) ASC";
+                string str = @"SELECT DISTINCT sum(tongtien) as doanhthu, Month(orders.ngaylap) as month
+                            from Booklist b, detail_order o, orders
+                                where b.masach = o.masach and o.madh = orders.madh and tinhtrangthanhtoan = 'Đã thanh toán'
+                                GROUP by Month(orders.ngaylap)
+                            ORDER BY Month(orders.ngaylap) ASC";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -1079,11 +1074,11 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                string str = @"SELECT DISTINCT sum(tongtien) as doanhthu, Month(order.ngaylap) as month
-                            from Booklist b, detail_order o, order
-                                where b.masach = o.masach and o.madh = order.madh and tinhtrangthanhtoan = 'Đã thanh toán'and (ngaylap BETWEEN @start AND @end)
-                                GROUP by Month(order.ngaylap)
-                            ORDER BY Month(order.ngaylap) ASC";
+                string str = @"SELECT DISTINCT sum(tongtien) as doanhthu, Month(orders.ngaylap) as month
+                            from Booklist b, detail_order o, orders
+                                where b.masach = o.masach and o.madh = orders.madh and tinhtrangthanhtoan = 'Đã thanh toán'and (ngaylap BETWEEN @start AND @end)
+                                GROUP by Month(orders.ngaylap)
+                            ORDER BY Month(orders.ngaylap) ASC";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("start", start);
                 cmd.Parameters.AddWithValue("end", end);
@@ -1114,7 +1109,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                var str = "select * from accounts where email = @email and matkhau = @password and phanquyen = 'admin'";
+                var str = "select * from accounts where email = @email and matkhau = @password and phanquyen = 'admin' and tinhtrang='Đang hoạt động'";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("email", email);
                 cmd.Parameters.AddWithValue("password", password);

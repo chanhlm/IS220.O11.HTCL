@@ -1,5 +1,13 @@
-﻿<div class="container">
-    <H2 style=" padding: 10px 0px; color: rgb(248, 147, 31);">CHI TIẾT ĐƠN HÀNG @ViewBag.orders.Madh - GIAO HÀNG THÀNH CÔNG</H2>
+﻿@{
+    string change(int number)
+    {
+        string a = String.Format("{0:#,##0.##}", number);
+        return a;
+    }
+}
+
+<div class="container">
+    <H2 class="text-uppercase" style=" padding: 10px 0px; color: rgb(248, 147, 31);">CHI TIẾT ĐƠN HÀNG @ViewBag.orders.Madh - @ViewBag.orders.Tinhtrangdonhang</H2>
     <h4 style=" padding-bottom: 20px;">Ngày đặt hàng: @ViewBag.orders.Ngaylap.Day / @ViewBag.orders.Ngaylap.Month /@ViewBag.orders.Ngaylap.Year</h4>
     <div class="row" style="margin-bottom: 20px;">
         <div class="col-md-4 client__detail">
@@ -20,7 +28,7 @@
                     Được giao bởi HiBookDelivery (giao từ TP. HCM)
                 </p>
                 <p style=" font-size: 15px;">Giao vào Thứ 4, 27/12/2023</p>
-                <p style=" font-size: 15px;">Phí vận chuyển: @ViewBag.orders.Tienship</p>
+                <p style=" font-size: 15px;">Phí vận chuyển: @change(@ViewBag.orders.Tienship) đ</p>
             </div>
         </div>
         <div class="col-md-4 payment__detail">
@@ -47,9 +55,9 @@
                         <img class="product__img" src="@item.Hinhanh" alt="">
                         <p class="product__name">@item.Tensach</p>
                     </td>
-                    <td style="font-size:14px">@item.Giaban</td>
+                    <td style="font-size:14px">@change(@item.Giaban) đ</td>
                     <td style="font-size:14px; text-align:center">@item.Soluong</td>
-                    <td style="font-size:14px">@item.Giamgia</td>
+                    <td style="font-size:14px">@change(@item.Giamgia) đ</td>
 
                 </tr>
             }
@@ -62,7 +70,7 @@
             </tr>
             <tr style="color: #333; line-height: 3.2rem;">
                 <td style="font-size:14px">Tạm tính</td>
-                <td style="font-size:14px">@ViewBag.tamtinh</td>
+                <td style="font-size:14px">@change(@ViewBag.tamtinh) đ</td>
             </tr>
             <tr style="color: #333; line-height: 3.2rem;">
                 <td style="font-size:14px">Vourcher áp dụng:</td>
@@ -78,15 +86,15 @@
             </tr>
             <tr style="color: #333; line-height: 3.2rem;">
                 <td style="font-size:14px">Giảm giá</td>
-                <td style="font-size:14px">@ViewBag.giamgia</td>
+                <td style="font-size:14px">@change(@ViewBag.giamgia) đ</td>
             </tr>
             <tr style="color: #333; line-height: 3.2rem;">
                 <td style="font-size:14px">Phí vận chuyển</td>
-                <td style="font-size:14px">@ViewBag.orders.Tienship</td>
+                <td style="font-size:14px">@change(@ViewBag.orders.Tienship) đ</td>
             </tr>
             <tr style="color: rgb(248, 35, 35); font-size: 18px; line-height: 3.2rem;">
                 <td style="font-size:14px">Tổng cộng</td>
-                <td style="font-size:14px">@ViewBag.orders.Tongtien</td>
+                <td style="font-size:14px">@change(@ViewBag.orders.Tongtien) đ</td>
             </tr>
         </table>
 

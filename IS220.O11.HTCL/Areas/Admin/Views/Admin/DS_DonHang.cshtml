@@ -58,13 +58,13 @@
                                         <tr>
                                             <td>@item.Madh</td>
                                             <td>@item.Ngaylap</td>
-                                            <td>@item.Matk</td>
+                                            <td>@item.Email</td>
                                             <td>@item.Hinhthucthanhtoan</td>
                                             <td>@item.Makm</td>
                                             <td>@item.Tongtien</td>
                                             @foreach (var item1 in ViewBag.listaccount)
                                             {
-                                                if (@item.Matk == @item1.Matk)
+                                                if (@item.Email == @item1.Email)
                                                 {
                                                     <td>
                                                         @item1.Hoten, @item1.Sodt, @item1.Diachi
@@ -75,7 +75,7 @@
                                             <td>@item.Tinhtrangthanhtoan</td>
                                             <td>@item.Tinhtrangdonhang</td>
                                             <td style="display: flex;">
-                                                <a href="VanChuyen?Madh=@item.Madh&Matk=@item.Matk" class="btn btn-primary" style="justify-content: center;">Xem chi tiết</a>
+                                                <a href="VanChuyen?Madh=@item.Madh&email=@item.Email" class="btn btn-primary" style="justify-content: center;">Xem chi tiết</a>
                                             </td>
                                         </tr>
 

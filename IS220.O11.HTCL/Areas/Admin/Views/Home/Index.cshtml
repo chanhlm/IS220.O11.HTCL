@@ -66,10 +66,9 @@
                                                 <td style="display: flex;">
 
                                                     <span class="btn btn-primary" style="justify-content: center;">
-                                                        <a style=" color:white" href="/Admin/CapNhat_Sach?Id=@item.GetType().GetProperty("Masach").GetValue(item, null)">
+                                                        <a style="color:white" href="@Url.Action("CapNhat_Sach", "Admin", new { Area = "Admin", Id = item.GetType().GetProperty("Masach").GetValue(item, null) })">
                                                             Sửa
                                                         </a>
-
                                                     </span>
 
                                                 </td>

@@ -4,7 +4,7 @@
 
                 <div class="">
                     <div class="page-header-title">
-                        <h4 class="page-title">Quản lý vận chuyển</h4>
+                        <h4 class="page-title p-1">Quản lý vận chuyển</h4>
                     </div>
                 </div>
 
@@ -14,11 +14,11 @@
 
                         <div class="row">
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-12" style="top: 80px">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="col-lg-6" style="margin-left: -10px;">
-                                            <form action="/Admin/FilterCNDonHang" method="post">
+                                <form action="@Url.Action("FilterCNDonHang", "Admin", new { Area = "Admin" })" method="post">
                                                 <div class="form-group">
                                                     <label>Đơn hàng trong khoảng thời gian</label>
                                                     <div>
@@ -58,7 +58,7 @@
                                                 {
                                                     
                                                     <tr class="donhang-tab">
-                                                        <form action="/Admin/UpdateDonHangById?Id=@item.Madh" method="post">
+                                                        <form action="@Url.Action("UpdateDonHangById", "Admin", new { Area = "Admin", Id = item.Madh })" method="post">
                                                         <td>@item.Madh</td>
                                                        @* <td>@item.Ngaylap</td>*@
                                                         @*<td>@item.Matk</td>*@
@@ -84,8 +84,8 @@
                                                                        value="Chờ xác nhận" />
                                                                 <span class="form-check-label textOver">
                                                                     Chờ xác nhận
-                                                                </span><br />
-                                                            </label>
+                                                                </span>
+                                                            </label><br />
                                                             <label class="form-check">
                                                                 <input name="Tinhtrangdonhang"
                                                                        id="danglayhang"

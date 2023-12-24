@@ -43,7 +43,7 @@
                                                 @foreach (var item in ViewBag.listaccount)
                                                 {
                                                 <tr>
-                                                    <td>@item.GetType().GetProperty("Matk").GetValue(item, null)</td>
+                                                    <td>@item.GetType().GetProperty("Email").GetValue(item, null)</td>
                                                     <td>@item.GetType().GetProperty("Hoten").GetValue(item, null)</td>
                                                     <td>@item.GetType().GetProperty("Diachi").GetValue(item, null) </td>
                                                     
@@ -51,7 +51,7 @@
                                                     <td>
                                                         @foreach (var item1 in ViewBag.uservoucher)
                                                         {
-                                                            if (@item.GetType().GetProperty("Matk").GetValue(item, null) == @item1.GetType().GetProperty("Matk").GetValue(item1, null))
+                                                            if (@item.GetType().GetProperty("Email").GetValue(item, null) == @item1.GetType().GetProperty("Email").GetValue(item1, null))
                                                             {
                                                                 <p>@item1.GetType().GetProperty("Makm").GetValue(item1, null)</p>
                                                             }
@@ -62,14 +62,14 @@
                                                     </td>
                                                     
                                                     <td>@item.GetType().GetProperty("Sodt").GetValue(item, null)</td>
-                                                    <td>@item.GetType().GetProperty("Ngaytao").GetValue(item, null)</td>
+                                                    <td>@item.GetType().GetProperty("Ngaylap").GetValue(item, null)</td>
                                                     <td>@item.GetType().GetProperty("Diem").GetValue(item, null)</td>
                                                     <td>@item.GetType().GetProperty("Email").GetValue(item, null)</td>
                                                     <td>@item.GetType().GetProperty("Tinhtrang").GetValue(item, null)</td>
                                                     <td>
-                                                        <a class="btn btn-danger" href="/Admin/KhoaTaiKhoan?Matk=@item.GetType().GetProperty("Matk").GetValue(item, null)" style="display: flex; justify-content: center;">Khóa</a>
+                                                        <a class="btn btn-danger" href="@Url.Action("KhoaTaiKhoan", "Admin", new { Area = "Admin", email = item.GetType().GetProperty("Email").GetValue(item, null) })" style="display: flex; justify-content: center;">Khóa</a>
                                                         <br />
-                                                        <a class="btn btn-primary" href="/Admin/MoTaiKhoan?Matk=@item.GetType().GetProperty("Matk").GetValue(item, null)" style="display: flex; justify-content: center;"> Mở Khóa</a>
+                                                        <a class="btn btn-primary" href="@Url.Action("MoTaiKhoan", "Admin", new { Area = "Admin", email = item.GetType().GetProperty("Email").GetValue(item, null) })" style="display: flex; justify-content: center;"> Mở Khóa</a>
                                                     </td>
                                                     </tr>
                                                 }

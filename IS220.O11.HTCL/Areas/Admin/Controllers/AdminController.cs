@@ -31,7 +31,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Controllers
         {
 
             ViewBag.Book = _storeContext.GetBookById(Id);
-            // ViewBag.SLBan = _storeContext.GetSLBan(Id); 
+            //ViewBag.SLBan = _storeContext.GetSLBan(Id);
             return View();
         }
         public IActionResult ThemSach()
@@ -42,19 +42,19 @@ namespace IS220.O11.HTCL.Areas.Admin.Controllers
         {
             _storeContext.InsertBook(bk);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", new { Area = "Admin" });
 
         }
         public IActionResult UpdateById(Book book)
         {
             _storeContext.UpdateBookById(book);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", new { Area = "Admin" });
         }
 
         public IActionResult DeleteBook(int Id)
         {
             _storeContext.XoaSach(Id);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", new { Area = "Admin" });
 
         }
 
@@ -66,16 +66,16 @@ namespace IS220.O11.HTCL.Areas.Admin.Controllers
             return View();
         }
 
-        public IActionResult KhoaTaiKhoan(account Id)
+        public IActionResult KhoaTaiKhoan(string email)
         {
-            _storeContext.KhoaTK(Id);
-            return RedirectToAction("QL_taikhoan", "Admin");
+            _storeContext.KhoaTK(email);
+            return RedirectToAction("QL_taikhoan", "Admin", new { Area = "Admin" });
         }
 
-        public IActionResult MoTaiKhoan(account Id)
+        public IActionResult MoTaiKhoan(string email)
         {
-            _storeContext.MoTK(Id);
-            return RedirectToAction("QL_taikhoan", "Admin");
+            _storeContext.MoTK(email);
+            return RedirectToAction("QL_taikhoan", "Admin", new { Area = "Admin" });
         }
 
         public IActionResult DS_KhuyenMai()
@@ -95,13 +95,13 @@ namespace IS220.O11.HTCL.Areas.Admin.Controllers
         public IActionResult UpdateKhuyenMaiById(voucher km)
         {
             _storeContext.UpdateKhuyenMaiById(km);
-            return RedirectToAction("DS_KhuyenMai", "Admin");
+            return RedirectToAction("DS_KhuyenMai", "Admin", new { Area = "Admin" });
         }
 
         public IActionResult Xoa_KM(int Id)
         {
             _storeContext.XoaKhuyenMai(Id);
-            return RedirectToAction("DS_KhuyenMai", "Admin");
+            return RedirectToAction("DS_KhuyenMai", "Admin", new { Area = "Admin" });
 
         }
 
@@ -112,7 +112,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Controllers
         public IActionResult InsertKhuyenmai(voucher bk)
         {
             _storeContext.InsertKhuyenmai(bk);
-            return RedirectToAction("DS_KhuyenMai", "Admin");
+            return RedirectToAction("DS_KhuyenMai", "Admin", new { Area = "Admin" });
 
         }
 
@@ -139,10 +139,10 @@ namespace IS220.O11.HTCL.Areas.Admin.Controllers
             return View("CapNhat_VanChuyen");
 
         }
-        public IActionResult VanChuyen(int Madh, int Matk)
+        public IActionResult VanChuyen(int Madh, string email)
         {
             ViewBag.listDonHang = _storeContext.ViewDonHang(Madh);
-            ViewBag.listaccount = _storeContext.GetAccountById(Matk);
+            ViewBag.listaccount = _storeContext.GetAccountById(email);
             ViewBag.listbook = _storeContext.GetObject_Book(Madh);
             ViewBag.ThanhTien = _storeContext.TinhThanhTien(Madh);
             ViewBag.TienGiam = _storeContext.GetPhanTramKM(Madh);
@@ -161,7 +161,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Controllers
         public IActionResult UpdateDonHangById(int Id, string Tinhtrangdonhang, string Phanhoi)
         {
             _storeContext.UpdateDonHangById(Id, Tinhtrangdonhang, Phanhoi);
-            return RedirectToAction("CapNhat_VanChuyen", "Admin");
+            return RedirectToAction("CapNhat_VanChuyen", "Admin", new { Area = "Admin" });
         }
 
         public IActionResult ThongKe()

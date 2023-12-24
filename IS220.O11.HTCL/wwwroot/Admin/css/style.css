@@ -3388,7 +3388,7 @@ File: Menu
 }
 
 .nav > li > a {
-  color: #ffffff !important;
+  color: #000!important;
   padding: 0px 15px;
   position: relative;
 }
@@ -3608,7 +3608,7 @@ body.fixed-left .side-menu.left {
   height: 36px;
   width: 36px;
   padding: 0 !important;
-  border: 2px solid rgba(255, 255, 255, 0.5) !important;
+  border: 2px solid #000!important;
   line-height: 35px !important;
   text-align: center;
   border-radius: 50%;
@@ -3932,7 +3932,7 @@ body.fixed-left .side-menu.left {
 
 .page-header-title {
   background-color: #2a323c;
-  margin: -20px -5px 23px -5px;
+  margin: -20px -5px 10px -5px;
   padding: 10px 15px 100px 20px;
   -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
           box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
@@ -4014,7 +4014,7 @@ body.fixed-left-void {
 }
 
 .layout2 .topbar-left, .layout2 .navbar-default {
-  background-color: #04a2b3;
+    background-color: #d7f9fa;
 }
 
 .layout2 .topbar-left .logo, .layout2 .topbar-left .logo-sm, .layout2 .navbar-default .logo, .layout2 .navbar-default .logo-sm {
@@ -4025,7 +4025,7 @@ body.fixed-left-void {
   background-color: transparent;
   -webkit-box-shadow: none;
           box-shadow: none;
-  padding: 10px 15px 85px 20px;
+  padding: 10px 15px 16px 20px;
 }
 
 @media (min-width: 768px) {
@@ -4111,7 +4111,7 @@ File: Responsive
   }
   .page-header-title {
     text-align: center;
-    padding: 10px 15px 88px 20px;
+    padding: 10px 15px 16px 20px;
   }
   .dataTables_paginate .pagination > li > a, .pagination > li > span {
     padding: 4px 6px;

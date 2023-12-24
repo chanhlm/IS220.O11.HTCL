@@ -169,7 +169,7 @@ namespace IS220.O11.HTCL.Models
         {
             DateTime ngaytao = DateTime.Now;
             string value = "chưa có";
-            string tinhtrang = "đang sử dụng";
+            string tinhtrang = "Đang hoạt động";
             int sl = 0;
             using (MySqlConnection conn = GetConnection())
             {
@@ -339,7 +339,7 @@ namespace IS220.O11.HTCL.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                var str = "select * from accounts where email = @email and matkhau = @password and phanquyen = 'user'";
+                var str = "select * from accounts where email = @email and matkhau = @password and phanquyen = 'user' and tinhtrang='Đang hoạt động'";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("email", email);
                 cmd.Parameters.AddWithValue("password", password);
