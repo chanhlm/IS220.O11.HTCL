@@ -39,8 +39,9 @@
             <!-- LOGO -->
             <div class="topbar-left">
                 <div class="text-center">
-                    <a href="/Home/Index"><img class="logo" src="~/logo.png" style="width:80px;" alt="logo-img"></a>
+                    <a href="@Url.Action("Index", "Home")"><img class="logo" src="~/logo.png" style="width:80px;" alt="logo-img"></a>
                     <img class="logo-sm" src="~/logo.png" style="width:80px" alt="logo-img">
+                    
                 </div>
             </div>
             <!-- Button mobile view to collapse sidebar menu -->
@@ -63,7 +64,11 @@
                     </ul>
 
                     <ul class="nav navbar-right float-right list-inline">
-
+                        <li class="header__navbar-item" style="display: flex; align-items: center;">
+                            <a asp-controller="Admin" asp-action="Logout" class="header__navbar-item--link">
+                                Đăng xuất
+                            </a>
+                        </li>
                         <li class="d-none d-sm-block">
                             <a href="#" id="btn-fullscreen" class="waves-effect waves-light notification-icon-box"><i class="mdi mdi-fullscreen"></i></a>
                         </li>

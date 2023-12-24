@@ -201,5 +201,14 @@ namespace IS220.O11.HTCL.Areas.Admin.Controllers
         //    }
         //    return View();
         //}
+
+        public IActionResult Logout()
+        {
+            //StoreContext context = HttpContext.RequestServices.GetService(typeof(IS220.O11.HTCL.Models.StoreContext)) as StoreContext;
+            HttpContext.Session.Remove("UserSession");
+            return Redirect("/Home/Index");
+        }
     }
+
+
 }
