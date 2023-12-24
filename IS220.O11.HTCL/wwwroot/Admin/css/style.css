@@ -1043,10 +1043,10 @@ a.list-group-item, button.list-group-item {
   cursor: pointer;
   display: inline-block;
   overflow: hidden;
-  -webkit-user-select: none;
+/*  -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none;
+  user-select: none;*/
   -webkit-tap-highlight-color: transparent;
   vertical-align: middle;
   z-index: 1;

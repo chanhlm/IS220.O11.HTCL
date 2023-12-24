@@ -1,13 +1,15 @@
 ﻿@model IS220.O11.HTCL.Models.voucher
 @{
+
     <div class="content">
 
         <div class="">
             <div class="page-header-title">
-                <h4 class="page-title" style="margin-left: 300px;">Cập nhật khuyến mãi</h4>
+                <h4 class="page-title p-2" style="margin-left: 300px;">Cập nhật khuyến mãi</h4>
             </div>
         </div>
-        <form action="/Admin/UpdateKhuyenMaiById" method="post">
+        <form action="@Url.Action("UpdateKhuyenMaiById", "Admin", new { Area = "Admin" })" method="post">
+
 
             <div class="page-content-wrapper ">
 
@@ -18,10 +20,30 @@
                         <div class="col-lg-6" style="margin-left: 300px;">
 
                             <div class="card">
-                                <div class="card-body">
+                                <div class="card-body mt-5">
                                     <h4 class="m-b-30 m-t-0">Cập nhật thông tin khuyến mãi</h4>
                                     <div class="demo-box">
-                                        <!-- ... -->
+                                        <div class="form-group ">
+                                            <p class="text-muted m-b-15 font-13">
+                                                Mã khuyến mãi
+                                            </p>
+                                            <input type="text" class="form-control" maxlength="25" name="Makm" id="placement" placeholder="Mã khuyến mãi" value="@ViewBag.khuyenmai.Makm" readonly>
+                                        </div>
+                                        <div class="form-group ">
+                                            <div class="m-t-20">
+                                                <p class="text-muted m-b-15 font-13">
+                                                    Nội dung khuyến mãi
+                                                </p>
+
+                                                <textarea id="textarea" class="form-control" maxlength="225" rows="3" placeholder="Nội dung khuyến mãi" name="Noidung" style="margin-bottom: 18px;">@ViewBag.khuyenmai.Noidung</textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label">Phần trăm khuyến mãi</label>
+                                            <input id="demo1" type="text" value="@ViewBag.khuyenmai.Phantram" name="Phantram" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary">
+                                        </div>
+
                                     </div>
 
                                     <div class="form-group">

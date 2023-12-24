@@ -74,30 +74,32 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
 
         public int InsertBook(Book bk)
         {
-            using(MySqlConnection conn = GetConnection())
+            using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                string str = "INSERT INTO Booklist values(@masach, @danhgia, @giaban, @giagoc, @giamgia, @hinhanh, @hinhthuc, @mota, @namxb,@ngonngu, @nxb, @sobinhchon, @tacgia, @tensach, @theloai, @soluong )";
+                string str = "INSERT INTO Booklist values(@masach,@soluongban, @danhgia, @giaban, @giagoc, @giamgia, @hinhanh, @hinhthuc, @mota, @namxb,@ngonngu, @nxb, @sobinhchon, @tacgia, @tensach, @theloai, @soluong)";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("masach", bk.Masach);
-                cmd.Parameters.AddWithValue("danhgia", bk.Danhgia);
+                cmd.Parameters.AddWithValue("danhgia", "");
                 cmd.Parameters.AddWithValue("giaban", bk.Giaban);
                 cmd.Parameters.AddWithValue("giagoc", bk.Giagoc);
                 cmd.Parameters.AddWithValue("giamgia", bk.Giamgia);
                 cmd.Parameters.AddWithValue("hinhanh", bk.Hinhanh);
                 cmd.Parameters.AddWithValue("hinhthuc", bk.Hinhthuc);
                 cmd.Parameters.AddWithValue("mota", bk.Mota);
-                cmd.Parameters.AddWithValue("namxb", bk.Namxb);
-                cmd.Parameters.AddWithValue("ngonngu", bk.Ngonngu);
+                cmd.Parameters.AddWithValue("namxb", bk.Namxb.ToString("dd-mm-yyyy")); // Chuyển đổi DateTime thành chuỗi
+                cmd.Parameters.AddWithValue("ngonngu", "");
                 cmd.Parameters.AddWithValue("nxb", bk.Nxb);
-                cmd.Parameters.AddWithValue("sobinhchon", bk.Sobinhchon);
+                cmd.Parameters.AddWithValue("sobinhchon", 0);
                 cmd.Parameters.AddWithValue("tacgia", bk.Tacgia);
                 cmd.Parameters.AddWithValue("tensach", bk.Tensach);
                 cmd.Parameters.AddWithValue("theloai", bk.Theloai);
-                cmd.Parameters.AddWithValue("soluong", bk.Soluong);
+                cmd.Parameters.AddWithValue("soluong", 0);
+                cmd.Parameters.AddWithValue("soluongban", 0); // Thêm giá trị cho thuộc tính soluongban
                 return cmd.ExecuteNonQuery();
             }
         }
+
 
         public int XoaSach(int Id)
         {
@@ -604,7 +606,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             {
 
                 conn.Open();
-                var str = "UPDATE  voucher SET daluu=@daluu,dieukien=@dieukien,img=@img,loai=@loai," +
+                var str = "UPDATE voucher SET daluu=@daluu,dieukien=@dieukien,img=@img,loai=@loai," +
                     "manhap=@manhap,ngaybd=@ngaybd,ngaykt=@ngaykt,noidung=@noidung,phantram=@phantram,sl=@sl WHERE makm=@makm";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("daluu", kh.Daluu);

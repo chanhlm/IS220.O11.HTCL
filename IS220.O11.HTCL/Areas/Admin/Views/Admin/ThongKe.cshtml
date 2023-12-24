@@ -5,7 +5,7 @@
         <div class="page-header-title">
             <h4 class="page-title">Thống kê doanh thu</h4>
             <div class="col-lg-6" style="margin-left: -10px;">
-                <form action="/Admin/FilterThongKe" method="post">
+                <form action="@Url.Action("FilterThongKe", "Admin", new { Area = "Admin" })" method="post">
                     <div class="form-group">
                         <label>Khoảng thời gian muốn thống kê</label>
                         <div style="display:flex">

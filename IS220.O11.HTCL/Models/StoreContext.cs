@@ -32,13 +32,13 @@ namespace IS220.O11.HTCL.Models
             }
             else
             {
-                size = 60 * x;
+                size = 100 * x;
             }
              
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                string str = "select * from booklist limit 60 offset @size";
+                string str = "select * from booklist ";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("size", size);
                 using (var reader = cmd.ExecuteReader())
@@ -178,12 +178,12 @@ namespace IS220.O11.HTCL.Models
                     ") values(@diachi, @diem, @email, @gioitinh, @hoten, @matkhau, @ngaysinh, NOW(), @sl_giohang, @sodt, @tinhtrang)";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("diachi", value);
-                cmd.Parameters.AddWithValue("email", value);
+                cmd.Parameters.AddWithValue("email", kh.Email);
                 cmd.Parameters.AddWithValue("diem", sl);
                 cmd.Parameters.AddWithValue("sodt", kh.Sodt);
                 cmd.Parameters.AddWithValue("giohang", value);
                 cmd.Parameters.AddWithValue("gioitinh", value);
-                cmd.Parameters.AddWithValue("hoten", value);
+                cmd.Parameters.AddWithValue("hoten", kh.Hoten);
                 cmd.Parameters.AddWithValue("matkhau", kh.Matkhau);
                 cmd.Parameters.AddWithValue("ngaysinh", value);
                 cmd.Parameters.AddWithValue("sl_giohang", sl);

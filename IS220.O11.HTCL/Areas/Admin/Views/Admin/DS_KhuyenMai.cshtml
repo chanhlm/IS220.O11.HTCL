@@ -43,8 +43,8 @@
                                             <td>@item.GetType().GetProperty("Ngaykt").GetValue(item, null)</td>
                                             <td>@item.GetType().GetProperty("TinhTrang").GetValue(item, null)</td>
                                             <td style="display: flex;">
-                                                <a href="/Admin/CapNhap_KM?Id=@item.GetType().GetProperty("Makm").GetValue(item,null)" class="btn btn-primary" style=" justify-content: center;">Sửa</a>
-                                                <a href="/Admin/Xoa_KM?Id=@item.GetType().GetProperty("Makm").GetValue(item,null)" class="btn btn-danger" style=" justify-content: center;">Xóa</a>
+                                                <a href="@Url.Action("CapNhap_KM", "Admin", new { Area = "Admin", Id=@item.GetType().GetProperty("Makm").GetValue(item,null)})" class="btn btn-primary" style=" justify-content: center;">Sửa</a>
+                                                <a href="@Url.Action("Xoa_KM", "Admin", new { Area = "Admin", Id=@item.GetType().GetProperty("Makm").GetValue(item,null)})" class="btn btn-danger" style=" justify-content: center;">Xóa</a>
                                             </td>
                                         </tr>
                                     }
