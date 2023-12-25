@@ -18,7 +18,7 @@
         <div class="col-8  shipping__info">
             <div class="shipping__address--header ">
                 <h3>Địa chỉ giao hàng</h3>
-                <a href="/Client/taikhoan?tentk=@ViewBag.Tentk">Thay đổi</a>
+                <a href="/Client/taikhoan?email=@ViewBag.infor.Email">Thay đổi</a>
             </div>
             <div class="shipping__info--user">
                 <span> <i class="far fa-id-badge" style="color: rgb(0, 132, 255); padding: 10px;"></i> @ViewBag.Hoten</span>
@@ -71,7 +71,7 @@
 
         <div class="col-4 border" style="padding-top:80px;">
             <div class="cart-store">
-                <img class="cart-logo-img" src="/client_styles/assets/img/logo.png" alt="">
+                <img class="cart-logo-img" src="~/assets/img/logo.png" alt="">
                 <span class="cart-label">HiBook Store</span>
             </div>
 
@@ -120,7 +120,7 @@
         {
         <div class="team-khuyen-mai">
             <p class="ma-khuyen-mai">@item.GetType().GetProperty("Makm").GetValue(item, null)</p>
-            <p class="ma-tai-khoan">@item.GetType().GetProperty("Matk").GetValue(item, null)</p>
+            <p class="ma-tai-khoan">@item.GetType().GetProperty("Email").GetValue(item, null)</p>
             <p class="ma-nhap">@item.GetType().GetProperty("MaNhap").GetValue(item, null)</p>
             <p class="phan-tram">@item.GetType().GetProperty("PhanTram").GetValue(item, null)</p>
             <p class="dieu-kien">@item.GetType().GetProperty("DieuKien").GetValue(item, null)</p>
@@ -509,7 +509,7 @@
                                 $('.thanhtien').text(tongtien.toString())
                                 $('.giamgia').text(tiengiam.toString())
                                 var saved = {
-                                    matk: list_khuyenmai[i].matk,
+                                    email: list_khuyenmai[i].enail,
                                     makm: list_khuyenmai[i].makm
                                 }
                                 voucher_dadung.push(saved)
@@ -522,7 +522,7 @@
                                 $('.giamgia').text(tiengiam.toString())
 
                                 var saved = {
-                                    matk: list_khuyenmai[i].matk,
+                                    email: list_khuyenmai[i].email,
                                     makm: list_khuyenmai[i].makm,
                                 }
                                 voucher_used_list += (list_khuyenmai[i].makm +" ")

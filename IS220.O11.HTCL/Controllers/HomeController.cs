@@ -29,7 +29,7 @@ namespace IS220.O11.HTCL.Controllers
             else
             {
                 ViewBag.flashsale = context.FlashSales();
-                ViewBag.listbook = context.GetBook(page - 1);
+                ViewBag.listbook = context.GetBook(page);
                 ViewBag.page = page;
             }
             var res = HttpContext.Session.GetString("UserSession");

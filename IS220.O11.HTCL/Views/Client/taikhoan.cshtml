@@ -585,7 +585,7 @@
             </div>
 
             <div class="modal-address hide-message" id="edit__address">
-                <div class="modal__inner-address">
+                <div class="modal__inner-address" style="z-index:9999;">
                     <div class="modal__body-address">
                         <h2>Sửa địa chỉ</h2>
                         <div class="address-form__group">
@@ -975,22 +975,28 @@
                 var a = $('.hoten_edit').val();
                 var b = $('.sdt_edit').val();
                 var c = $('.diachi_edit').val();
+
+                // Assuming the email is part of the URL, you can extract it like this
+                var urlParams = new URLSearchParams(window.location.search);
+                var email = urlParams.get('email');
+
                 $('.hoten').text(a.toString());
-                $('sdt').text(b.toString());
+                $('.sdt').text(b.toString());
                 $('.diachi').text(c.toString());
 
-                var username = $('#username').text();
-                console.log(a, b, c, username)
+                console.log(a, b, c, email);
+
+                var Email = $('#default_email').text();
                 $.ajax({
                     type: "GET",
                     url: '/Client/capnhatdiachi',
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     data: {
-                        Matk: username,
                         Sodt: b,
                         Diachi: c,
                         Hoten: a,
+                        Email: Email,
                     },
                 })
                 alert('Data updated successfully');
@@ -1092,7 +1098,6 @@
               $('#error-pw2').removeClass('hide-message')
             }
           }
-        })
         })
     </script>
 

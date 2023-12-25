@@ -32,13 +32,13 @@ namespace IS220.O11.HTCL.Models
             }
             else
             {
-                size = 100 * x;
+                size = 60 * x;
             }
              
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                string str = "select * from booklist ";
+                string str = "select * from booklist limit @size";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("size", size);
                 using (var reader = cmd.ExecuteReader())
