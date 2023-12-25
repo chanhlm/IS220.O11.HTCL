@@ -22,6 +22,7 @@ namespace IS220.O11.HTCL.Models
         private string hinhthuc;
         private int soluong;
         private int sobinhchon;
+        private int soluongban;
 
         public int Masach { get => masach; set => masach = value; }
         public string Tensach { get => tensach; set => tensach = value; }
@@ -41,27 +42,9 @@ namespace IS220.O11.HTCL.Models
         public int Danhgia { get => danhgia; set => danhgia = value; }
         public int Sobinhchon { get => sobinhchon; set => sobinhchon = value; }
 
+        public int Soluongban { get => soluongban; set => soluongban = value; }
 
 
-
-        public Book(int DANHGIA, int MASACH, int SOLUONG, string TENSACH, string HINHANH, string THELOAI, int GIABAN, int GIAGOC, int GIAMGIA, string MOTA, string TACGIA, DateTime NAMXB, string NXB, string HINHTHUC, int sobinhchon)
-        {
-            this.masach = MASACH;
-            this.tensach = TENSACH;
-            this.hinhanh = HINHANH;
-            this.theloai = THELOAI;
-            this.giaban = GIABAN;
-            this.giagoc = GIAGOC;
-            this.giamgia = GIAMGIA;
-            this.mota = MOTA;
-            this.tacgia = TACGIA;
-            this.namxb = NAMXB;
-            this.nxb = NXB;
-            this.hinhthuc = HINHTHUC;
-            this.soluong = SOLUONG;
-            this.danhgia = DANHGIA;
-            this.sobinhchon = sobinhchon;
-        }
 
         public Book()
         {

@@ -1,10 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using IS220.O11.HTCL.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Text.Json;
+
+
 
 namespace IS220.O11.HTCL.Areas.Admin.Models
 {
@@ -72,6 +69,57 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             return list;
         }
 
+        public List<Book> GetBook(int x)
+        {
+            List<Book> list = new List<Book>();
+            int size = 0;
+            if (x == -1)
+            {
+                size = 0;
+            }
+            else
+            {
+                size = 60 * x;
+            }
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                string str = "select * from booklist";
+                MySqlCommand cmd = new MySqlCommand(str, conn);
+                cmd.Parameters.AddWithValue("size", size);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int gia_ban = Convert.ToInt32(reader["giaban"]);
+                        string Gia_ban = gia_ban.ToString("N1");
+                        list.Add(new Book()
+                        {
+                            Danhgia = Convert.ToInt32(reader["danhgia"]),
+                            Masach = Convert.ToInt32(reader["masach"]),
+                            Tensach = reader["tensach"].ToString(),
+                            Hinhanh = reader["hinhanh"].ToString(),
+                            Theloai = reader["theloai"].ToString(),
+                            Tacgia = reader["tacgia"].ToString(),
+                            Namxb = Convert.ToDateTime(reader["namxb"]),
+                            Nxb = reader["nxb"].ToString(),
+                            Giaban = Convert.ToInt32(reader["giaban"]),
+                            Giagoc = Convert.ToInt32(reader["giagoc"]),
+                            Giamgia = Convert.ToInt32(reader["giamgia"]),
+                            Soluongban = Convert.ToInt32(reader["soluongban"]),
+                            Soluong = Convert.ToInt32(reader["soluong"]),
+                        });
+                    }
+                    reader.Close();
+                }
+
+                conn.Close();
+
+            }
+            return list;
+        }
+
         public int InsertBook(Book bk)
         {
             using (MySqlConnection conn = GetConnection())
@@ -87,14 +135,14 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                 cmd.Parameters.AddWithValue("hinhanh", bk.Hinhanh);
                 cmd.Parameters.AddWithValue("hinhthuc", bk.Hinhthuc);
                 cmd.Parameters.AddWithValue("mota", bk.Mota);
-                cmd.Parameters.AddWithValue("namxb", bk.Namxb.ToString("dd-mm-yyyy")); // Chuyển đổi DateTime thành chuỗi
+                cmd.Parameters.AddWithValue("namxb", bk.Namxb.ToString("yyyy-MM-dd")); // Chuyển đổi DateTime thành chuỗi
                 cmd.Parameters.AddWithValue("ngonngu", "");
                 cmd.Parameters.AddWithValue("nxb", bk.Nxb);
                 cmd.Parameters.AddWithValue("sobinhchon", 0);
                 cmd.Parameters.AddWithValue("tacgia", bk.Tacgia);
                 cmd.Parameters.AddWithValue("tensach", bk.Tensach);
                 cmd.Parameters.AddWithValue("theloai", bk.Theloai);
-                cmd.Parameters.AddWithValue("soluong", 0);
+                cmd.Parameters.AddWithValue("soluong", bk.Soluong);
                 cmd.Parameters.AddWithValue("soluongban", 0); // Thêm giá trị cho thuộc tính soluongban
                 return cmd.ExecuteNonQuery();
             }
@@ -175,36 +223,50 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
 
         public int UpdateBookById(Book kh)
         {
-            Console.WriteLine(kh.Masach);
-            using (MySqlConnection conn = GetConnection())
+            try
             {
+                using (MySqlConnection conn = GetConnection())
+                {
+                    conn.Open();
 
-                conn.Open();
-                var str = "UPDATE  Booklist SET danhgia=@danhgia,giaban=@giaban,giagoc=@giagoc,giamgia=@giamgia," +
-                    "hinhanh=@hinhanh,hinhthuc=@hinhthuc,mota=@mota,namxb=@namxb,ngonngu=@ngonngu,nxb=@nxb," +
-                    "sobinhchon=@sobinhchon,tacgia=@tacgia,tensach=@tensach, soluong=@soluong, theloai=@theloai WHERE masach=@masach";
-                MySqlCommand cmd = new MySqlCommand(str, conn);
-                cmd.Parameters.AddWithValue("masach", kh.Masach);
-                cmd.Parameters.AddWithValue("danhgia", kh.Danhgia);
-                cmd.Parameters.AddWithValue("giaban", kh.Giaban);
-                cmd.Parameters.AddWithValue("giagoc", kh.Giagoc);
-                cmd.Parameters.AddWithValue("giamgia", kh.Giamgia);
-                cmd.Parameters.AddWithValue("hinhanh", kh.Hinhanh);
-                cmd.Parameters.AddWithValue("hinhthuc", kh.Hinhthuc);
-                cmd.Parameters.AddWithValue("mota", kh.Mota);
-                cmd.Parameters.AddWithValue("namxb", kh.Namxb);
-                cmd.Parameters.AddWithValue("ngonngu", kh.Ngonngu);
-                cmd.Parameters.AddWithValue("nxb", kh.Nxb);
-                cmd.Parameters.AddWithValue("sobinhchon", kh.Sobinhchon);
-                cmd.Parameters.AddWithValue("tacgia", kh.Tacgia);
-                cmd.Parameters.AddWithValue("tensach", kh.Tensach);
-                cmd.Parameters.AddWithValue("theloai", kh.Theloai);
-                cmd.Parameters.AddWithValue("soluong", kh.Soluong);
+                    var str = "UPDATE Booklist SET danhgia=@danhgia, giaban=@giaban, giagoc=@giagoc, giamgia=@giamgia," +
+                        "hinhanh=@hinhanh, hinhthuc=@hinhthuc, mota=@mota, namxb=@namxb, ngonngu=@ngonngu, nxb=@nxb," +
+                        "sobinhchon=@sobinhchon, tacgia=@tacgia, tensach=@tensach, soluong=@soluong, theloai=@theloai WHERE masach=@masach";
 
+                    MySqlCommand cmd = new MySqlCommand(str, conn);
+                    cmd.Parameters.AddWithValue("masach", kh.Masach);
+                    cmd.Parameters.AddWithValue("danhgia", kh.Danhgia);
+                    cmd.Parameters.AddWithValue("giaban", kh.Giaban);
+                    cmd.Parameters.AddWithValue("giagoc", kh.Giagoc);
+                    cmd.Parameters.AddWithValue("giamgia", kh.Giamgia);
+                    cmd.Parameters.AddWithValue("hinhanh", kh.Hinhanh);
+                    cmd.Parameters.AddWithValue("hinhthuc", kh.Hinhthuc);
+                    cmd.Parameters.AddWithValue("mota", kh.Mota);
 
-                return (cmd.ExecuteNonQuery());
+                    // Format the DateTime value as 'YYYY-MM-DD'
+                    cmd.Parameters.AddWithValue("namxb", kh.Namxb.ToString("yyyy-MM-dd"));
+
+                    cmd.Parameters.AddWithValue("ngonngu", kh.Ngonngu);
+                    cmd.Parameters.AddWithValue("nxb", kh.Nxb);
+                    cmd.Parameters.AddWithValue("sobinhchon", kh.Sobinhchon);
+                    cmd.Parameters.AddWithValue("tacgia", kh.Tacgia);
+                    cmd.Parameters.AddWithValue("tensach", kh.Tensach);
+                    cmd.Parameters.AddWithValue("theloai", kh.Theloai);
+                    cmd.Parameters.AddWithValue("soluong", kh.Soluong);
+
+                    // Execute the SQL command
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    return rowsAffected > 0 ? 1 : 0; // 1 indicates success, 0 indicates no rows updated
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                return -1; // -1 indicates an error occurred
             }
         }
+
 
 
         // Quản lý tài khoản]
@@ -917,9 +979,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                             soluongSach = Convert.ToInt32(reader["slSach"]),
                             soluongDonHang = Convert.ToInt32(reader["slDonHang"]),
                             soluongTaiKhoan = Convert.ToInt32(reader["slTaiKhoan"]),
-                            tongTien = Convert.ToInt32(reader["tongTien"]),
-
-                            
+                            tongTien = Convert.ToInt32(reader["tongTien"]),                            
                         };
                         list.Add(ob);
                     }

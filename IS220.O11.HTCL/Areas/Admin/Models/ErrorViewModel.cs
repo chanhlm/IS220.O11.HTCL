@@ -1,4 +1,3 @@
-using System;
 
 namespace IS220.O11.HTCL.Areas.Admin.Models
 {

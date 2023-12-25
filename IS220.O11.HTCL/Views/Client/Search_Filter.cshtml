@@ -9,7 +9,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DaBook Shop</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
           integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
@@ -303,7 +302,6 @@
 
     <script>
         $(document).ready(function () {
-            console.log('Hello')
             var giaban_send = '';
             var ngonngu_send = '';
             var nxb_send = '';
@@ -317,7 +315,6 @@
             console.log(nhaxuatban)
 
             $('.timkiem_z').on('click', function () {
-                console.log("Hello")
 
                 giaban.each(function () {
                     if ($(this).find('.form-check-input').prop('checked') === true) {

@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body" style="padding-left: 5px; padding-right:5px">
 
                             <h4 class="m-b-30 m-t-0">Danh sách sách</h4>
 
@@ -55,7 +55,7 @@
                                                 <td>@(item.GetType().GetProperty("Tacgia")?.GetValue(item, null))</td>
                                                 <td>@(item.GetType().GetProperty("Nxb")?.GetValue(item, null))</td>
                                                 <td>@(item.GetType().GetProperty("Giaban")?.GetValue(item, null))</td>
-                                                <td>@(item.GetType().GetProperty("Namxb")?.GetValue(item, null))</td>
+                                                <td>@item.Namxb.ToString("dd-MM-yyyy") <span></span>  </td>
                                                 <td>@(item.GetType().GetProperty("Soluong")?.GetValue(item, null))</td>
                                                 <td>@(item.GetType().GetProperty("Soluongban")?.GetValue(item, null))</td>
 

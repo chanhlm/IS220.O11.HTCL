@@ -451,7 +451,7 @@
                     </div>
 
                     <div>
-                        <div class="home-product">
+                        <div class="home-product" id="list-product">
                             <!-- Grid -> row -> column -->
                             <div class="grid__row" id="list_book">
                                 <!-- Product item -->
@@ -509,28 +509,28 @@
                             </a>
                         </li>
                         <li class="pagination-item">
-                            <a href="/Home/Index?page=1" id="pagination-item__link" class="pagination-item__link">1</a>
+                            <a href="/Home/Index?page=1#list-product" id="pagination-item__link" class="pagination-item__link">1</a>
                         </li>
                         <li class="pagination-item">
-                            <a href="/Home/Index?page=2" id="pagination-item__link" class="pagination-item__link">2</a>
+                            <a href="/Home/Index?page=2#list-product" id="pagination-item__link" class="pagination-item__link">2</a>
                         </li>
                         <li class="pagination-item">
-                            <a href="/Home/Index?page=3" id="pagination-item__link" class="pagination-item__link">3</a>
+                            <a href="/Home/Index?page=3#list-product" id="pagination-item__link" class="pagination-item__link">3</a>
                         </li>
                         <li class="pagination-item">
-                            <a href="/Home/Index?page=4" id="pagination-item__link" class="pagination-item__link">4</a>
+                            <a href="/Home/Index?page=4#list-product" id="pagination-item__link" class="pagination-item__link">4</a>
                         </li>
                         <li class="pagination-item">
-                            <a href="/Home/Index?page=5" id="pagination-item__link" class="pagination-item__link">5</a>
+                            <a href="/Home/Index?page=5#list-product" id="pagination-item__link" class="pagination-item__link">5</a>
                         </li>
                         <li class="pagination-item">
-                            <a href="/Home/Index?page=6" id="pagination-item__link" class="pagination-item__link">6</a>
+                            <a href="/Home/Index?page=6#list-product" id="pagination-item__link" class="pagination-item__link">6</a>
                         </li>
                         <li class="pagination-item">
                             <a href="" id="pagination-item__link" class="pagination-item__link">...</a>
                         </li>
                         <li class="pagination-item">
-                            <a href="/Home/Index?page=14" id="pagination-item__link" class="pagination-item__link">14</a>
+                            <a href="/Home/Index?page=14#list-product" id="pagination-item__link" class="pagination-item__link">14</a>
                         </li>
                         <li class="pagination-item">
                             <a href="" id="pagination-item__next" class="pagination-item__linkicon">
@@ -772,15 +772,15 @@
             $("#pagination-item__prev").on('click', function () {
                 var prev = dem - 1;
                 if (prev >= 1) {
-                    $(this).attr('href', '?page=' + prev.toString())
-                    $.get("/Home/Index?page=" + prev)
+                    $(this).attr('href', '?page=' + prev.toString() + '#list-product')
+                    $.get("/Home/Index?page=" + prev + '#list-product')
                 }
             });
 
             $("#pagination-item__next").on('click', function () {
                 var next = dem + 1;
-                $(this).attr('href', '?page=' + next.toString())
-                $.get("/Home/Index?page=" + next)
+                $(this).attr('href', '?page=' + next.toString() + '#list-product')
+                $.get("/Home/Index?page=" + next + '#list-product')
             });
 
         })

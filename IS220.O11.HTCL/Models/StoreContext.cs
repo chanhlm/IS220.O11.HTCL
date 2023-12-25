@@ -104,12 +104,14 @@ namespace IS220.O11.HTCL.Models
         public Book ViewBook(int name)
         {
             Book bo = new Book();
+
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
                 var str = "select * from booklist where masach=@masach";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("masach", name);
+
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -126,11 +128,20 @@ namespace IS220.O11.HTCL.Models
                         bo.Mota = reader["mota"].ToString();
                         bo.Giamgia = Convert.ToInt32(reader["giamgia"]);
                         bo.Danhgia = Convert.ToInt32(reader["danhgia"]);
+
+                        // Assuming "namxb" is the column representing the publishing date
+                        if (reader["namxb"] != DBNull.Value)
+                        {
+                            bo.Namxb = Convert.ToDateTime(reader["namxb"]);
+                        }
                     }
                 }
             }
-            return (bo);
+
+            return bo;
         }
+
+
         public List<Book> DsLienQuan(int name)
         {
             List<Book> list = new List<Book>();

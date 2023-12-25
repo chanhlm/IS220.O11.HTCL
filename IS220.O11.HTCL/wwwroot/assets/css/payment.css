@@ -146,9 +146,9 @@ body {
 
 .cart-store {
     position: absolute;
-    background-color: #1A94FF;
+    background-color: var(--blue-color);
     border: 1px solid #1A94FF;
-    width: 386px;
+    width: 385px;
     height: 90px;
     left: 0px;
     top: -1px;
