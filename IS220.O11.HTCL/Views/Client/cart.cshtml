@@ -110,7 +110,18 @@
                                 <span style="font-weight: 400;">@ViewBag.Hoten</span>
                             </div>
                             <div>
-                                <span id="phone" style="font-weight: 400;">Số điện thoại: @ViewBag.Sodt</span>
+                                <span style="font-weight: 400;">
+                                    Số điện thoại: 
+                                    @if (string.IsNullOrEmpty(ViewBag.Sodt))
+                                    {
+                                        <span id="phone" style="color: red;">Yêu cầu số điện thoại</span>
+                                    }
+                                    else
+                                    {
+                                        @ViewBag.Sodt
+                                    }
+                                
+                                </span>
                             </div>
                             <div class="cart_address">
                                 <span style="font-weight: 400;" >
@@ -195,7 +206,7 @@
                 }
             })
 
-            if (dem > 0 && $('#address').text().trim() !== "Yêu cầu điền địa chỉ") {
+                if (dem > 0 && $('#address').text().trim() !== "Yêu cầu điền địa chỉ" && $('#phone').text().trim() !== "Yêu cầu số điện thoại") {
                 $('.confirm-buy').prop("disabled", false);
             } else {
                 $('.confirm-buy').prop("disabled", true);
