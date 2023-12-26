@@ -72,9 +72,9 @@
                 <td style="font-size:14px">Tạm tính</td>
                 <td style="font-size:14px">@change(@ViewBag.tamtinh) đ</td>
             </tr>
-            <tr style="color: #333; line-height: 3.2rem;">
+            @* <tr style="color: #333; line-height: 3.2rem;">
                 <td style="font-size:14px">Vourcher áp dụng:</td>
-                @if (ViewBag.orders.Makm > 1)
+                @if (ViewBag.orders.Makm.length() > 1)
                 {
                     <td style="font-size:14px">@ViewBag.orders.Makm</td>
                 }
@@ -83,7 +83,7 @@
                     <td style="font-size:14px">Không có</td>
                 }
 
-            </tr>
+            </tr> *@
             <tr style="color: #333; line-height: 3.2rem;">
                 <td style="font-size:14px">Giảm giá</td>
                 <td style="font-size:14px">@change(@ViewBag.giamgia) đ</td>

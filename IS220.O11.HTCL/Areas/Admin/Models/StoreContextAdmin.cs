@@ -20,7 +20,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
 
         // Quản lý sách
 
-      
+
 
         public List<object> GetBook()
         {
@@ -170,21 +170,21 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             {
                 conn.Open();
                 string str = "select * from Booklist where masach=@Masach";
-                
+
                 MySqlCommand d = new MySqlCommand(str, conn);
                 d.Parameters.AddWithValue("Masach", Id);
-                
+
 
                 using (var reader = d.ExecuteReader())
                 {
                     reader.Read();
-                    
-                    list.Danhgia = Convert.ToInt32(reader["danhgia"]);  
+
+                    list.Danhgia = Convert.ToInt32(reader["danhgia"]);
                     list.Giaban = Convert.ToInt32(reader["giaban"]);
                     list.Giagoc = Convert.ToInt32(reader["giagoc"]);
                     list.Giamgia = Convert.ToInt32(reader["giamgia"]);
                     list.Hinhanh = reader["hinhanh"].ToString();
-                    list.Hinhthuc = reader["hinhthuc"].ToString();                        
+                    list.Hinhthuc = reader["hinhthuc"].ToString();
                     list.Mota = reader["mota"].ToString();
                     list.Nxb = reader["nxb"].ToString();
                     list.Sobinhchon = Convert.ToInt32(reader["sobinhchon"]);
@@ -374,7 +374,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                 conn.Open();
                 var str = "UPDATE accounts SET tinhtrang='Đang hoạt động' WHERE email=@email";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
-                
+
                 cmd.Parameters.AddWithValue("email", email);
                 return (cmd.ExecuteNonQuery());
             }
@@ -396,7 +396,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                     {
                         list.Add(new user_voucher()
                         {
-                           
+
                             Makm = Convert.ToInt32(reader["makm"]),
                             Email = reader["email"].ToString(),
 
@@ -416,7 +416,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
         public List<object> GetKhuyenMai()
         {
             List<object> list = new List<object>();
-            
+
             using (MySqlConnection conn = GetConnection())
             {
                 DateTime now = DateTime.Now;
@@ -437,7 +437,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                         var nambatdau = Convert.ToInt32(reader["nambatdau"]);
                         var ngayketthuc = Convert.ToInt32(reader["ngayketthuc"]);
                         var thangketthuc = Convert.ToInt32(reader["thangketthuc"]);
-                           var namketthuc = Convert.ToInt32(reader["namketthuc"]);
+                        var namketthuc = Convert.ToInt32(reader["namketthuc"]);
                         var tinhTrang = "";
                         if (nambatdau <= now.Year)
                         {
@@ -476,15 +476,15 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                                         if (thangketthuc > now.Month)
                                             tinhTrang = "Đang diễn ra";
                                         else
-                                            if(thangketthuc == now.Month)
-                                            {
-                                                if(ngayketthuc<now.Day)
-                                                    tinhTrang = "Đã kết thúc";
-                                                else
+                                            if (thangketthuc == now.Month)
+                                        {
+                                            if (ngayketthuc < now.Day)
+                                                tinhTrang = "Đã kết thúc";
+                                            else
                                                 tinhTrang = "Đang diễn ra";
                                         }
-                                            else
-                                                tinhTrang = "Đã kết thúc";
+                                        else
+                                            tinhTrang = "Đã kết thúc";
                                     }
                                     else
                                     {
@@ -494,7 +494,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                                             tinhTrang = "Đã kết thúc";
                                     }
                                 }
-                            }   
+                            }
                         }
                         else
                         {
@@ -512,12 +512,12 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                             Loai = reader["loai"].ToString(),
                             Manhap = reader["manhap"].ToString(),
                             Noidung = reader["noidung"].ToString(),
-                            Ngaybd=Convert.ToDateTime(reader["ngaybd"]),
+                            Ngaybd = Convert.ToDateTime(reader["ngaybd"]),
                             Ngaykt = Convert.ToDateTime(reader["ngaykt"]),
                             TinhTrang = tinhTrang,
-                             
 
-                    }; list.Add(ob);
+
+                        }; list.Add(ob);
 
                     }
                     reader.Close();
@@ -529,102 +529,102 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
             return list;
         }
 
- /*       public string TinhTrangKhuyenMai()
-        {
+        /*       public string TinhTrangKhuyenMai()
+               {
 
-            using (MySqlConnection conn = GetConnection())
-            {
-                string tinhTrang = "";
-                
-                int ngaybatdau, ngayketthuc, thangketthuc, namketthuc, nambatdau, thangbatdau  = 0 ;
-                string str = @"select day(ngaybd) as ngaybatdau, month(ngaybd) as thangbatdau, year(ngaybd) as nambatdau,
-                    day(ngaykt) as ngayketthuc, month(ngaykt) as thangketthuc, year(ngaykt) as namketthuc from voucher";
-                MySqlCommand cmd = new MySqlCommand(str, conn);
-                DateTime now = DateTime.Now;
+                   using (MySqlConnection conn = GetConnection())
+                   {
+                       string tinhTrang = "";
 
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        reader.Read();
+                       int ngaybatdau, ngayketthuc, thangketthuc, namketthuc, nambatdau, thangbatdau  = 0 ;
+                       string str = @"select day(ngaybd) as ngaybatdau, month(ngaybd) as thangbatdau, year(ngaybd) as nambatdau,
+                           day(ngaykt) as ngayketthuc, month(ngaykt) as thangketthuc, year(ngaykt) as namketthuc from voucher";
+                       MySqlCommand cmd = new MySqlCommand(str, conn);
+                       DateTime now = DateTime.Now;
 
-                        ngaybatdau = Convert.ToInt32(reader["ngaybatdau"]);
-                        thangbatdau = Convert.ToInt32(reader["thangbatdau"]);
-                        nambatdau = Convert.ToInt32(reader["nambatdau"]);
-                        ngayketthuc = Convert.ToInt32(reader["ngayketthuc"]);
-                        thangketthuc = Convert.ToInt32(reader["thangketthuc"]);
-                        namketthuc = Convert.ToInt32(reader["namketthuc"]);
-                        if (nambatdau < now.Year)
-                        {
-                            if (namketthuc >= now.Year)
-                            {
-                                if (thangketthuc >= now.Month)
-                                {
-                                    if (ngayketthuc >= now.Day)
-                                    {
-                                        tinhTrang = "Đang diễn ra";
-                                    }
-                                    if (ngayketthuc < now.Day)
-                                    {
-                                        tinhTrang = "Đã kết thúc";
-                                    }                                  
-                                }
-                            }
-                            else
-                            {
-                                tinhTrang = "Đã kết thúc";
-                            }
-                            
-                        }
-                        if (nambatdau == now.Year)
-                        {
-                            if (thangbatdau == now.Month)
-                            {
-                                if (ngaybatdau == now.Day|| (ngaybatdau < now.Day && ngayketthuc >= now.Day))
-                                {
-                                    tinhTrang = "Đang diễn ra";
-                                }
-                                if (ngaybatdau < now.Day)
-                                {
-                                    tinhTrang = "Chưa bắt đầu";
-                                }
-                                if(ngayketthuc < now.Day)
-                                {
-                                    tinhTrang = "Đã kết thúc";
-                                }
-                            }
-                            if (thangbatdau < now.Month)
-                            {
-                                if (thangketthuc > now.Month)
-                                {
-                                    tinhTrang = "Đang diễn ra";
-                                }
-                                if(thangketthuc== now.Month)
-                                {
-                                    if(ngayketthuc>= now.Day)
-                                    {
-                                        tinhTrang = "Đang diễn ra"; 
-                                    }
-                                    if(ngayketthuc< now.Day)
-                                        tinhTrang = "Đã kết thúc";
-                                }
-                                else
-                                    tinhTrang = "Đã kết thúc";
-                            }
-                            if(thangbatdau > now.Month)
-                                tinhTrang = "Chưa bắt đầu";
-                        }
-                        if(nambatdau > now.Year)
-                        {
-                            tinhTrang = "Chưa bắt đầu";
-                        }    
+                       using (var reader = cmd.ExecuteReader())
+                       {
+                           while (reader.Read())
+                           {
+                               reader.Read();
 
-                    }
-                }
-                return tinhTrang;
-            }
+                               ngaybatdau = Convert.ToInt32(reader["ngaybatdau"]);
+                               thangbatdau = Convert.ToInt32(reader["thangbatdau"]);
+                               nambatdau = Convert.ToInt32(reader["nambatdau"]);
+                               ngayketthuc = Convert.ToInt32(reader["ngayketthuc"]);
+                               thangketthuc = Convert.ToInt32(reader["thangketthuc"]);
+                               namketthuc = Convert.ToInt32(reader["namketthuc"]);
+                               if (nambatdau < now.Year)
+                               {
+                                   if (namketthuc >= now.Year)
+                                   {
+                                       if (thangketthuc >= now.Month)
+                                       {
+                                           if (ngayketthuc >= now.Day)
+                                           {
+                                               tinhTrang = "Đang diễn ra";
+                                           }
+                                           if (ngayketthuc < now.Day)
+                                           {
+                                               tinhTrang = "Đã kết thúc";
+                                           }                                  
+                                       }
+                                   }
+                                   else
+                                   {
+                                       tinhTrang = "Đã kết thúc";
+                                   }
 
-        }*/
+                               }
+                               if (nambatdau == now.Year)
+                               {
+                                   if (thangbatdau == now.Month)
+                                   {
+                                       if (ngaybatdau == now.Day|| (ngaybatdau < now.Day && ngayketthuc >= now.Day))
+                                       {
+                                           tinhTrang = "Đang diễn ra";
+                                       }
+                                       if (ngaybatdau < now.Day)
+                                       {
+                                           tinhTrang = "Chưa bắt đầu";
+                                       }
+                                       if(ngayketthuc < now.Day)
+                                       {
+                                           tinhTrang = "Đã kết thúc";
+                                       }
+                                   }
+                                   if (thangbatdau < now.Month)
+                                   {
+                                       if (thangketthuc > now.Month)
+                                       {
+                                           tinhTrang = "Đang diễn ra";
+                                       }
+                                       if(thangketthuc== now.Month)
+                                       {
+                                           if(ngayketthuc>= now.Day)
+                                           {
+                                               tinhTrang = "Đang diễn ra"; 
+                                           }
+                                           if(ngayketthuc< now.Day)
+                                               tinhTrang = "Đã kết thúc";
+                                       }
+                                       else
+                                           tinhTrang = "Đã kết thúc";
+                                   }
+                                   if(thangbatdau > now.Month)
+                                       tinhTrang = "Chưa bắt đầu";
+                               }
+                               if(nambatdau > now.Year)
+                               {
+                                   tinhTrang = "Chưa bắt đầu";
+                               }    
+
+                           }
+                       }
+                       return tinhTrang;
+                   }
+
+               }*/
 
         public voucher GetKhuyenMaiById(int id)
         {
@@ -655,8 +655,8 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                         list.Ngaybd = Convert.ToDateTime(reader["ngaybd"]);
                         list.Ngaykt = Convert.ToDateTime(reader["ngaykt"]);
                     }
-                    
-                    };
+
+                };
                 return list;
 
             }
@@ -839,8 +839,8 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
 
                             Ngaycapnhat = Convert.ToDateTime(reader["ngaycapnhat"]),
                             Ngaylap = Convert.ToDateTime(reader["ngaylap"]),
-                        }; 
-                    } 
+                        };
+                    }
                 }
             }
             return (kh);
@@ -877,7 +877,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                     reader.Close();
                 }
 
-                conn.Close();   
+                conn.Close();
 
             }
             return list;
@@ -890,7 +890,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                 float tiengiam = 0;
                 conn.Open();
                 string str = "select phantram, tongtien, sum(o.soluong*giaban) as tamtinh from  Booklist b, detail_order o, orders, voucher km where b.masach=o.masach and orders.madh=o.madh and orders.makm=km.makm and o.madh=@Madh group by o.madh";
-                
+
                 MySqlCommand cmd = new MySqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("Madh", Id);
 
@@ -904,18 +904,18 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                 }
                 return tiengiam;
             }
-            
+
         }
 
         public float TinhThanhTien(int Madh)
         {
-            using(MySqlConnection conn = GetConnection())
+            using (MySqlConnection conn = GetConnection())
             {
                 /*float thanhtien = 0; 
                 int Tongtien = 0;
                 int Tienship = 0;
                 int phantram = 0;*/
-                int tamtinh = 0 ;
+                int tamtinh = 0;
                 conn.Open();
                 string str = "SELECT sum(o.soluong*giaban) as tamtinh  from Booklist b, detail_order o, orders where b.masach=o.masach and o.madh=orders.madh and o.madh=@madh group by o.madh";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
@@ -949,10 +949,10 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                             SET phanhoi=@phanhoi,tinhtrangdonhang=@tinhtrangdonhang 
                             WHERE madh=@madh";
                 MySqlCommand cmd = new MySqlCommand(str, conn);
-                
-            
+
+
                 cmd.Parameters.AddWithValue("phanhoi", Phanhoi);
-                cmd.Parameters.AddWithValue("tinhtrangdonhang", Tinhtrangdonhang);                
+                cmd.Parameters.AddWithValue("tinhtrangdonhang", Tinhtrangdonhang);
                 cmd.Parameters.AddWithValue("madh", Id);
                 return (cmd.ExecuteNonQuery());
             }
@@ -979,7 +979,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                             soluongSach = Convert.ToInt32(reader["slSach"]),
                             soluongDonHang = Convert.ToInt32(reader["slDonHang"]),
                             soluongTaiKhoan = Convert.ToInt32(reader["slTaiKhoan"]),
-                            tongTien = Convert.ToInt32(reader["tongTien"]),                            
+                            tongTien = Convert.ToInt32(reader["tongTien"]),
                         };
                         list.Add(ob);
                     }
@@ -1010,7 +1010,7 @@ namespace IS220.O11.HTCL.Areas.Admin.Models
                         var ob = new
                         {
                             Theloai = reader["theloai"].ToString(),
-                            slban = Convert.ToInt32(reader["slban"]),               
+                            slban = Convert.ToInt32(reader["slban"]),
                         };
                         list.Add(ob);
                     }

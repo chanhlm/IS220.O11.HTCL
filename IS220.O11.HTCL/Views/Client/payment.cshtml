@@ -454,22 +454,25 @@
                 })
             }
 
-            console.log(list_khuyenmai)
+            // console.log(list_khuyenmai)
 
-            function checkday(date)
-            {
-                var DateUse = new Date(date)
-                var ToDay = new Date()
-                if (DateUse.getTime() < ToDay.getTime()) {
-                    return false;
-                } else return true;
-            }
+            function checkday(end_date) {
+                console.log(end_date);
+                var kt = new Date(end_date);
+                var ToDay = new Date();
+
+                console.log(kt.getTime() );
+                console.log(ToDay.getTime());
+
+                return kt.getTime() >= ToDay.getTime();
+        }
+
 
             $('.apdung').on('click', function ()
             {
                 var nguoidungnhap = $('.makm_nhap').val()
                 $('.makm_nhap').empty()
-                console.log(nguoidungnhap);
+                // console.log(nguoidungnhap);
                 var dungthanhcong = false;
                 var hethan = false;
                 var dasudung = false;
@@ -477,9 +480,15 @@
 
                 for (var i = 0; i < list_khuyenmai.length; i++)
                 {
+                    // console.log(list_khuyenmai[i].manhap);
                     if (nguoidungnhap === list_khuyenmai[i].manhap)
                     {
-                        if (checkday(list_khuyenmai.ngaykt))
+                         var ToDay = new Date();
+ 
+                         var end_date = new Date(list_khuyenmai[i].ngaykt);
+
+
+                        if (end_date.getTime() >= ToDay.getTime())
                         {
                             dungthanhcong = true;
                             alert("Áp dụng thành công")
@@ -536,7 +545,7 @@
                 var loaithanhtoan = ''
                 var thanhtien = parseInt($('.thanhtien').text())
                 var tinhtrangthanhtoan = ''
-                console.log(username)
+                // console.log(username)
                 listhoadon.each(function (e) {
                     const Sach = {
                         masach: $(this).find('.ma-sach').text(),
@@ -557,8 +566,8 @@
                     listProduct.push(Sach)
                 })
 
-                console.log(voucher_used_list)
-                console.log(Boolean(voucher_dadung) != false)
+                // console.log(voucher_used_list)
+                // console.log(Boolean(voucher_dadung) != false)
                 if (voucher_dadung.length > 0)
                 {
                     $.get('/Client/deletevoucher?data=' + JSON.stringify(voucher_dadung))
@@ -567,7 +576,7 @@
                         })
                 }
 
-                console.log(listProduct)
+                // console.log(listProduct)
                 $(this).parent().attr('href', '/Client/thanhyou?data=' + JSON.stringify(listProduct) + "&tongtien=" + $('.thanhtien').text() + "&soluong=" + $('.soluong-sp').text() + "&hinhthucthanhtoan=" + loaithanhtoan + "&tinhtrangthanhtoan=" + tinhtrangthanhtoan + '&tinhtrangdonhang=' + 'chờ xác nhận' + '&tienship=' + $('.phiship').text() + '&voucher_used=' + voucher_used_list)
             })
         })
