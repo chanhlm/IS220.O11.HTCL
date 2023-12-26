@@ -18,13 +18,24 @@
         <div class="col-8  shipping__info">
             <div class="shipping__address--header ">
                 <h3>Địa chỉ giao hàng</h3>
-                <a href="/Client/taikhoan?email=@ViewBag.infor.Email">Thay đổi</a>
+                <a href="/Client/taikhoan?email=@ViewBag.infor.Email#diachi">Thay đổi</a>
             </div>
             <div class="shipping__info--user">
                 <span> <i class="far fa-id-badge" style="color: rgb(0, 132, 255); padding: 10px;"></i> @ViewBag.Hoten</span>
                 <span>@ViewBag.Sodt</span>
             </div>
-            <span> <i class="ti-location-pin" style="color: rgb(0, 132, 255); padding: 8px"></i> @ViewBag.Diachi</span>
+            <span>
+                <i class="ti-location-pin" style="color: rgb(0, 132, 255); padding: 8px"></i>
+                @if (string.IsNullOrEmpty(ViewBag.Diachi) || ViewBag.Diachi == "chưa có")
+                {
+                    <span style="color: red;">Yêu cầu điền địa chỉ</span>
+                }
+                else
+                {
+                    @ViewBag.Diachi
+                }
+            </span>
+
         </div>
 
         <div class="col-8 bill__info">

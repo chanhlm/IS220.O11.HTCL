@@ -974,21 +974,30 @@ namespace IS220.O11.HTCL.Models
 
 
                 var str2 = "insert into detail_order values(@madh,@masach,@soluong)";
-                var str_anhhungtraidat = "update booklist set soluongban=soluongban+@soluongmua where masach=@masach";
-                var list_sach = JsonSerializer.Deserialize<sach[]>(data);
-                foreach(var item in list_sach)
-                {
-                    MySqlCommand mySql2 = new MySqlCommand(str2, conn);
-                    mySql2.Parameters.AddWithValue("madh", madh + 1);
-                    mySql2.Parameters.AddWithValue("masach", item.masach);
-                    mySql2.Parameters.AddWithValue("soluong", item.soluong);
-                    mySql2.ExecuteNonQuery();
+                var str_anhhungtraidat = "update booklist set soluongban = soluongban + @soluongmua where masach = @masach";
 
-                    MySqlCommand mySql3 = new MySqlCommand(str_anhhungtraidat, conn);
-                    mySql3.Parameters.AddWithValue("soluongmua", item.soluong);
-                    mySql3.Parameters.AddWithValue("masach", item.masach);
-                    mySql3.ExecuteNonQuery();
+                var list_sach = JsonSerializer.Deserialize<sach[]>(data);
+
+                foreach (var item in list_sach)
+                {
+                    using (MySqlCommand mySql2 = new MySqlCommand(str2, conn))
+                    {
+                        mySql2.Parameters.AddWithValue("madh", madh + 1);
+                        mySql2.Parameters.AddWithValue("masach", item.masach);
+                        mySql2.Parameters.AddWithValue("soluong", item.soluong);
+                        mySql2.ExecuteNonQuery();
+                    }
+
+                    using (MySqlCommand mySql3 = new MySqlCommand(str_anhhungtraidat, conn))
+                    {
+                        mySql3.Parameters.AddWithValue("soluongmua", item.soluong);
+                        mySql3.Parameters.AddWithValue("masach", item.masach);
+                        mySql3.ExecuteNonQuery();
+                    }
+
+                    xoagiohang(email, item.masach);
                 }
+
 
                 /*var list_voucher_used = JsonSerializer.Deserialize<voucher[]>(listvoucher);
                 var str3 = "delete from user_voucher where matk=@matk and makm=@makm";

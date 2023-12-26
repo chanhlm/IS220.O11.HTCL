@@ -84,7 +84,8 @@
                                                                 <div class="form-group">
                                                                     <label>Năm xuất bản</label>
                                                                     <div>
-                                                                        <input data-parsley-type="alphanum" type="date" class="form-control" required="" placeholder="Năm xuất bản" name="namxb" value="@ViewBag.Book.Namxb">
+                                                    <input data-parsley-type="alphanum" type="date" class="form-control" required="" placeholder="Năm xuất bản" name="namxb" value="@ViewBag.Book.Namxb.ToString("yyyy-MM-dd")">
+
                                                                     </div>
                                                                 </div>
 

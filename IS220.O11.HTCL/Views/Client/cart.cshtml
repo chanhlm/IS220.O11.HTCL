@@ -110,12 +110,23 @@
                                 <span style="font-weight: 400;">@ViewBag.Hoten</span>
                             </div>
                             <div>
-                                <span style="font-weight: 400;">Số điện thoại: @ViewBag.Sodt</span>
+                                <span id="phone" style="font-weight: 400;">Số điện thoại: @ViewBag.Sodt</span>
                             </div>
                             <div class="cart_address">
-                                <span style="font-weight: 400;">Địa chỉ: @ViewBag.Diachi</span>
+                                <span style="font-weight: 400;" >
+                                    Địa chỉ:
+                                    @if (string.IsNullOrEmpty(ViewBag.Diachi) || ViewBag.Diachi == "chưa có")
+                                    {
+                                        <span id="address" style="color: red;">Yêu cầu điền địa chỉ</span>
+                                    }
+                                    else
+                                    {
+                                        @ViewBag.Diachi
+                                    }
+                                </span>
+
                             </div>
-                            <a href="/Client/taikhoan?email=@ViewBag.Email" style="text-decoration: none; justify-content: space-around;">Thay đổi</a>
+                            <a href="/Client/taikhoan?email=@ViewBag.Email#diachi" style="text-decoration: none; justify-content: space-around;">Thay đổi</a>
                         </div>
                         <div class="cart-delivery" style="padding: 5px 0 4px;">
                             <p style="font-weight: 400; font-size: 1.8rem; color: #666;">Thông tin đơn hàng</p>
@@ -184,9 +195,11 @@
                 }
             })
 
-            if (dem > 0) {
-                $('.confirm-buy').attr("disabled", false)
-            } else $('.confirm-buy').attr("disabled", true)
+            if (dem > 0 && $('#address').text().trim() !== "Yêu cầu điền địa chỉ") {
+                $('.confirm-buy').prop("disabled", false);
+            } else {
+                $('.confirm-buy').prop("disabled", true);
+            }
         })
 
         $('.visibility-cart').on('click',function(){
